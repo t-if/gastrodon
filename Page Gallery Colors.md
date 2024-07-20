@@ -6,18 +6,18 @@ Change colors of the [Page Gallery](https://github.com/tokenshift/obsidian-page-
 
 Available for download [here](https://github.com/t-if/gastrodon/blob/main/Snippets/Gallery%20Colors.css).
 
-```
-css
+```css
 /* @settings
 
 name: Page Gallery Colors
 id: css-page-gallery-colors
-description: Change colors of the Page Gallery plugin.
+description: Change colors of the page gallery plugin.
 settings:
     - 
         id: gallery-bg-color-focus
         title: Focus Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -25,6 +25,7 @@ settings:
         id: gallery-bg-color-focus-hover
         title: Focus Hover Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -32,6 +33,7 @@ settings:
         id: gallery-bg-color-selected
         title: Selected Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -39,6 +41,7 @@ settings:
         id: gallery-bg-color-selected-shadow
         title: Selected Background Shadow Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -46,6 +49,7 @@ settings:
         id: tile-image-bg-color
         title: Tile Image Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -53,6 +57,7 @@ settings:
         id: tile-image-bg-color-shadow
         title: Tile Image Background Shadow Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -60,6 +65,7 @@ settings:
         id: tile-image-box-shadow
         title: Tile Image Box Shadow Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -129,7 +135,6 @@ settings:
   text-align: center;
   text-decoration: none !important;
 }
-
 ```
 
 ## Showcase
