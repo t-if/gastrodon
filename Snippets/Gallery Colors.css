@@ -1,3 +1,6 @@
+/* original by t-if 
+https://github.com/t-if */
+
 /* @settings
 
 name: Page Gallery Colors
@@ -8,6 +11,7 @@ settings:
         id: gallery-bg-color-focus
         title: Focus Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -15,6 +19,7 @@ settings:
         id: gallery-bg-color-focus-hover
         title: Focus Hover Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -22,6 +27,7 @@ settings:
         id: gallery-bg-color-selected
         title: Selected Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -29,6 +35,7 @@ settings:
         id: gallery-bg-color-selected-shadow
         title: Selected Background Shadow Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -36,6 +43,7 @@ settings:
         id: tile-image-bg-color
         title: Tile Image Background Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -43,6 +51,7 @@ settings:
         id: tile-image-bg-color-shadow
         title: Tile Image Background Shadow Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
@@ -50,6 +59,7 @@ settings:
         id: tile-image-box-shadow
         title: Tile Image Box Shadow Color
         type: variable-themed-color
+        opacity: true
         format: hex
         default-light: '#'
         default-dark: '#'
