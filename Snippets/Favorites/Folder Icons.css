@@ -1,3 +1,5 @@
+/* original from Border theme by Akifyss: https://github.com/Akifyss/obsidian-border */
+
 body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type {
   background-color: var(--interactive-accent);
   color: var(--text-on-accent);
