@@ -1,67 +1,66 @@
 # Page Gallery Colors
 
+Change colors of the [Page Gallery](https://github.com/tokenshift/obsidian-page-gallery/tree/main) plugin.
+
 ### Snippet
 
-Also available [here](https://github.com/t-if/gastrodon/blob/main/Snippets/Gallery%20Colors.css)
+Available for download [here](https://github.com/t-if/gastrodon/blob/main/Snippets/Gallery%20Colors.css).
 
-```css
+```
 css
-/* original by t-if  
-🔗https://github.com/t-if */
-
 /* @settings
 
 name: Page Gallery Colors
 id: css-page-gallery-colors
-description: Change colors of the page gallery plugin.
+description: Change colors of the Page Gallery plugin.
 settings:
     - 
         id: gallery-bg-color-focus
         title: Focus Background Color
         type: variable-themed-color
-        format: rgb
+        format: hex
         default-light: '#'
         default-dark: '#'
     -
         id: gallery-bg-color-focus-hover
         title: Focus Hover Background Color
         type: variable-themed-color
-        format: rgb
+        format: hex
         default-light: '#'
         default-dark: '#'
     -
         id: gallery-bg-color-selected
         title: Selected Background Color
         type: variable-themed-color
-        format: rgb
+        format: hex
         default-light: '#'
         default-dark: '#'
     -
         id: gallery-bg-color-selected-shadow
         title: Selected Background Shadow Color
         type: variable-themed-color
-        format: rgb
+        format: hex
         default-light: '#'
         default-dark: '#'
     -
         id: tile-image-bg-color
         title: Tile Image Background Color
         type: variable-themed-color
-        format: rgb
+        format: hex
         default-light: '#'
         default-dark: '#'
     -
         id: tile-image-bg-color-shadow
         title: Tile Image Background Shadow Color
         type: variable-themed-color
-        format: rgb
+        format: hex
         default-light: '#'
         default-dark: '#'
     -
         id: tile-image-box-shadow
         title: Tile Image Box Shadow Color
         type: variable-themed-color
-        format: rgb
+        format: hex
         default-light: '#'
         default-dark: '#'
 */
@@ -74,7 +73,7 @@ settings:
 
 .page-gallery__views-header-item.selected {
   background: linear-gradient(to bottom right, var(--gallery-bg-color-selected), var(--gallery-bg-color-selected-shadow));
-  box-shadow: 2px 2px 2px '#';
+  box-shadow: 2px 2px 2px var(--tile-image-box-shadow);
 }
 
 .page-gallery__views-header-item-count {
@@ -105,19 +104,32 @@ settings:
   top: 0;
 }
 
-body.theme-dark .page-gallery__views-header-item:focus,
-body.theme-dark .page-gallery__views-header-item:hover {
-  background: linear-gradient(to bottom right, var(--gallery-bg-color-focus-dark), var(--gallery-bg-color-focus-hover-dark));
+.page-gallery__tile-image--content * {
+  color: var(--text-normal);
 }
 
-body.theme-dark .page-gallery__views-header-item.selected {
-  background: linear-gradient(to bottom right, var(--gallery-bg-color-selected-dark), var(--gallery-bg-color-selected-shadow-dark));
+.page-gallery__tile-image--content *:first-child {
+  margin-top: 0;
 }
 
-body.theme-dark .page-gallery__tile-image--content {
-  background: linear-gradient(to bottom right, var(--tile-image-bg-color-dark), var(--tile-image-bg-color-shadow-dark));
-  box-shadow: 2px 2px 2px var(--tile-image-box-shadow-dark);
+.page-gallery__tile-image--content:hover, .page-gallery__tile-image--content:focus {
+  background: linear-gradient(to bottom right, var(--tile-image-bg-color-shadow), var(--tile-image-bg-color-shadow));
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
 }
+
+.page-gallery__tile-image--fallback {
+  align-content: center;
+  background: linear-gradient(to bottom right, var(--tile-image-bg-color-shadow), var(--tile-image-bg-color-shadow));
+  border-radius: var(--border-radius, 10px);
+  box-shadow: 2px 2px 2px var(--tile-image-box-shadow);
+  display: block;
+  height: 0;
+  padding-bottom: calc(0.6 * var(--image-height));
+  padding-top: calc(0.4 * var(--image-height));
+  text-align: center;
+  text-decoration: none !important;
+}
+
 ```
 
 ## Showcase
