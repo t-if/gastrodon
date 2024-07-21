@@ -1,6 +1,6 @@
 # Gastrodon
 ### Personal Theme
-Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by Bluemoondragon07.
+Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by Bluemoondragon07. Several lot of people on in the Obsidian community have asked about how I achieved my Vault UI, and this servers as an easy way to share and document my CSS collection. 
 ## Changes
 ### Emoji alignment fix
 #### Before
@@ -9,11 +9,11 @@ Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by B
 ![ezgif-7-635beeafa8](https://github.com/user-attachments/assets/cb584156-15da-4b00-8305-59ce6b03f4f9)
 ## Optional
 ### Plugins
-1. Style Settings
-2. Commander
-3. Hider
-4. Status Bar Organizer
-5. Page Gallery
+1. [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
+2. [Commander](https://github.com/phibr0/obsidian-commander)
+3. [Hider](https://github.com/kepano/obsidian-hider)
+4. [Status Bar Organizer](https://github.com/Opisek/obsidian-statusbar-organizer)
+5. [Page Gallery](https://github.com/tokenshift/obsidian-page-gallery)
 ### Snippets
 1. [Personal Favorites](https://github.com/t-if/gastrodon/tree/main/Snippets/Favorites)
 2. [Page Gallery Colors](https://github.com/t-if/gastrodon/blob/main/Page%20Gallery%20Colors.md)
