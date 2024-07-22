@@ -1,0 +1,5 @@
+/* original from ariehen: https://forum.obsidian.md/t/remove-bullet-on-dataviewjs-table-result/80989/2 */
+
+.block-language-dataview ul > li::marker {
+    content:'';
+}
