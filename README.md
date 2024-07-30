@@ -2,6 +2,7 @@
 ### Personal Theme
 Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by Bluemoondragon07. Several lot of people on in the Obsidian community have asked about how I achieved my Vault UI, and this servers as an easy way to share and document my CSS collection. 
 ## Changes
+For the most part, I prefer using CSS snippets to messing with the original theme for aesthetic changes. This offers far more flexibility and efficiency for personal use. 
 ### Emoji alignment fix
 #### Before
 ![0716(1)](https://github.com/user-attachments/assets/1ee8c751-10bc-4d30-a3a6-59a8644d7138)
