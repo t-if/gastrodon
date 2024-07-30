@@ -17,3 +17,6 @@ Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by B
 ### Snippets
 1. [Personal Favorites](https://github.com/t-if/gastrodon/tree/main/Snippets/Favorites)
 2. [Page Gallery Colors](https://github.com/t-if/gastrodon/blob/main/Page%20Gallery%20Colors.md)
+3. [Tooltip Colors](https://github.com/t-if/gastrodon/blob/main/Tooltip%20Colors.md)
+4. [Autohide Explorer Icons](https://github.com/t-if/gastrodon/blob/main/Snippets/Autohide%20Explorer%20Icons.css)
+5. [Transparent Menus](https://github.com/t-if/gastrodon/blob/main/Snippets/Transparent%20Menus.css)
