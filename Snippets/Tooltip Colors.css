@@ -1,0 +1,21 @@
+/* original by https://github.com/t-if */
+
+/* @settings
+
+name: Tooltip Colors
+id: css-tooltip-colors
+description: Change colors of tooltips.
+settings:
+    - 
+        id: bg-color
+        title: Background Color
+        type: variable-themed-color
+        opacity: true
+        format: hex
+        default-light: '#'
+        default-dark: '#'
+*/
+
+body {
+	--background-modifier-message: var(--bg-color)
+}
