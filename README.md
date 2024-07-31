@@ -33,7 +33,6 @@ For the most part, I prefer using CSS snippets to messing with the original them
 2. [Commander](https://github.com/phibr0/obsidian-commander)
 3. [Hider](https://github.com/kepano/obsidian-hider)
 4. [Status Bar Organizer](https://github.com/Opisek/obsidian-statusbar-organizer)
-5. [Page Gallery](https://github.com/tokenshift/obsidian-page-gallery)
 
 ### Snippets
 
