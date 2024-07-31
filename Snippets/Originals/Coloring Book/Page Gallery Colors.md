@@ -4,7 +4,7 @@ Change colors of the [Page Gallery](https://github.com/tokenshift/obsidian-page-
 
 ### Snippet
 
-Available for download [here](https://github.com/t-if/gastrodon/blob/main/Snippets/Gallery%20Colors.css).
+Available for download [here](https://github.com/t-if/gastrodon/blob/main/Snippets/Originals/Coloring%20Book/Gallery%20Colors.css).
 
 ```css
 /* @settings
