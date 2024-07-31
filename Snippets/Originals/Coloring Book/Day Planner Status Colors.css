@@ -34,9 +34,6 @@ settings:
 
 /* pie */
 .progress-pie {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
   background: var(--incomplete);
   background-image: linear-gradient(to right, transparent 50%, var(--complete) 0);
   position: relative;
