@@ -3,7 +3,7 @@
 Change color of Obsidian tooltips in Style Settings. 
 
 ### Snippet
-Available for download [here](https://github.com/t-if/gastrodon/blob/main/Snippets/Tooltip%20Colors.css).
+Available for download [here](https://github.com/t-if/gastrodon/blob/main/Snippets/Originals/Coloring%20Book/Tooltip%20Colors.css).
 
 ```css
 /* @settings
