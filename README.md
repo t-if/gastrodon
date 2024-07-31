@@ -2,7 +2,7 @@
 
 ### Personal Theme
 
-Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by Bluemoondragon07. Several lot of people on in the Obsidian community have asked about how I achieved my Vault UI, and this servers as an easy way to share and document my CSS collection.
+Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by Bluemoondragon07. Several lot of people on in the Obsidian community have asked about how I achieved my Vault UI, and this serves as an easy way to share and document my CSS collection.
 
 ## Coloring Book
 
