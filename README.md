@@ -8,9 +8,9 @@ Created using [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by B
 
 For the most part, I prefer using CSS snippets to messing with the original theme for aesthetic changes. This offers far more flexibility and efficiency for personal use. The simple snippets [here](https://github.com/t-if/gastrodon/tree/main/Snippets/Originals/Coloring%20Book) allow you to change colors of different UI elements in Style Settings, adding more fine-tuned customization options to any theme.
 
-1. Day Planner Status
-2. Page Gallery
-3. Tooltips
+1. [Day Planner Status](https://github.com/t-if/gastrodon/blob/main/Snippets/Originals/Coloring%20Book/Day%20Planner%20Status%20Colors.md)
+2. [Page Gallery](https://github.com/t-if/gastrodon/blob/main/Snippets/Originals/Coloring%20Book/Page%20Gallery%20Colors.md)
+3. [Tooltips](https://github.com/t-if/gastrodon/blob/main/Snippets/Originals/Coloring%20Book/Tooltip%20Colors.md)
 
 ## Chime Fixes
 
