@@ -406,3 +406,6 @@ settings:
   transform: rotate(0.5turn);
 }
 ```
+## Showcase
+![image](https://github.com/user-attachments/assets/29dd3860-8b96-4f66-a15d-884e88e17219)
+![image](https://github.com/user-attachments/assets/c6474cce-02e0-4950-9cfd-fbbc0758187c)
