@@ -1,6 +1,6 @@
 # Gastrodon
 
-My personal theme, a remix of [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by Bluemoondragon07.
+My personal theme, a remix of [Chime 🔔](https://github.com/Bluemoondragon07/chime-theme) by Bluemoondragon07. See a comparison [here](https://www.diffchecker.com/BjyRSfXB/).
 
 ## What's new?
 
