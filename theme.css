@@ -4365,7 +4365,7 @@ body {
 
 /* @settings
 
-name: Gastrodon Theme
+name: Gastrodon
 id: gastrodon-theme
 settings:
     -
@@ -5023,7 +5023,7 @@ settings:
         id: h1-weight
         title: Header 1 Weight
         type: variable-number
-        default: 600
+        default: 550
     -
         id: h1-variant
         title: Header 1 Font Variant
@@ -5039,7 +5039,7 @@ settings:
         id: h1-center
         title: Center Header 1
         type: class-toggle
-        default: false
+        default: true
     -
         id: h1-bottom-border
         title: Header 1 Bottom Border
@@ -5055,7 +5055,7 @@ settings:
         id: h2-weight
         title: Header 2 Weight
         type: variable-number
-        default: 600
+        default: 500
     -
         id: h2-variant
         title: Header 2 Font Variant
@@ -5076,7 +5076,7 @@ settings:
         id: h2-bottom-border
         title: Header 2 Bottom Border
         type: class-toggle
-        default: false
+        default: true
     -
         id: h3-options
         title: Header 3
@@ -5087,12 +5087,12 @@ settings:
         id: h3-weight
         title: Header 3 Weight
         type: variable-number
-        default: 600
+        default: 550
     -
         id: h3-variant
         title: Header 3 Font Variant
         type: variable-select
-        default: normal
+        default: petite-caps
         options:
             - normal
             - petite-caps
@@ -5103,7 +5103,7 @@ settings:
         id: h3-center
         title: Center Header 3
         type: class-toggle
-        default: false
+        default: true
     -
         id: h3-bottom-border
         title: Header 3 Bottom Border
@@ -5119,12 +5119,12 @@ settings:
         id: h4-weight
         title: Header 4 Weight
         type: variable-number
-        default: 600
+        default: 550
     -
         id: h4-variant
         title: Header 4 Font Variant
         type: variable-select
-        default: normal
+        default: all-small-caps
         options:
             - normal
             - petite-caps
@@ -5140,7 +5140,7 @@ settings:
         id: h4-bottom-border
         title: Header 4 Bottom Border
         type: class-toggle
-        default: false
+        default: true
     -
         id: h5-options
         title: Header 5
@@ -5151,12 +5151,12 @@ settings:
         id: h5-weight
         title: Header 5 Weight
         type: variable-number
-        default: 600
+        default: 550
     -
         id: h5-variant
         title: Header 5 Font Variant
         type: variable-select
-        default: normal
+        default: all-small-caps
         options:
             - normal
             - petite-caps
@@ -5183,12 +5183,12 @@ settings:
         id: h6-weight
         title: Header 6 Weight
         type: variable-number
-        default: 600
+        default: 550
     -
         id: h6-variant
         title: Header 6 Font Variant
         type: variable-select
-        default: petite-caps
+        default: all-small-caps
         options:
             - normal
             - petite-caps
@@ -5238,7 +5238,7 @@ settings:
         title: Custom font
         type: variable-select
         description: This will override theme fonts, but it will not override any font defined in Settings/Appearance.
-        default: Monsterrat
+        default: 'DM Mono'
         options:
             - Hindi
             - Roboto
