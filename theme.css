@@ -5007,7 +5007,7 @@ settings:
         title: Heading Colors
         type: class-select
         allowEmpty: false
-        default: heading-default
+        default: colorful-headings
         options:
             -
                 label: Default
