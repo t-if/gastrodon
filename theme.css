@@ -1247,6 +1247,10 @@ body {
 
 /* checboxes, most are from kepano's minimal theme*/
 
+body {
+    --checklist-done-decoration: none;
+}
+
 input[data-task="!"]:checked,
 input[data-task="*"]:checked,
 input[data-task="-"]:checked,
