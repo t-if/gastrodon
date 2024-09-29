@@ -1043,6 +1043,20 @@ body:has(*.no-count) .dataview.small-text {
 /* ---------- headings ---------- */
 
 /* ----- general headings ----- */
+body{
+    --h3-variant: petite-caps;
+    --h4-variant: all-small-caps;
+    --h5-variant: all-small-caps;
+    --h6-variant: all-small-caps;
+    --h1-weight: 550;
+    --h2-weight: 550;
+    --h3-weight: 550;
+    --h4-weight: 550;
+    --h5-weight: 550;
+    --h6-weight: 550;
+}
+
+
 body:not(.colorful-headings):not(.colorful-headings-alt) {
     --h1-color: var(--text-normal);
     --h2-color: var(--text-normal);
