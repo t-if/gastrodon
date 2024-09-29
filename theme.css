@@ -215,7 +215,7 @@ img[alt*="right"] {
 
 /* tooltips */
 body {
-	--background-modifier-message: var(--tooltip-color)
+	--background-modifier-message: hsla(var(--interactive-accent-hsl), 0.7)
 }
 
 /* mermaid */
@@ -1043,15 +1043,6 @@ body:has(*.no-count) .dataview.small-text {
 /* ---------- headings ---------- */
 
 /* ----- general headings ----- */
-body{
-    --h6-variant: small-caps;
-    --h1-weight: 700;
-    --h2-weight: 600;
-    --h3-weight: 600;
-    --h4-weight: 600;
-    --h5-weight: 600;
-    --h6-weight: 600;
-}
 body:not(.colorful-headings):not(.colorful-headings-alt) {
     --h1-color: var(--text-normal);
     --h2-color: var(--text-normal);
@@ -3791,14 +3782,27 @@ flex-grow: 1;
 }
 
 /* page gallery colors */
+
+
 .page-gallery__views-header-item:focus,
 .page-gallery__views-header-item:hover {
-  background: linear-gradient(to bottom right, var(--gallery-bg-color-focus), var(--gallery-bg-color-focus-hover));
+  background: linear-gradient(
+    to bottom right,
+    hsla(var(--interactive-accent-hsl), 0.8),
+    hsla(var(--interactive-accent-hsl), 0.8), 0.8)
+  );
+  cursor: pointer;
+}
+
+
+.page-gallery__views-header-item:focus,
+.page-gallery__views-header-item:hover {
+  background: linear-gradient(to bottom right, hsla(var(--interactive-accent-hsl), 0.4), hsla(var(--interactive-accent-hsl), 0.8));
   cursor: pointer;
 }
 
 .page-gallery__views-header-item.selected {
-  background: linear-gradient(to bottom right, var(--gallery-bg-color-selected), var(--gallery-bg-color-selected-shadow));
+  background: linear-gradient(to bottom right, hsla(var(--interactive-accent-hsl), 0.4), var(--color-accent-1));
   box-shadow: 2px 2px 2px var(--tile-image-box-shadow);
 }
 
@@ -3807,7 +3811,7 @@ flex-grow: 1;
 }
 
 .page-gallery__tile-image--content {
-  background: linear-gradient(to bottom right, var(--tile-image-bg-color), var(--tile-image-bg-color-shadow));
+  background: linear-gradient(to bottom right, hsla(var(--interactive-accent-hsl), 0.4), hsla(var(--interactive-accent-hsl), 0.8));
   border-radius: var(--border-radius, 10px);
   box-shadow: 2px 2px 2px var(--tile-image-box-shadow);
   display: block;
@@ -3839,13 +3843,13 @@ flex-grow: 1;
 }
 
 .page-gallery__tile-image--content:hover, .page-gallery__tile-image--content:focus {
-  background: linear-gradient(to bottom right, var(--tile-image-bg-color-shadow), var(--tile-image-bg-color-shadow));
+  background: linear-gradient(to bottom right, hsla(var(--interactive-accent-hsl), 0.4), hsla(var(--interactive-accent-hsl), 0.5));
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
 }
 
 .page-gallery__tile-image--fallback {
   align-content: center;
-  background: linear-gradient(to bottom right, var(--tile-image-bg-color-shadow), var(--tile-image-bg-color-shadow));
+  background: linear-gradient(to bottom right, hsla(var(--interactive-accent-hsl), 0.4), hsla(var(--interactive-accent-hsl), 0.6));
   border-radius: var(--border-radius, 10px);
   box-shadow: 2px 2px 2px var(--tile-image-box-shadow);
   display: block;
@@ -3947,11 +3951,11 @@ transition: height 0.1s, opacity 0.25s;
 /* day planner plugin */
 /* bar */
 .day-planner-progress-value {
-    background-color: var(--complete);
+    background-color: var(--interactive-accent);
   }
   
   .day-planner-progress-bar {
-    background-color: var(--incomplete);
+    background-color: var(--color-base-30);
   }
   
   
@@ -3960,13 +3964,13 @@ transition: height 0.1s, opacity 0.25s;
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: var(--incomplete);
-  background-image: linear-gradient(to right, transparent 50%, var(--complete) 0);
+  background: var(--color-base-30);
+  background-image: linear-gradient(to right, transparent 50%, var(--interactive-accent) 0);
   position: relative;
   display: inline-block;
   }
   .progress-pie::after {
-  background-color: var(--incomplete);
+  background-color: var(--color-base-30);
   }
   .progress-pie[data-value="0"]:before {
   transform: rotate(0turn);
@@ -4122,203 +4126,203 @@ transition: height 0.1s, opacity 0.25s;
   transform: rotate(0.5turn);
   }
   .progress-pie[data-value="51"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.01turn);
   }
   .progress-pie[data-value="52"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.02turn);
   }
   .progress-pie[data-value="53"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.03turn);
   }
   .progress-pie[data-value="54"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.04turn);
   }
   .progress-pie[data-value="55"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.05turn);
   }
   .progress-pie[data-value="56"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.06turn);
   }
   .progress-pie[data-value="57"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.07turn);
   }
   .progress-pie[data-value="58"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.08turn);
   }
   .progress-pie[data-value="59"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.09turn);
   }
   .progress-pie[data-value="60"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.1turn);
   }
   .progress-pie[data-value="61"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.11turn);
   }
   .progress-pie[data-value="62"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.12turn);
   }
   .progress-pie[data-value="63"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.13turn);
   }
   .progress-pie[data-value="64"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.14turn);
   }
   .progress-pie[data-value="65"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.15turn);
   }
   .progress-pie[data-value="66"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.16turn);
   }
   .progress-pie[data-value="67"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.17turn);
   }
   .progress-pie[data-value="68"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.18turn);
   }
   .progress-pie[data-value="69"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.19turn);
   }
   .progress-pie[data-value="70"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.2turn);
   }
   .progress-pie[data-value="71"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.21turn);
   }
   .progress-pie[data-value="72"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.22turn);
   }
   .progress-pie[data-value="73"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.23turn);
   }
   .progress-pie[data-value="74"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.24turn);
   }
   .progress-pie[data-value="75"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.25turn);
   }
   .progress-pie[data-value="76"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.26turn);
   }
   .progress-pie[data-value="77"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.27turn);
   }
   .progress-pie[data-value="78"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.28turn);
   }
   .progress-pie[data-value="79"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.29turn);
   }
   .progress-pie[data-value="80"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.3turn);
   }
   .progress-pie[data-value="81"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.31turn);
   }
   .progress-pie[data-value="82"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.32turn);
   }
   .progress-pie[data-value="83"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.33turn);
   }
   .progress-pie[data-value="84"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.34turn);
   }
   .progress-pie[data-value="85"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.35turn);
   }
   .progress-pie[data-value="86"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.36turn);
   }
   .progress-pie[data-value="87"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.37turn);
   }
   .progress-pie[data-value="88"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.38turn);
   }
   .progress-pie[data-value="89"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.39turn);
   }
   .progress-pie[data-value="90"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.4turn);
   }
   .progress-pie[data-value="91"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.41turn);
   }
   .progress-pie[data-value="92"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.42turn);
   }
   .progress-pie[data-value="93"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.43turn);
   }
   .progress-pie[data-value="94"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.44turn);
   }
   .progress-pie[data-value="95"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.45turn);
   }
   .progress-pie[data-value="96"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.46turn);
   }
   .progress-pie[data-value="97"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.47turn);
   }
   .progress-pie[data-value="98"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.48turn);
   }
   .progress-pie[data-value="99"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.49turn);
   }
   .progress-pie[data-value="100"]:before {
-  background-color: var(--complete);
+  background-color: var(--interactive-accent);
   transform: rotate(0.5turn);
 }
 
@@ -4429,14 +4433,6 @@ settings:
         title: Hide Workspace Dividers
         type: class-toggle
     -
-        id: tooltip-color
-        title: Tooltip Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
         id: line-style
         title: Line Style
         description: Line style displayed on borders.
@@ -4482,7 +4478,7 @@ settings:
         title: Border Radius (Roundness)
 	    description: Adjust the roundness of the panes and other small elements (overriden with classic mode turned on)
         type: variable-number-slider
-        default: 11
+        default: 12
         min: 0
         max: 30
         step: 1
@@ -5296,88 +5292,6 @@ settings:
         description: Make the tiles resize and rearrange themselves depending on the size of their content. This gets rid of the rigid columnar layout.
         type: class-toggle
         default: false
-    -
-        id: page-gallery-colors
-        title: Page Gallery Colors
-        type: heading
-        level: 4
-        collapsed: false
-    -
-        id: gallery-bg-color-focus
-        title: Focus Background Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
-        id: gallery-bg-color-focus-hover
-        title: Focus Hover Background Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
-        id: gallery-bg-color-selected
-        title: Selected Background Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
-        id: gallery-bg-color-selected-shadow
-        title: Selected Background Shadow Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
-        id: tile-image-bg-color
-        title: Tile Image Background Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
-        id: tile-image-bg-color-shadow
-        title: Tile Image Background Shadow Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
-        id: tile-image-box-shadow
-        title: Tile Image Box Shadow Color
-        type: variable-themed-color
-        opacity: true
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -   
-        id: day-planner-heading
-        title: Day Planner
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: incomplete
-        title: Incomplete Segment Color
-        type: variable-themed-color
-        format: hex
-        default-light: '#'
-        default-dark: '#'
-    -
-        id: complete
-        title: Complete Segment Color
-        type: variable-themed-color
-        format: hex
-        default-light: '#'
-        default-dark: '#'
     -
         id: focus-mode-heading
         title: Focus Mode
