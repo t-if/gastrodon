@@ -1049,7 +1049,7 @@ body{
     --h5-variant: all-small-caps;
     --h6-variant: all-small-caps;
     --h1-weight: 550;
-    --h2-weight: 550;
+    --h2-weight: 500;
     --h3-weight: 550;
     --h4-weight: 550;
     --h5-weight: 550;
@@ -5022,7 +5022,7 @@ settings:
         title: Smaller Headings
         description: Make headings smaller and less distracting.
         type: class-toggle
-        default: false
+        default: true
     -
         id: h1-options
         title: Header 1
