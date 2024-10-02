@@ -3887,6 +3887,17 @@ flex-grow: 1;
 .nav-buttons-container, .view-actions, .workspace-tab-header-inner, .side-dock-settings, .side-dock-actions {
     opacity: 1;
 }
+
+/* backlinks */
+hide-blink.embedded-backlinks {
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+}
+hide-blink.embedded-backlinks:hover {
+    opacity: 1;
+    transition-delay: 0ms;
+}
+
 /* --- hide buttons --- */
 .hide-buttons {
     --border-width: 0px;
@@ -5321,6 +5332,11 @@ settings:
     -
         id: hide-buttons
         title: Hide Buttons
+        type: class-toggle
+        default: true
+    -
+        id: hide-blink
+        title: Hide Backlinks
         type: class-toggle
         default: true
     -
