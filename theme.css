@@ -179,7 +179,7 @@ body {
 
 /* explorer icons */
 .nav-buttons-container {
-    opacity: 0.5 !important;
+    opacity: 0.3 !important;
     transition: opacity 0.15s ease-in-out;
 }
 .nav-buttons-container:hover {
@@ -502,6 +502,16 @@ thead {
 }
 .tag-button a.tag:hover, .tag-button .editor .cm-hashtag:hover {
     -webkit-box-shadow: 0 -1px 7px -1px rgb(118 118 118 / 10%) inset;
+}
+
+/* backlinks */
+.embedded-backlinks {
+    opacity: 0.3;
+    transition: opacity 0.15s ease-in-out;
+}
+.embedded-backlinks:hover {
+    opacity: 1;
+    transition-delay: 0ms;
 }
 
 /* ---------- links ---------- */
