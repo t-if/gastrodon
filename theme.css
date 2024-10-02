@@ -506,7 +506,7 @@ thead {
 
 /* backlinks */
 .embedded-backlinks {
-    opacity: 0.3;
+    opacity: 0.2;
     transition: opacity 0.15s ease-in-out;
 }
 .embedded-backlinks:hover {
