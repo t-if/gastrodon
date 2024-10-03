@@ -31,7 +31,7 @@ body {
 
 /* Dim non-active markdown panes */
 .workspace-leaf:not(.mod-active) .workspace-leaf-content[data-type='markdown'] {
-    opacity: var(--limelight-opacity, 0.75);
+    opacity: 0.5
 }
 
 /* Apply opacity transition to all panes */
@@ -39,14 +39,6 @@ body {
     transition: opacity 0.25s ease-out;
 }
 
-/* --- cardboard plugin --- */
-.card-board-view {
-    color: var(--text-muted);
-}
-.card-board-column {
-    background-color: var(--background-primary-alt);
-    border: var(--border-width) var(--line-style) var(--background-modifier-border);
-}
 
 /* --- line style ---*/
 body.line-style-solid {
@@ -1355,13 +1347,9 @@ body {
     --callout-bug: var(--color-pink-rgb);
 }
 
-/* callout autohide */
-/* 
-Obsidian.md Callout Hover Expand
-Made by:
-Discord - scaryharry4
-Git Hub - https://github.com/Scaryharry4
-*/
+/* callout autohide  
+from https://github.com/Scaryharry4*/
+
 .hover-callout .callout:not(.is-collapsible) {
     display: flex;
     flex-direction: column;
