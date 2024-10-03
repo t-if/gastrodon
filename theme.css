@@ -24,6 +24,20 @@ body {
     --border-width: 1px;
 }
 
+/* Give the parent element a background color so overlapping panes don't show through */
+.workspace-leaf {
+    background-color: inherit;
+}
+
+/* Dim non-active markdown panes */
+.workspace-leaf:not(.mod-active) .workspace-leaf-content[data-type='markdown'] {
+    opacity: var(--limelight-opacity, 0.75);
+}
+
+/* Apply opacity transition to all panes */
+.workspace-leaf .workspace-leaf-content[data-type='markdown'] {
+    transition: opacity 0.25s ease-out;
+}
 
 /* --- cardboard plugin --- */
 .card-board-view {
@@ -1340,6 +1354,44 @@ min-width: 100%;
 body {
     --callout-bug: var(--color-pink-rgb);
 }
+
+/* callout autohide */
+/* 
+Obsidian.md Callout Hover Expand
+Made by:
+Discord - scaryharry4
+Git Hub - https://github.com/Scaryharry4
+*/
+.hover-callout .callout:not(.is-collapsible) {
+    display: flex;
+    flex-direction: column;
+    transition: 500ms;
+    opacity: 0.65;
+    flex-grow: 1;
+  }
+  
+.hover-callout  .callout:not(.is-collapsible):hover {
+    opacity: 1;
+  }
+  
+ .hover-callout .callout:not(.is-collapsible) .callout-content {
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 500ms ease; /* Change this if you change the nax height below */
+    flex-grow: 0; 
+  }
+  
+ .hover-callout .callout:not(.is-collapsible):hover .callout-content {
+    max-height: 1000px; 
+    /* This is an arbitrary value. By default you get 41 lines of text with this. 
+    If for some reason you happen to need more than this in a callout you should also change the transition time in the code block above*/
+    flex-grow: 1; 
+  }
+
+.hover-callout  .callout-content .callout {
+    opacity: 1;
+  }
+
 
 /* checboxes, most are from kepano's minimal theme*/
 
@@ -4609,7 +4661,7 @@ settings:
         title: Readable Line Length
         description: Change the width of the note when Readable Line Length is turned on.
         type: variable-text
-        default: '800px'
+        default: '850px'
     -
         id: folders-heading
         title: Folders
@@ -4703,6 +4755,11 @@ settings:
         type: heading
         level: 2
         collapsed: true
+    -
+        id: hover-callout
+        title: Hover to Expand Callout
+        type: class-toggle
+        default: true
     -
         id: callout-style
         title: Callout Style
