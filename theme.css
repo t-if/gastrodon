@@ -4638,7 +4638,6 @@ settings:
     -
         id: border-radius-average
         title: Border Radius (Roundness)
-	    description: Adjust the roundness of the panes and other small elements (overriden with classic mode turned on)
         type: variable-number-slider
         default: 12
         min: 0
@@ -5086,6 +5085,11 @@ settings:
         level: 2
         collapsed: true
     -
+        id: clean-embed
+        title: Seamless Embedded Links
+        type: class-toggle
+        default: true
+    -
         id: link-style
         title: Link Style
         type: class-select
@@ -5396,11 +5400,6 @@ settings:
         description: Increase line height and paragraph spacing for more readability.
         type: class-toggle
         default: false
-    -
-        id: clean-embed
-        title: Seamless Embedded Links
-        type: class-toggle
-        default: true
     -
         id: custom-font-toggle
         title: Enable custom font
