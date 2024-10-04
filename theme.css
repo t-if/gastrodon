@@ -4015,10 +4015,12 @@ flex-grow: 1;
 }
 
 
-/* ---------- database folder plug-in ---------- */
-.database-plugin__row-shadow {
-    background-color: var(--background-secondary-alt);
-  }
+/* Hides vault name */
+.hide-vault .workspace-sidedock-vault-profile,
+body.hide-vault:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+	display:none;
+}
+
 /* ------ focus mode ------ */
 .nav-buttons-container, .view-actions, .workspace-tab-header-inner, .side-dock-settings, .side-dock-actions {
     opacity: 1;
@@ -5477,6 +5479,11 @@ settings:
     -
         id: hide-scrollbars
         title: Hide Scrollbars
+        type: class-toggle
+        default: true
+    -
+        id: hide-vault
+        title: Hide Vault Name
         type: class-toggle
         default: true
     -
