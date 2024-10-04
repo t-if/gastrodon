@@ -3198,7 +3198,7 @@ border-radius: 0px;
 }
 
 /* folder icons */
-.fold-icon body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type {
+body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type {
     background-color: var(--interactive-accent);
     color: var(--text-on-accent);
     box-shadow: var(--input-shadow);
@@ -3207,11 +3207,11 @@ border-radius: 0px;
     padding: var(--size-2-3);
   }
   
-.fold-icon  body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type:hover {
+body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type:hover {
     background-color: var(--interactive-accent-hover);
   }
   
-.fold-icon  body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type::after {
+body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type::after {
     content: "New Note";
     font-size: var(--font-ui-small);
     margin-left: auto;
@@ -4663,10 +4663,10 @@ settings:
         level: 2
         collapsed: true
     -
-        id: fold-icon
-        title: Folder Icons
+        id: file-icon-remove
+        title: Remove File Icons
         type: class-toggle
-        default: true
+        default: false
     -
         id: folder-color-options
         title: Folder Colors
