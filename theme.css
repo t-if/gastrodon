@@ -5484,6 +5484,7 @@ settings:
     -
         id: hide-vault
         title: Hide Vault Name
+        description: This option completely hides the Vault name; it will not reappear on hover.
         type: class-toggle
         default: true
     -
