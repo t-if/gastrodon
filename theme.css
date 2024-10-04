@@ -1657,7 +1657,7 @@ li[data-task="b"] > p > input:checked {
 
 /* ----- default (Macaroon) theme ----- */
 body, .theme-default {
-    --font-default: 'Arima', cursive;
+    --font-default: 'DM Mono', sans-serif;
 }
 
 .theme-light, .theme-default.theme-light {
