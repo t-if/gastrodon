@@ -25,12 +25,12 @@ body {
 }
 
 /* Give the parent element a background color so overlapping panes don't show through */
-.workspace-leaf {
+.spotlight .workspace-leaf {
     background-color: inherit;
 }
 
 /* Dim non-active markdown panes */
-.workspace-leaf:not(.mod-active) .workspace-leaf-content[data-type='markdown'] {
+.spotlight .workspace-leaf:not(.mod-active) .workspace-leaf-content[data-type='markdown'] {
     opacity: 0.5
 }
 
@@ -705,14 +705,14 @@ font-weight: 300;
 }
 
 /* embeds */
-.markdown-preview-view .markdown-embed-title {
+.clean-embed .markdown-preview-view .markdown-embed-title {
     display: none;
   }
   
   
   /* Link icon */
-  .markdown-preview-view .markdown-embed-link,
-  .markdown-preview-view .file-embed-link {
+.clean-embed  .markdown-preview-view .markdown-embed-link,
+.clean-embed  .markdown-preview-view .file-embed-link {
     top: 0;
     right: 0;
     left: unset;
@@ -726,8 +726,8 @@ font-weight: 300;
   }
   
   /* Link icon size & hide */
-  .markdown-preview-view .file-embed-link svg,
-  .markdown-preview-view .markdown-embed-link svg {
+.clean-embed  .markdown-preview-view .file-embed-link svg,
+.clean-embed  .markdown-preview-view .markdown-embed-link svg {
     height: 24px;
     width: 24px;
     opacity: 0;
@@ -735,14 +735,14 @@ font-weight: 300;
   }
   
   /* show on hover */
-  .markdown-preview-view .markdown-embed:hover .file-embed-link svg,
-  .markdown-preview-view .markdown-embed:hover .markdown-embed-link svg {
+.clean-embed  .markdown-preview-view .markdown-embed:hover .file-embed-link svg,
+.clean-embed  .markdown-preview-view .markdown-embed:hover .markdown-embed-link svg {
     opacity: 1;
   }
   
   /* change background on hover, to exactly see what’s embedded */
-  .markdown-preview-view .markdown-embed:hover,
-  .markdown-preview-view .file-embed:hover {
+.clean-embed  .markdown-preview-view .markdown-embed:hover,
+.clean-embed  .markdown-preview-view .file-embed:hover {
     background-color: var(--background-secondary) !important;
   }
   
@@ -752,15 +752,15 @@ font-weight: 300;
   
   /* remove border and scroll */
   /* unfortunately needs !important for some themes */
-  .markdown-preview-view .markdown-embed,
-  .markdown-preview-view .file-embed {
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+.clean-embed  .markdown-preview-view .markdown-embed,
+.clean-embed  .markdown-preview-view .file-embed {
+    border: none;
+    padding: 0;
+    margin: 0;
   }
   
-  .markdown-preview-view .markdown-embed-content,
-  .markdown-preview-view .markdown-embed-content > .markdown-preview-view { 
+.clean-embed  .markdown-preview-view .markdown-embed-content,
+.clean-embed  .markdown-preview-view .markdown-embed-content > .markdown-preview-view { 
     max-height: unset;
     padding: 0;
     margin: 0;
@@ -768,14 +768,14 @@ font-weight: 300;
   }
   
   /* remove <br> between internal embeds */
-   .markdown-preview-section div > p br,
-   .markdown-preview-section div > br {
+.clean-embed   .markdown-preview-section div > p br,
+.clean-embed   .markdown-preview-section div > br {
     display: none;
   }
   
   
   /* remove vertical space added by markdown-preview-sizer */
-   div.markdown-preview-sizer.markdown-preview-section {
+ .clean-embed  div.markdown-preview-sizer.markdown-preview-section {
     min-height: unset !important;
     padding-bottom: 0 !important;
   }
@@ -3198,7 +3198,7 @@ border-radius: 0px;
 }
 
 /* folder icons */
-body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type {
+.fold-icon body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type {
     background-color: var(--interactive-accent);
     color: var(--text-on-accent);
     box-shadow: var(--input-shadow);
@@ -3207,11 +3207,11 @@ body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-expl
     padding: var(--size-2-3);
   }
   
-  body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type:hover {
+.fold-icon  body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type:hover {
     background-color: var(--interactive-accent-hover);
   }
   
-  body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type::after {
+.fold-icon  body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-explorer"] .nav-header .nav-buttons-container .clickable-icon.nav-action-button:first-of-type::after {
     content: "New Note";
     font-size: var(--font-ui-small);
     margin-left: auto;
@@ -4590,6 +4590,11 @@ settings:
         type: class-toggle
         default: true
     -
+        id: spotlight
+        title: Dim Inactive Panes
+        type: class-toggle
+        default: true
+    -
         id: line-style
         title: Line Style
         description: Line style displayed on borders.
@@ -4658,6 +4663,11 @@ settings:
         type: heading
         level: 2
         collapsed: true
+    -
+        id: fold-icon
+        title: Folder Icons
+        type: class-toggle
+        default: true
     -
         id: folder-color-options
         title: Folder Colors
@@ -5386,6 +5396,11 @@ settings:
         description: Increase line height and paragraph spacing for more readability.
         type: class-toggle
         default: false
+    -
+        id: clean-embed
+        title: Seamless Embedded Links
+        type: class-toggle
+        default: true
     -
         id: custom-font-toggle
         title: Enable custom font
