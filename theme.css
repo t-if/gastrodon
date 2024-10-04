@@ -4516,11 +4516,6 @@ body {
     margin-top: 0.5em !important;
 }
 
-/* quick explorer fix */
-.status-bar {
-    border-radius: 0;
-  }
-
 /* ---------- style settings ---------- */
 .style-settings-heading[data-id=gastrodon-theme] .setting-item-name {
     color: var(--color-accent-1);
