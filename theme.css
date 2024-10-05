@@ -704,99 +704,92 @@ font-weight: 300;
     font-weight: 300;
 }
 
-body .clean-embed {
-    --embed-background: inherit;
-    --embed-border-left: 0px solid var(--interactive-accent);
-    --embed-border-start: 0px solid var(--interactive-accent);
-    --embed-border-right: none;
-    --embed-border-end: none;
-    --embed-border-top: none;
-    --embed-border-bottom: none;
-    --embed-padding: 0 0 0 0;
-    --embed-font-style: inherit;
+/* embeds */
+.clean-embed .markdown-preview-view .markdown-embed-title {
+    display: none;
+  }
+  
+  
+  /* Link icon */
+.clean-embed  .markdown-preview-view .markdown-embed-link,
+.clean-embed  .markdown-preview-view .file-embed-link {
+    top: 0;
+    right: 0;
+    left: unset;
+    text-align: right;
+    border: none;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--text-faint);
+    cursor: pointer;
+  }
+  
+  /* Link icon size & hide */
+.clean-embed  .markdown-preview-view .file-embed-link svg,
+.clean-embed  .markdown-preview-view .markdown-embed-link svg {
+    height: 24px;
+    width: 24px;
+    opacity: 0;
+    display: unset;
+  }
+  
+  /* show on hover */
+.clean-embed  .markdown-preview-view .markdown-embed:hover .file-embed-link svg,
+.clean-embed  .markdown-preview-view .markdown-embed:hover .markdown-embed-link svg {
+    opacity: 1;
+  }
+  
+  /* change background on hover, to exactly see what’s embedded */
+.clean-embed  .markdown-preview-view .markdown-embed:hover,
+.clean-embed  .markdown-preview-view .file-embed:hover {
+    background-color: var(--background-secondary) !important;
+  }
+  
+  /* End link show/hide stuff */
+  
+  
+  
+  /* remove border and scroll */
+  /* unfortunately needs !important for some themes */
+.clean-embed  .markdown-preview-view .markdown-embed,
+.clean-embed  .markdown-preview-view .file-embed {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+.clean-embed  .markdown-preview-view .markdown-embed-content,
+.clean-embed  .markdown-preview-view .markdown-embed-content > .markdown-preview-view { 
+    max-height: unset;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  
+  /* remove <br> between internal embeds */
+.clean-embed   .markdown-preview-section div > p br,
+.clean-embed   .markdown-preview-section div > br {
+    display: none;
+  }
+  
+  
+  /* remove vertical space added by markdown-preview-sizer */
+ .clean-embed  div.markdown-preview-sizer.markdown-preview-section {
+    min-height: unset !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* special considerations for printing (PDF export) */
+  @media print {
+  
+    /* remove frontmatter box if "Show frontmatter" was enabled */
+    pre.frontmatter {
+      display: none;
+    }
+  }
 
-	--embed-floating-offset: 0.25rem;
-	--true-embed-icon-size: 24px;
-}
 
-/* clean embeds */
-
-.clean-embed .markdown-embed {
-	max-width: 100%;
-	/* border-radius: var(--radius-s); */
-}
-.markdown-embed { white-space: normal; }
-
-/* .clean-embed .markdown-embed:hover { background: var(--background-secondary); } */
-
-/* hide title and link unless hovered. */
-.clean-embed .markdown-embed .markdown-embed-title,
-.clean-embed .markdown-embed .markdown-embed-link {
-	background: var(--background-primary);
-	visibility: hidden;
-
-	position: absolute;
-	top: var(--embed-floating-offset, 0);
-	z-index: 3;
-
-	margin: 0 var(--size-4-6) 0 var(--size-4-6);
-	right: 0;
-}
-.clean-embed .markdown-embed .markdown-embed-link:hover { background: var(--background-modifier-hover); }
-
-.clean-embed .markdown-embed .markdown-embed-title {
-	--embed-icon-size: calc((var(--true-embed-icon-size, 24px) - var(--size-4-6)) + var(--embed-floating-offset, var(--size-4-6))) ;
-	width: min-content;
-	padding: 0 0.3rem 0 0.3rem;
-	left: unset;
-	right: calc(var(--embed-icon-size) + var(--embed-floating-offset));
-
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-
-	max-width: calc(var(--file-line-width) - var(--embed-icon-size) - var(--list-indent));
-	border-radius: var(--radius-s);
-	height: var(--true-embed-icon-size);
-	line-height: var(--true-embed-icon-size);
-}
-.clean-embed .markdown-embed .markdown-embed-link {
-	margin-right: var(--embed-floating-offset, var(--size-4-6));
-	margin-left: var(--embed-floating-offset, var(--size-4-6));
-
-	width: var(--true-embed-icon-size, 24px) !important;
-	height: var(--true-embed-icon-size, 24px) !important;
-}
-
-/* show link and title on hover */
-.clean-embed .markdown-embed:hover .markdown-embed-title,
-.clean-embed .markdown-embed:hover .markdown-embed-link { visibility: visible; }
-
-
-.clean-embed .markdown-source-view.is-live-preview .markdown-embed .markdown-embed-content .markdown-preview-sizer > div.el-ul > ul {
-	padding-inline-start: 0px;
-} 
-
-.clean-embed
-.markdown-embed-content >
-.markdown-preview-view.markdown-rendered > 
-.markdown-preview-sizer div.el-p >
-p:last-child {
-	margin-bottom: 0;
-}
-
-
-/* direct p child of embed should not have padding if it has a h1 (reading mode)*/
-.clean-embed .markdown-reading-view .el-embed-page > p {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-@media print {
-	.el-embed-page > p {
-		margin-top: 0;
-		margin-bottom: 0;
-	}
-}
 
 /* lists, original by ElsaTam (Kapirklaa in Discord) */
 
