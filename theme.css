@@ -35,7 +35,7 @@ body {
 }
 
 /* Apply opacity transition to all panes */
-.workspace-leaf .workspace-leaf-content[data-type='markdown'] {
+.spotlight .workspace-leaf .workspace-leaf-content[data-type='markdown'] {
     transition: opacity 0.25s ease-out;
 }
 
