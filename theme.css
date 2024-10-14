@@ -331,6 +331,7 @@ thead {
     background-color: transparent !important;
     padding: 0px !important;
     overflow: hidden;
+    text-align: left !important;
 }
 .wiki-page h2,
 .wiki-page h3,
