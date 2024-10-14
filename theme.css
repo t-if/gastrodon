@@ -1646,24 +1646,24 @@ li[data-task="b"] > p > input:checked {
 
 /* Priority checkboxes, adapted from r-u-s-h-i-k-e-s-h*/
 .HyperMD-list-line:has(.cm-tag-p1) .task-list-label {
-  --checkbox-border-color: var(--color-red-rgb);
+  --checkbox-border-color: var(--color-red);
 }
 .task-list-item:has([href="#p1"]) {
-  --checkbox-border-color: var(--color-red-rgb);
+  --checkbox-border-color: var(--color-red);
 }
 
 .HyperMD-list-line:has(.cm-tag-p2) .task-list-label {
-  --checkbox-border-color: var(--color-yellow-rgb);
+  --checkbox-border-color: var(--color-yellow);
 }
 .task-list-item:has([href="#p2"]) {
-  --checkbox-border-color: var(--color-yellow-rgb);
+  --checkbox-border-color: var(--color-yellow);
 }
 
 .HyperMD-list-line:has(.cm-tag-p3) .task-list-label {
-  --checkbox-border-color: var(--color-blue-rgb);
+  --checkbox-border-color: var(--color-blue);
 }
 .task-list-item:has([href="#p3"]) {
-  --checkbox-border-color: var(--color-red-rgb);
+  --checkbox-border-color: var(--color-blue);
 }
 
 /* treeview from ElsaTam's "Fancy a Story"*/
@@ -4828,6 +4828,15 @@ transition: height 0.1s, opacity 0.25s;
     opacity: 1;
     transition: opacity .2s ease-in-out, height .1s ease-in-out, display .1s ease-in;
     transition-delay: 0ms;
+}
+
+/* --- cardboard plugin --- */
+.card-board-view {
+    color: var(--text-muted);
+}
+.card-board-column {
+    background-color: var(--background-primary-alt);
+    border: var(--border-width) var(--line-style) var(--background-modifier-border);
 }
 
 /* day planner plugin */
