@@ -1677,7 +1677,7 @@ adapted from sailKite --- */
     .kanban-plugin__item-content-wrapper,
     .kanban-plugin__item-title-wrapper
   ) {
-  background-color: rgba(225, 120, 132, 0.15) !important; /* Lighter faded red */
+  background-color: rgba(var(--color-red-rgb), 0.1) !important; /* Lighter faded red */
 }
 
 /* Styling for #p2 tag */
@@ -1687,7 +1687,7 @@ adapted from sailKite --- */
     .kanban-plugin__item-content-wrapper,
     .kanban-plugin__item-title-wrapper
   ) {
-  background-color: rgba(220, 180, 111, 0.15) !important; /* Lighter faded yellow */
+  background-color: rgba(var(--color-yellow-rgb), 0.1) !important; /* Lighter faded yellow */
 }
 
 /* Styling for #p3 tag */
@@ -1697,7 +1697,7 @@ adapted from sailKite --- */
     .kanban-plugin__item-content-wrapper,
     .kanban-plugin__item-title-wrapper
   ) {
-  background-color: rgba(136, 198, 227, 0.15) !important; /* Lighter faded blue */
+  background-color: rgba(var(--color-blue-rgb), 0.1) !important; /* Lighter faded blue */
 }
 
 /* Hide the tags */
