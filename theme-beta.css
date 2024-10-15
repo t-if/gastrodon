@@ -1667,6 +1667,46 @@ li[data-task="b"] > p > input:checked {
   --checkbox-border-color: var(--color-blue);
 }
 
+/* --- Kanban With Background Color Based On Tag 
+adapted from sailKite --- */
+
+/* Styling for #p1 tag */
+.kanban-plugin__item.has-tag-p1,
+.has-tag-p1
+  :is(
+    .kanban-plugin__item-content-wrapper,
+    .kanban-plugin__item-title-wrapper
+  ) {
+  background-color: rgba(225, 120, 132, 0.15) !important; /* Lighter faded red */
+}
+
+/* Styling for #p2 tag */
+.kanban-plugin__item.has-tag-p2,
+.has-tag-p2
+  :is(
+    .kanban-plugin__item-content-wrapper,
+    .kanban-plugin__item-title-wrapper
+  ) {
+  background-color: rgba(220, 180, 111, 0.15) !important; /* Lighter faded yellow */
+}
+
+/* Styling for #p3 tag */
+.kanban-plugin__item.has-tag-p3,
+.has-tag-p3
+  :is(
+    .kanban-plugin__item-content-wrapper,
+    .kanban-plugin__item-title-wrapper
+  ) {
+  background-color: rgba(136, 198, 227, 0.15) !important; /* Lighter faded blue */
+}
+
+/* Hide the tags */
+.kanban-plugin__item.has-tag-p1 a[href="#p1"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-p2 a[href="#p2"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-p3 a[href="#p3"].kanban-plugin__item-tag {
+  display: none !important;
+}
+
 /* treeview from ElsaTam's "Fancy a Story"*/
 @charset "UTF-8";
 @keyframes bg-slide {
@@ -4829,15 +4869,6 @@ transition: height 0.1s, opacity 0.25s;
     opacity: 1;
     transition: opacity .2s ease-in-out, height .1s ease-in-out, display .1s ease-in;
     transition-delay: 0ms;
-}
-
-/* --- cardboard plugin --- */
-.card-board-view {
-    color: var(--text-muted);
-}
-.card-board-column {
-    background-color: var(--background-primary-alt);
-    border: var(--border-width) var(--line-style) var(--background-modifier-border);
 }
 
 /* day planner plugin */
