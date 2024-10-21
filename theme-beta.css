@@ -791,8 +791,6 @@ font-weight: 300;
     }
   }
 
-
-
 /* lists, original by ElsaTam (Kapirklaa in Discord) */
 
 body.theme-light {
@@ -1707,6 +1705,7 @@ adapted from sailKite --- */
   display: none !important;
 }
 
+
 /* treeview from ElsaTam's "Fancy a Story"*/
 @charset "UTF-8";
 @keyframes bg-slide {
@@ -1717,21 +1716,24 @@ adapted from sailKite --- */
     right: 0;
   }
 }
+
 body {
-  --workleaves-background: var(--background-primary);
-  --workleaves-foreground: var(--text-normal);
+  --workleaves-background: var(--background-primary); /* Use primary background */
+  --workleaves-foreground: var(--text-normal); /* Use normal text color */
 }
 
 ul:has(> li > .tag[href="#tree-view"]) {
   --indentation-guide-reading-indent: -0.8em;
   --indentation-guide-width: 2px;
-  --indentation-guide-color: var(--background-secondary);
+  --indentation-guide-color: var(--background-modifier-border); /* Softer background border */
   --list-bullet-size: 0.8em;
   position: relative;
 }
+
 ul:has(> li > .tag[href="#tree-view"]) .tag[href="#tree-view"] {
   display: none;
 }
+
 ul:has(> li > .tag[href="#tree-view"]) li::after {
   content: "";
   display: block;
@@ -1745,6 +1747,7 @@ ul:has(> li > .tag[href="#tree-view"]) li::after {
   border-bottom-left-radius: var(--radius-m);
   pointer-events: none;
 }
+
 ul:has(> li > .tag[href="#tree-view"])::before,
 ul:has(> li > .tag[href="#tree-view"]) ul::before {
   content: "​";
@@ -1756,9 +1759,11 @@ ul:has(> li > .tag[href="#tree-view"]) ul::before {
   top: calc(-0.5em * var(--line-height-normal) - var(--indentation-guide-width) * 0.5);
   z-index: 1;
 }
+
 ul:has(> li > .tag[href="#tree-view"]) .list-bullet {
   display: none;
 }
+
 ul:has(> li > .tag[href="#tree-view"]) .list-collapse-indicator {
   position: absolute;
   opacity: 1;
@@ -1771,29 +1776,36 @@ ul:has(> li > .tag[href="#tree-view"]) .list-collapse-indicator {
   height: var(--list-bullet-size);
   border-radius: 50%;
   background: var(--workleaves-background);
-  border: 1px solid var(--color-accent);
+  border: 1px solid hsla(var(--interactive-accent-hsl), 1); /* Accent using interactive color */
   z-index: 2;
 }
+
 ul:has(> li > .tag[href="#tree-view"]) .list-collapse-indicator.is-collapsed {
-  background: var(--color-accent);
+  background: hsla(var(--interactive-accent-hsl), 1); /* Accent background */
 }
+
 ul:has(> li > .tag[href="#tree-view"]) .list-collapse-indicator:hover {
-  background: color-mix(in srgb, var(--color-accent), var(--workleaves-background) 70%);
+  background: color-mix(in srgb, hsla(var(--interactive-accent-hsl), 1), var(--workleaves-background) 70%);
 }
+
 ul:has(> li > .tag[href="#tree-view"]) .list-collapse-indicator.is-collapsed:hover {
-  background: color-mix(in srgb, var(--color-accent), var(--workleaves-background) 30%);
+  background: color-mix(in srgb, hsla(var(--interactive-accent-hsl), 1), var(--workleaves-background) 30%);
 }
+
 ul:has(> li > .tag[href="#tree-view"]) .list-collapse-indicator svg {
   display: none;
 }
+
 ul:has(> li > .tag[href="#tree-view"]) li:has(li:hover > .list-bullet:last-child)::after,
 ul:has(> li > .tag[href="#tree-view"]) li:has(.list-bullet:last-child):hover::after {
-  border-color: var(--color-accent);
+  border-color: hsla(var(--interactive-accent-hsl), 1); /* Accent color on hover */
 }
+
 ul:has(> li > .tag[href="#tree-view"]) li:has(li:hover > .list-bullet:last-child) > ul::before,
 ul:has(> li > .tag[href="#tree-view"]) li:has(.list-bullet:last-child):hover > ul::before {
-  border-color: var(--color-accent);
+  border-color: hsla(var(--interactive-accent-hsl), 1); /* Accent color on hover */
 }
+
 ul:has(> li > .tag[href="#tree-view"]) li:has(> .list-bullet:last-child):hover::before {
   content: "";
   position: absolute;
@@ -1801,9 +1813,83 @@ ul:has(> li > .tag[href="#tree-view"]) li:has(> .list-bullet:last-child):hover::
   right: 0;
   left: 0;
   bottom: 0;
-  background: linear-gradient(to right, var(--color-accent), transparent 100%);
-  opacity: 0.2;
+  background: linear-gradient(to right, hsla(var(--interactive-accent-hsl), 1), transparent 100%);
+  opacity: 0.15; /* Softer background gradient */
   animation: bg-slide 0.5s ease-in-out;
+}
+
+/* asides, original by ElsaTam */
+.markdown-source-view > div, .markdown-preview-view {
+  container: markdown-view/inline-size;
+}
+
+.markdown-preview-view aside,
+.markdown-preview-view .aside-left,
+.markdown-preview-view .aside-right {
+  --aside-width: 250px;
+  --aside-gap: 15px;
+  --aside-border-thickness: 2px;
+  --aside-bg-opacity: 0.8;
+  --aside-hover-opacity: 1; /* Hover opacity */
+  --aside-default-opacity: 0.7; /* Default opacity */
+  --aside-shadow-opacity: 0.2;
+
+  display: block;
+  text-decoration: none;
+  border-radius: var(--radius-m); /* Softer radius */
+  border: var(--aside-border-thickness) solid var(--background-modifier-border); /* Softer border */
+  background-color: rgba(var(--background-secondary-alt), var(--aside-default-opacity)); /* Default translucent background */
+  padding: 15px;
+  margin: 5px;
+  width: var(--aside-width);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, var(--aside-shadow-opacity)); /* Soft shadow */
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition */
+  opacity: var(--aside-default-opacity); /* Initial opacity */
+}
+
+/* Hover effect for opacity */
+.markdown-preview-view aside:hover,
+.markdown-preview-view .aside-left:hover,
+.markdown-preview-view .aside-right:hover {
+  opacity: var(--aside-hover-opacity); /* Fully opaque on hover */
+  background-color: rgba(var(--background-secondary-alt), var(--aside-hover-opacity)); /* Increase opacity of background on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.is-readable-line-width.markdown-preview-view .aside-left {
+  float: left;
+  clear: left;
+}
+
+.markdown-preview-view aside,
+.is-readable-line-width.markdown-preview-view .aside-right {
+  float: right;
+  clear: right;
+}
+
+@container markdown-view (width > 1100px) {
+  .markdown-preview-view aside,
+  .is-readable-line-width.markdown-preview-view .aside-right,
+  .is-readable-line-width.markdown-preview-view .aside-left {
+    --aside-width: calc(50cqw - var(--file-line-width) * 0.5 - var(--aside-gap) * 2);
+    margin-inline: 0;
+    border-block: none;
+    padding-block: 0;
+  }
+
+  .is-readable-line-width.markdown-preview-view .aside-left {
+    margin-left: calc(-1 * var(--aside-width) - var(--aside-gap));
+    border-left: none;
+    padding-inline: 0 15px;
+    text-align: right;
+  }
+
+  .markdown-preview-view aside,
+  .is-readable-line-width.markdown-preview-view .aside-right {
+    margin-right: calc(-1 * var(--aside-width) - var(--aside-gap));
+    border-right: none;
+    padding-inline: 15px 0;
+  }
 }
 
 /* extended callout options */
