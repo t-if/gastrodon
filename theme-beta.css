@@ -1380,6 +1380,75 @@ from https://github.com/Scaryharry4*/
     opacity: 1;
   }
 
+/* Legal-themed callouts */
+.callout[data-callout="conclusion"],
+.callout[data-callout="rule"],
+.callout[data-callout="issue"],
+.callout[data-callout="dissent"],
+.callout[data-callout="analysis"],
+.callout[data-callout="posture"] {
+  border-left: 4px solid var(--callout-color);
+  background-color: rgba(var(--callout-color-rgb), 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+}
+
+.callout[data-callout="conclusion"] {
+  --callout-color: var(--color-cyan);
+  --callout-color-rgb: var(--color-cyan-rgb);
+  --callout-icon: 'gavel'; /* Original icon */
+}
+
+.callout[data-callout="rule"] {
+  --callout-color: var(--color-yellow);
+  --callout-color-rgb: var(--color-yellow-rgb);
+  --callout-icon: 'scroll'; /* Original icon */
+}
+
+.callout[data-callout="analysis"] {
+  --callout-color: var(--color-green);
+  --callout-color-rgb: var(--color-green-rgb);
+  --callout-icon: 'scale'; /* Original icon */
+}
+
+.callout[data-callout="issue"] {
+  --callout-color: var(--color-red);
+  --callout-color-rgb: var(--color-red-rgb);
+  --callout-icon: 'pencil-ruler'; /* Original icon */
+}
+
+.callout[data-callout="dissent"] {
+  --callout-color: var(--color-pink);
+  --callout-color-rgb: var(--color-pink-rgb);
+  --callout-icon: 'message-circle-x'; /* Original icon */
+}
+
+.callout[data-callout="posture"] {
+  --callout-color: var(--color-purple);
+  --callout-color-rgb: var(--color-purple-rgb);
+  --callout-icon: 'landmark'; /* Original icon */
+}
+
+.callout[data-callout="conclusion"] .callout-title,
+.callout[data-callout="rule"] .callout-title,
+.callout[data-callout="issue"] .callout-title,
+.callout[data-callout="analysis"] .callout-title,
+.callout[data-callout="dissent"] .callout-title,
+.callout[data-callout="posture"] .callout-title {
+  font-weight: bold;
+  color: var(--callout-color);
+  display: flex;
+  align-items: center;
+}
+
+.markdown-preview-view hr {
+  border: none;
+  height: 1px;
+  background-color: var(--color-accent-2);
+  margin: 2em 0;
+}
 
 /* checboxes, most are from kepano's minimal theme*/
 
