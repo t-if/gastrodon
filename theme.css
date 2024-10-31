@@ -1148,7 +1148,6 @@ body:has(*.no-count) .dataview.small-text {
 
 /* ----- general headings ----- */
 body{
-    --h3-variant: petite-caps;
     --h4-variant: all-small-caps;
     --h5-variant: all-small-caps;
     --h6-variant: all-small-caps;
@@ -6031,7 +6030,7 @@ settings:
         id: h3-variant
         title: Header 3 Font Variant
         type: variable-select
-        default: petite-caps
+        default: normal
         options:
             - normal
             - petite-caps

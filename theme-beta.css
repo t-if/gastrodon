@@ -1148,7 +1148,6 @@ body:has(*.no-count) .dataview.small-text {
 
 /* ----- general headings ----- */
 body{
-    --h3-variant: petite-caps;
     --h4-variant: all-small-caps;
     --h5-variant: all-small-caps;
     --h6-variant: all-small-caps;
@@ -1670,35 +1669,8 @@ li[data-task="b"] > p > input:checked {
 /* --- Kanban With Background Color Based On Tag 
 adapted from sailKite --- */
 
-/* Styling for #p1 tag */
-.kanban-plugin__item.has-tag-p1,
-.has-tag-p1
-  :is(
-    .kanban-plugin__item-content-wrapper,
-    .kanban-plugin__item-title-wrapper
-  ) {
-  background-color: rgba(var(--color-red-rgb), 0.1) !important; /* Lighter faded red */
-}
 
-/* Styling for #p2 tag */
-.kanban-plugin__item.has-tag-p2,
-.has-tag-p2
-  :is(
-    .kanban-plugin__item-content-wrapper,
-    .kanban-plugin__item-title-wrapper
-  ) {
-  background-color: rgba(var(--color-yellow-rgb), 0.1) !important; /* Lighter faded yellow */
-}
 
-/* Styling for #p3 tag */
-.kanban-plugin__item.has-tag-p3,
-.has-tag-p3
-  :is(
-    .kanban-plugin__item-content-wrapper,
-    .kanban-plugin__item-title-wrapper
-  ) {
-  background-color: rgba(var(--color-blue-rgb), 0.1) !important; /* Lighter faded blue */
-}
 
 /* Hide the tags */
 .kanban-plugin__item.has-tag-p1 a[href="#p1"].kanban-plugin__item-tag,
@@ -6030,7 +6002,7 @@ settings:
         id: h3-variant
         title: Header 3 Font Variant
         type: variable-select
-        default: petite-caps
+        default: normal
         options:
             - normal
             - petite-caps
