@@ -39,6 +39,21 @@ body {
     transition: opacity 0.25s ease-out;
 }
 
+.theme-light
+.workspace-leaf-content {
+    display: flex;
+    min-width: 100px;
+    border-radius: 12px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.theme-dark
+.workspace-leaf-content {
+    display: flex;
+    min-width: 100px;
+    border-radius: 12px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
 
 /* --- line style ---*/
 body.line-style-solid {
@@ -203,6 +218,9 @@ body {
     opacity: 1;
     transition-delay: 0ms;
 }
+.status-bar {
+  box-shadow: 0 0 2px 0px rgba(0, 0, 0, 0.15)
+  }
 
 /* --- images --- */
 /*original snippet and instructions by gautamneeraj: https://forum.obsidian.md/t/align-image/78050*/
@@ -1733,18 +1751,56 @@ li[data-task="b"] > p > input:checked {
   --checkbox-border-color: var(--color-blue);
 }
 
-/* --- Kanban With Background Color Based On Tag 
-adapted from sailKite --- */
+/* Default Kanban Card Styling */
+.kanban-plugin__item {
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.2s; /* Smooth hover effect */
+}
 
+/* Hover effect for the card */
+.kanban-plugin__item:hover {
+  transform: translateY(-2px) !important; /* Lift the card slightly on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
 
+/* RSVP tag */
+.kanban-plugin__item.has-tag-rsvp,
+.has-tag-rsvp :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-cyan-rgb), 0.1); /* Light red tint */
+  border: 1px solid var(--color-cyan); /* Red border */
+  border-radius: 4px;
+}
 
+/* Priority tags */
+.kanban-plugin__item.has-tag-p1,
+.has-tag-p1 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-red-rgb), 0.1); /* Light red tint */
+  border: 1px solid var(--color-red); /* Red border */
+  border-radius: 4px;
+  color: var(--color-red);
+  font-weight: bold
+}
+
+.kanban-plugin__item.has-tag-p2,
+.has-tag-p2 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-yellow-rgb), 0.1); /* Light yellow tint */
+}
+
+.kanban-plugin__item.has-tag-p3,
+.has-tag-p3 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-blue-rgb), 0.1); /* Light blue tint */
+}
 
 /* Hide the tags */
 .kanban-plugin__item.has-tag-p1 a[href="#p1"].kanban-plugin__item-tag,
 .kanban-plugin__item.has-tag-p2 a[href="#p2"].kanban-plugin__item-tag,
-.kanban-plugin__item.has-tag-p3 a[href="#p3"].kanban-plugin__item-tag {
+.kanban-plugin__item.has-tag-p3 a[href="#p3"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-rsvp a[href="#rsvp"].kanban-plugin__item-tag {
   display: none !important;
 }
+
 
 
 /* treeview from ElsaTam's "Fancy a Story"*/
