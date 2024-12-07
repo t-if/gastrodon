@@ -1,0 +1,71 @@
+/* Priority checkboxes, adapted from r-u-s-h-i-k-e-s-h*/
+.HyperMD-list-line:has(.cm-tag-p1) .task-list-label {
+  --checkbox-border-color: var(--color-red);
+}
+.task-list-item:has([href="#p1"]) {
+  --checkbox-border-color: var(--color-red);
+}
+
+.HyperMD-list-line:has(.cm-tag-p2) .task-list-label {
+  --checkbox-border-color: var(--color-yellow);
+}
+.task-list-item:has([href="#p2"]) {
+  --checkbox-border-color: var(--color-yellow);
+}
+
+.HyperMD-list-line:has(.cm-tag-p3) .task-list-label {
+  --checkbox-border-color: var(--color-blue);
+}
+.task-list-item:has([href="#p3"]) {
+  --checkbox-border-color: var(--color-blue);
+}
+
+/* Default Kanban Card Styling */
+.kanban-plugin__item {
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.2s; /* Smooth hover effect */
+}
+
+/* Hover effect for the card */
+.kanban-plugin__item:hover {
+  transform: translateY(-2px) !important; /* Lift the card slightly on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* RSVP tag */
+.kanban-plugin__item.has-tag-rsvp,
+.has-tag-rsvp :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-cyan-rgb), 0.1); /* Light red tint */
+  border: 1px solid var(--color-cyan); /* Red border */
+  border-radius: 4px;
+}
+
+/* Priority tags */
+.kanban-plugin__item.has-tag-p1,
+.has-tag-p1 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-red-rgb), 0.1); /* Light red tint */
+  border: 1px solid var(--color-red); /* Red border */
+  border-radius: 4px;
+  color: var(--color-red);
+  font-weight: bold
+}
+
+.kanban-plugin__item.has-tag-p2,
+.has-tag-p2 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-yellow-rgb), 0.1); /* Light yellow tint */
+}
+
+.kanban-plugin__item.has-tag-p3,
+.has-tag-p3 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-blue-rgb), 0.1); /* Light blue tint */
+}
+
+/* Hide the tags */
+.kanban-plugin__item.has-tag-p1 a[href="#p1"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-p2 a[href="#p2"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-p3 a[href="#p3"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-rsvp a[href="#rsvp"].kanban-plugin__item-tag {
+  display: none !important;
+}
