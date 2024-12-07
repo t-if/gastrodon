@@ -1,0 +1,14 @@
+/* Give the parent element a background color so overlapping panes don't show through */
+.workspace-leaf {
+    background-color: inherit;
+}
+
+/* Dim non-active markdown panes */
+.workspace-leaf:not(.mod-active) .workspace-leaf-content[data-type='markdown'] {
+    opacity: 0.5
+}
+
+/* Apply opacity transition to all panes */
+.workspace-leaf .workspace-leaf-content[data-type='markdown'] {
+    transition: opacity 0.25s ease-out;
+}
