@@ -1,6 +1,6 @@
 # Portable Styling
 Note that all of these snippets are built into Gastrodon, so no need to add them if you're already using my theme.
-Codes are available for download [here](snippets/personal). Snippets that I use _in addition to_ my theme can be found [here](snippets/favorites).
+Codes are available for download [here](/snippets/personal). Snippets that I use _in addition to_ my theme can be found [here](/snippets/favorites).
 ## Legal Callouts
 ![callouts](https://github.com/user-attachments/assets/f6bd219f-97bf-4890-b4ac-a28f132e567c)
 ## Dim Inactive Panes
