@@ -1386,6 +1386,7 @@ from https://github.com/Scaryharry4*/
 .callout[data-callout="rule"],
 .callout[data-callout="issue"],
 .callout[data-callout="dissent"],
+.callout[data-callout="concurrence"],
 .callout[data-callout="analysis"],
 .callout[data-callout="posture"] {
   border-left: 4px solid var(--callout-color);
@@ -1426,6 +1427,12 @@ from https://github.com/Scaryharry4*/
   --callout-icon: 'message-circle-x'; /* Original icon */
 }
 
+.callout[data-callout="concurrence"] {
+  --callout-color: var(--color-orange);
+  --callout-color-rgb: var(--color-orange-rgb);
+  --callout-icon: 'message-circle-warning'; /* Original icon */
+}
+
 .callout[data-callout="posture"] {
   --callout-color: var(--color-purple);
   --callout-color-rgb: var(--color-purple-rgb);
@@ -1437,6 +1444,7 @@ from https://github.com/Scaryharry4*/
 .callout[data-callout="issue"] .callout-title,
 .callout[data-callout="analysis"] .callout-title,
 .callout[data-callout="dissent"] .callout-title,
+.callout[data-callout="concurrence"] .callout-title,
 .callout[data-callout="posture"] .callout-title {
   font-weight: bold;
   color: var(--callout-color);
