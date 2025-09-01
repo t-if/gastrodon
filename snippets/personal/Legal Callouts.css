@@ -5,6 +5,7 @@
 .callout[data-callout="dissent"],
 .callout[data-callout="concurrence"],
 .callout[data-callout="analysis"],
+.callout[data-callout="facts"],
 .callout[data-callout="posture"] {
   border-left: 4px solid var(--callout-color);
   background-color: rgba(var(--callout-color-rgb), 0.1);
@@ -50,6 +51,12 @@
   --callout-icon: 'message-circle-warning'; /* Original icon */
 }
 
+.callout[data-callout="facts"] {
+  --callout-color: var(--color-purple);
+  --callout-color-rgb: var(--color-purple-rgb);
+  --callout-icon: 'lamp-desk'; /* Original icon */
+}
+
 .callout[data-callout="posture"] {
   --callout-color: var(--color-purple);
   --callout-color-rgb: var(--color-purple-rgb);
@@ -62,6 +69,7 @@
 .callout[data-callout="analysis"] .callout-title,
 .callout[data-callout="dissent"] .callout-title,
 .callout[data-callout="concurrence"] .callout-title,
+.callout[data-callout="facts"] .callout-title,
 .callout[data-callout="posture"] .callout-title {
   font-weight: bold;
   color: var(--callout-color);
