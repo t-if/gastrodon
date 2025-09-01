@@ -28,6 +28,7 @@ My personal theme, a remix of [Chime](https://github.com/Bluemoondragon07/chime-
    4. List styling options
    5. Expand on hover callouts
    6. Clean embeds
+   7. Grayscale-friendly exports
 5. Removed
    1. Card layout
    2. Classic layout
@@ -42,8 +43,8 @@ Sometimes I will absorb snippets into my theme when I have too many. Editor opti
 
 | Input        | Description                                                                                                                                                     |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| wiki-page    | ”Format your note like a wiki page. This class floats**images** and **info blockquotes** to the right and formats headings and text.” – Chime |
-| novel        | ”Format your note like a page in a book. This class changes the**font, indentation, and paragraph spacing.**” – Chime                                  |
+| wiki-page    | ”Format your note like a wiki page. This class floats **images** and **info blockquotes** to the right and formats headings and text.” – Chime |
+| novel        | ”Format your note like a page in a book. This class changes the **font, indentation, and paragraph spacing.**” – Chime                                  |
 | no-count     | Remove Dataview table file counts                                                                                                                               |
 | no-backlinks | Remove linked mentions section from note                                                                                                                        |
 | cards        | Turn Dataview table into cards, original by kepano.                                                                                                             |
