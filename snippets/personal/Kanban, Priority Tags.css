@@ -20,6 +20,27 @@
   --checkbox-border-color: var(--color-blue);
 }
 
+.HyperMD-list-line:has(.cm-tag-rsvp) .task-list-label {
+  --checkbox-border-color: var(--color-cyan);
+}
+.task-list-item:has([href="#rsvp"]) {
+  --checkbox-border-color: var(--color-cyan);
+}
+
+.HyperMD-list-line:has(.cm-tag-show) .task-list-label {
+  --checkbox-border-color: var(--color-purple);
+}
+.task-list-item:has([href="#show"]) {
+  --checkbox-border-color: var(--color-purple);
+}
+
+.HyperMD-list-line:has(.cm-tag-productivity) .task-list-label {
+  --checkbox-border-color: var(--color-pink);
+}
+.task-list-item:has([href="#productivity"]) {
+  --checkbox-border-color: var(--color-pink);
+}
+
 /* Default Kanban Card Styling */
 .kanban-plugin__item {
   border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
@@ -40,6 +61,24 @@
   background-color: rgba(var(--color-cyan-rgb), 0.1); /* Light red tint */
   border: 1px solid var(--color-cyan); /* Red border */
   border-radius: 4px;
+}
+
+/* show tag */
+.kanban-plugin__item.has-tag-show,
+.has-tag-show :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-purple-rgb), 0.1); /* Light red tint */
+  border: 1px solid var(--color-purple); /* Red border */
+  border-radius: 4px;
+  font-weight: bold
+}
+
+/* productivity tag */
+.kanban-plugin__item.has-tag-productivity,
+.has-tag-productivity :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+  background-color: rgba(var(--color-pink-rgb), 0.1); /* Light red tint */
+  border: 1px solid var(--color-pink); 
+  border-radius: 4px;
+  font-weight: bold
 }
 
 /* Priority tags */
@@ -66,6 +105,8 @@
 .kanban-plugin__item.has-tag-p1 a[href="#p1"].kanban-plugin__item-tag,
 .kanban-plugin__item.has-tag-p2 a[href="#p2"].kanban-plugin__item-tag,
 .kanban-plugin__item.has-tag-p3 a[href="#p3"].kanban-plugin__item-tag,
-.kanban-plugin__item.has-tag-rsvp a[href="#rsvp"].kanban-plugin__item-tag {
+.kanban-plugin__item.has-tag-rsvp a[href="#rsvp"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-show a[href="#show"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-productivity a[href="#productivity"].kanban-plugin__item-tag {
   display: none !important;
 }
