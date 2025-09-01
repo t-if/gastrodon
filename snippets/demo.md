@@ -2,18 +2,23 @@
 Note that all of these snippets are built into Gastrodon, so no need to add them if you're already using my theme.
 Codes are available for download [here](/snippets/personal). Snippets that I use _in addition to_ my theme can be found [here](/snippets/favorites).
 ## Legal Callouts
-![callouts](https://github.com/user-attachments/assets/f6bd219f-97bf-4890-b4ac-a28f132e567c)
+
+![callouts](https://github.com/user-attachments/assets/7d9db519-0485-4ce5-a778-51218298099d)
+
+![callouts2](https://github.com/user-attachments/assets/e92ad7dc-6243-4829-9315-11b2e51e3fca)
+
 ## Dim Inactive Panes
-![dim](https://github.com/user-attachments/assets/7155b275-b40d-4667-8992-e2dfd1ccb00e)
+
+Makes it easier to edit MD notes side-by-side.
+
+![dim](https://github.com/user-attachments/assets/6754a818-000f-4cdb-8bac-119a5dded724)
+
+
+## Bases
+![bases](https://github.com/user-attachments/assets/e110db6a-6554-4b10-9c46-a8b65c68beed)
 
 ## Kanban Styling and Tags
-![kanban](https://github.com/user-attachments/assets/8a1e9184-4e09-40cc-8874-cf6411583dfb)
 
 Uses Obsidian's extended color palette
 
-| ID         | Tag   | Color  |
-| ---------- | ----- | ------ |
-| Priority 1 | #p1   | Red    |
-| Priority 2 | #p2   | Yellow |
-| Priority 3 | #p3   | Blue   |
-| RSVP       | #rsvp | Cyan   |
+![kanban](https://github.com/user-attachments/assets/c0090f7d-bef2-4b83-b486-e296e5c4d8f2)
