@@ -59,12 +59,12 @@ I also incorporated ElsaTam’s [callout metadata](https://elsatam.github.io/obs
 | email        | Original by ElsaTam, see extended options[here](https://elsatam.github.io/obsidian-fancy-a-story/docs/callouts/email.html).                                             |
 | conversation | Original by ElsaTam, see extended options[here](https://elsatam.github.io/obsidian-fancy-a-story/docs/callouts/conversation.html).                                      |
 | theorem      | Original by sailKite, see demo[here](https://github.com/r-u-s-h-i-k-e-s-h/Obsidian-CSS-Snippets/blob/Collection/Snippets/Callout%20styling%20-%20Theorem%20callout.md). |
-| posture      | Legal Callout, see demo[here](snippets/demo.md).                                                                                                                        |
-| issue        | Legal Callout, see demo[here](snippets/demo.md).                                                                                                                        |
-| rule         | Legal Callout, see demo[here](snippets/demo.md).                                                                                                                        |
-| analysis     | Legal Callout, see demo[here](snippets/demo.md).                                                                                                                        |
-| conclusion   | Legal Callout, see demo[here](snippets/demo.md).                                                                                                                        |
-| dissent      | Legal Callout, see demo[here](snippets/demo.md).                                                                                                                        |
+| posture      | Legal Callout, see demo [here](snippets/demo.md).                                                                                                                        |
+| issue        | Legal Callout, see demo [here](snippets/demo.md).                                                                                                                        |
+| rule         | Legal Callout, see demo [here](snippets/demo.md).                                                                                                                        |
+| analysis     | Legal Callout, see demo [here](snippets/demo.md).                                                                                                                        |
+| conclusion   | Legal Callout, see demo [here](snippets/demo.md).                                                                                                                        |
+| dissent      | Legal Callout, see demo [here](snippets/demo.md).                                                                                                                        |
 | concurrence  | Legal Callout, see demo [here](snippets/demo.md).                                                                                                                      |
 
 ### Lists Extended
