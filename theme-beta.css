@@ -2090,77 +2090,108 @@ ul:has(> li > .tag[href="#tree-view"]) li:has(> .list-bullet:last-child):hover::
   animation: bg-slide 0.5s ease-in-out;
 }
 
-/* asides, original by ElsaTam */
-.markdown-source-view > div, .markdown-preview-view {
+/* Asides (original by ElsaTam) */
+.markdown-source-view > div,
+.markdown-preview-view {
   container: markdown-view/inline-size;
 }
 
-.markdown-preview-view aside,
-.markdown-preview-view .aside-left,
-.markdown-preview-view .aside-right {
+.markdown-preview-view :is(.aside-left, .aside-right) + :where(ul, ol),
+.markdown-preview-view :is(p, div, section, article):has(> .aside-left, > .aside-right) + :where(ul, ol) {
+  clear: both; /* start below the float entirely */
+}
+
+body {
   --aside-width: 250px;
   --aside-gap: 15px;
   --aside-border-thickness: 2px;
-  --aside-bg-opacity: 0.8;
-  --aside-hover-opacity: 1; /* Hover opacity */
-  --aside-default-opacity: 0.7; /* Default opacity */
-  --aside-shadow-opacity: 0.2;
+  --aside-bg-opacity: 0.8;      /* background tint at rest */
+  --aside-hover-opacity: 1;      /* hover opacity */
+  --aside-default-opacity: 0.6;  /* overall rest opacity */
+  --aside-shadow-opacity: 0.2;   /* shadow strength */
+  --float-inline-margin: 12px;
+}
 
+.is-mobile {
+  --aside-width: 200px;
+  --aside-border-thickness: 2px;
+}
+
+.markdown-preview-view .aside-left,
+.markdown-preview-view .aside-right {
   display: block;
   text-decoration: none;
-  border-radius: var(--radius-m); /* Softer radius */
-  border: var(--aside-border-thickness) solid var(--background-modifier-border); /* Softer border */
-  background-color: rgba(var(--background-secondary-alt), var(--aside-default-opacity)); /* Default translucent background */
+  border-radius: var(--radius-m);
+  border: var(--aside-border-thickness) solid var(--background-modifier-border);
+  background-color: rgba(var(--background-secondary-alt), var(--aside-bg-opacity));
   padding: 15px;
   margin: 5px;
   width: var(--aside-width);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, var(--aside-shadow-opacity)); /* Soft shadow */
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition */
-  opacity: var(--aside-default-opacity); /* Initial opacity */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, var(--aside-shadow-opacity));
+  transition:
+    background-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+  opacity: var(--aside-default-opacity);
 }
 
-/* Hover effect for opacity */
-.markdown-preview-view aside:hover,
 .markdown-preview-view .aside-left:hover,
 .markdown-preview-view .aside-right:hover {
-  opacity: var(--aside-hover-opacity); /* Fully opaque on hover */
-  background-color: rgba(var(--background-secondary-alt), var(--aside-hover-opacity)); /* Increase opacity of background on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+  opacity: var(--aside-hover-opacity);
+  background-color: rgba(var(--background-secondary-alt), var(--aside-hover-opacity));
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .is-readable-line-width.markdown-preview-view .aside-left {
   float: left;
   clear: left;
+  margin-right: var(--float-inline-margin);
+  text-align: right; /* mirrors your desktop style */
 }
-
-.markdown-preview-view aside,
 .is-readable-line-width.markdown-preview-view .aside-right {
   float: right;
   clear: right;
+  margin-left: var(--float-inline-margin);
 }
 
-@container markdown-view (width > 1100px) {
-  .markdown-preview-view aside,
-  .is-readable-line-width.markdown-preview-view .aside-right,
-  .is-readable-line-width.markdown-preview-view .aside-left {
-    --aside-width: calc(50cqw - var(--file-line-width) * 0.5 - var(--aside-gap) * 2);
-    margin-inline: 0;
-    border-block: none;
-    padding-block: 0;
-  }
+@media screen {
+  @container markdown-view (width > 1100px) {
+    .is-readable-line-width.markdown-preview-view .aside-left,
+    .is-readable-line-width.markdown-preview-view .aside-right {
+      --aside-width: calc(50cqw - var(--file-line-width) * 0.5 - var(--aside-gap) * 2);
+      margin-inline: 0;
+      border-block: none;   /* soften visual weight against page flow */
+      padding-block: 0;
+    }
 
-  .is-readable-line-width.markdown-preview-view .aside-left {
-    margin-left: calc(-1 * var(--aside-width) - var(--aside-gap));
-    border-left: none;
-    padding-inline: 0 15px;
-    text-align: right;
-  }
+    .is-readable-line-width.markdown-preview-view .aside-left {
+      margin-left: calc(-1 * var(--aside-width) - var(--aside-gap));
+      border-left: none;
+      padding-inline: 0 15px;
+    }
 
-  .markdown-preview-view aside,
-  .is-readable-line-width.markdown-preview-view .aside-right {
-    margin-right: calc(-1 * var(--aside-width) - var(--aside-gap));
-    border-right: none;
-    padding-inline: 15px 0;
+    .is-readable-line-width.markdown-preview-view .aside-right {
+      margin-right: calc(-1 * var(--aside-width) - var(--aside-gap));
+      border-right: none;
+      padding-inline: 15px 0;
+    }
+  }
+}
+
+@media print {
+  .print .aside-left,
+  .print .aside-right {
+    page-break-inside: avoid;
+  }
+  .print .aside-left {
+    float: left;
+    clear: left;
+    margin-right: var(--float-inline-margin);
+  }
+  .print .aside-right {
+    float: right;
+    clear: right;
+    margin-left: var(--float-inline-margin);
   }
 }
 
