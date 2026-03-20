@@ -5131,7 +5131,7 @@ settings:
         id: clean-embed
         title: Seamless Embedded Links
         type: class-toggle
-        default: true
+        default: false
     -
         id: link-style
         title: Link Style
