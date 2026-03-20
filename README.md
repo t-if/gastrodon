@@ -14,13 +14,13 @@ My personal theme, a remix of [Chime](https://github.com/Bluemoondragon07/chime-
 2. CSS Classes
    1. no-count
    2. no-backlinks
+   3. musicshelf
+   4. pokemonbox
 3. Plugin adjustments
-   1. Day Planner
-   2. Commander
-   3. Page Gallery
-   4. Dataview
-   5. Calendar
-   6. Kanban
+   1. Commander
+   2. Dataview
+   3. Calendar
+   4. Kanban
 4. Notes and Files
    1. Mermaid diagrams
    2. Image centering option
@@ -29,11 +29,15 @@ My personal theme, a remix of [Chime](https://github.com/Bluemoondragon07/chime-
    5. Expand on hover callouts
    6. Clean embeds
    7. Grayscale-friendly exports
-5. Removed
+5. Removed from original Chime 
    1. Card layout
    2. Classic layout
    3. Background image
    4. Automatic image centering
+   5. A few subthemes:
+      1. "wiki-page" and "novel" cssclasses
+      2. "Notion" and "Novel" theme presets
+   6. Unused or outdated plugin styling
 
 ## Features
 
@@ -43,12 +47,13 @@ Sometimes I will absorb snippets into my theme when I have too many. Editor opti
 
 | Input        | Description                                                                                                                                                     |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| wiki-page    | ”Format your note like a wiki page. This class floats **images** and **info blockquotes** to the right and formats headings and text.” – Chime |
-| novel        | ”Format your note like a page in a book. This class changes the **font, indentation, and paragraph spacing.**” – Chime                                  |
+| ~~wiki-page~~    | Defunct |
+| ~~novel~~        | Defunct    |
 | no-count     | Remove Dataview table file counts                                                                                                                               |
 | no-backlinks | Remove linked mentions section from note                                                                                                                        |
 | cards        | Turn Dataview table into cards, original by kepano.                                                                                                             |
-
+| musicshelf        | Styles Base card view like a vinyl record collection                                                                                                            |
+| pokemonbox        | Styles Base card view like a Pokémon Center box                                                                                                            |
 ### Callouts Extended
 
 I also incorporated ElsaTam’s [callout metadata](https://elsatam.github.io/obsidian-fancy-a-story/docs/callouts/metadata/metadata.html) for additional customization options.
