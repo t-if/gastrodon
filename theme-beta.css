@@ -4530,33 +4530,6 @@ transition: height 0.1s, opacity 0.25s;
 .style-settings-heading[data-id=gastrodon-theme] .setting-item-name {
     color: var(--color-accent-1);
 }
-.nav-folder:has(> :is(
-        [data-path="Career"],
-        [data-path="Inbox"],
-        [data-path="Folder DDD"]
-    )) {
-    position: relative;
-    &::before {
-        content: "";
-        --padding-x: 10px;
-        margin-inline-start: calc(24px - var(--padding-x));
-        padding: 0 var(--padding-x);
-        background-color: var(--background-secondary);
-    }
-    &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: calc(0.5em * var(--line-height-tight));
-        width: 100%; /* change for something smaller if you don't want the divider to span full length */
-        height: 0;
-        border-top: 1px solid currentColor;
-        z-index: -1;
-    }
-}
-.nav-folder:has(> [data-path="Career"])::before { content: "Files"; }
-.nav-folder:has(> [data-path="Inbox"])::before { content: "Landing"; }
-.nav-folder:has(> [data-path="Folder DDD"])::before { content: "Separator DDD"; }
 /* @settings
 name: Gastrodon
 id: gastrodon-theme
