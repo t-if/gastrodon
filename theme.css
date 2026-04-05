@@ -229,6 +229,12 @@ body {
 body.hide-dividers {
     --border-width: 0px !important;
 }
+/* --- editor width --- */
+  .width-800  { --file-line-width: 800px; }
+  .width-900  { --file-line-width: 900px; }
+  .width-1000 { --file-line-width: 1000px; }
+  .width-1200 { --file-line-width: 1200px; }
+  .width-1600 { --file-line-width: 1600px; }
 /* --- tables --- */
 body {
     --table-border-width: 0px;
