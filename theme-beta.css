@@ -924,6 +924,9 @@ body:not(.list-style-enable-unique-bullet) {
     }
 }
 /* ---------- bases ---------- */
+.maplibregl-ctrl-attrib.maplibregl-compact-show {
+  visibility: hidden;
+}
 .bases-embed .bases-header {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
@@ -949,6 +952,9 @@ body:not(.list-style-enable-unique-bullet) {
 }
 .bases-cards-cover {
   opacity: 1;
+}
+.no-head .bases-embed .bases-header {
+  display: none;
 }
 .case-card .bases-cards-line {
   line-height: 1.2;
