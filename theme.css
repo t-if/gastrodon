@@ -140,6 +140,23 @@ body {
   background-color: transparent;
 }
 /* modal */ 
+
+body:not(.is-phone) .modal-bg {
+  opacity: 1 !important;
+  background-color: hsla(var(--background-secondary-hsl), 0.6) !important;
+}
+
+body:not(.is-phone) :is(.menu, .suggestion-container, .graph-control-section) {
+  background-color: hsla(var(--background-secondary-hsl), 0.7) !important;
+  backdrop-filter: blur(20px);
+  will-change: backdrop-filter;
+}
+
+body:not(.is-phone) .modal-bg {
+  backdrop-filter: blur(6px);
+  transform: translateZ(0);
+}
+
 .modal {
     opacity: 0.85; 
     border: 0px;
@@ -224,6 +241,14 @@ body {
     background-color: transparent;
     border-bottom: none;
     margin-bottom: 0.5em;
+}
+.workspace-tab-header-container {
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out;
+}
+.workspace-tab-header-container:hover {
+    opacity: 1;
+    transition-delay: 0ms;
 }
 /* --- dividers --- */
 body.hide-dividers {
@@ -682,247 +707,6 @@ font-weight: 300;
     background-color: transparent;
   }
 }
-/* lists, original by ElsaTam (Kapirklaa in Discord) */
-body.theme-light {
-    --list-style-color: 171, 171, 171;
-}
-body.theme-dark {
-    --list-style-color: 102, 102, 102;
-}
-body {
-    --list-style-indent-size: 2.25em;
-    --list-indent: var(--list-style-indent-size);
-    --list-style-indent-editing-size: 0.75em;
-    --list-indent-editing: var(--list-style-indent-editing-size);
-    --indentation-guide-editing-indent: calc(var(--list-indent-editing) + 0.1em);
-    /* [OL] ORDERED LISTS */
-    --list-number-style-type-1: decimal;
-    --list-number-style-type-2: lower-alpha;
-    --list-number-style-type-3: lower-roman;
-    --list-number-style-type-4: decimal;
-    --list-number-style-type-5: lower-alpha;
-    --list-number-style-type-6: lower-roman;
-    /* [UL] UNORDERED LISTS */
-    --list-bullet-style-type-1: "●";
-    --list-bullet-style-type-2: "○︎";
-    --list-bullet-style-type-3: "■";
-    --list-bullet-style-type-4: "●";
-    --list-bullet-style-type-5: "○︎";
-    --list-bullet-style-type-6: "■";
-    --list-bullet-style-type-unique: "-";
-    --list-style-bullet-font: "Arial", "sans-serif";
-}
-/* ============================================== */
-/* =========== Bullet general styling =========== */
-/* ============================================== */
-body:not(.list-style-enable-color).list-style-enable-font-color .view-content {
-    --list-marker-color: var(--text-normal);
-}
-body.list-style-enable-color .view-content {
-    --list-marker-color: rgb(var(--list-style-color));
-    --indentation-guide-color: rgba(var(--list-style-color), 0.15);
-}
-body.list-style-enable-bullet-font .view-content .list-bullet::after {
-    font-family: var(--list-style-bullet-font);
-}
-body.list-style-enable-bold .view-content {
-    & .list-bullet,
-    & .list-number,
-    & ol li::marker {
-        font-weight: bold;
-    }
-}
-body.list-style-enable-glow .view-content {
-    & .list-bullet,
-    & .list-number,
-    & ol li::marker {
-        text-shadow: 0 0 7px var(--list-marker-color);
-    }
-    & li li li li li li ul > li > .list-bullet::after {
-        box-shadow: 0 0 7px var(--list-marker-color);
-    }
-}
-/* ============================================== */
-/* ========= Set style for reading view ========= */
-/* ============================================== */
-/* [OL] Change list-style-type */
-.markdown-preview-view {
-    & ol { list-style-type: var(--list-number-style-type-1); }
-    & li ol { list-style-type: var(--list-number-style-type-2); }
-    & li li ol { list-style-type: var(--list-number-style-type-3); }
-    & li li li ol { list-style-type: var(--list-number-style-type-4); }
-    & li li li li ol { list-style-type: var(--list-number-style-type-5); }
-    & li li li li li ol { list-style-type: var(--list-number-style-type-6); }
-    & li li li li li li ol { list-style-type: normal; }
-}
-/* [UL] Change ::after pseudo-element */
-body.list-style-enable-unique-bullet .markdown-preview-view .list-bullet::after {
-    content: var(--list-bullet-style-type-unique) "\00a0";
-    --list-bullet-radius: 0;
-    background-color: unset;
-    width: unset;
-    height: unset;
-}
-body:not(.list-style-enable-unique-bullet) .markdown-preview-view {
-    & .list-bullet::after {
-        --list-bullet-radius: 0;
-        background-color: unset;
-        width: unset;
-        height: unset;
-    }
-    & ul > li > .list-bullet::after { content: var(--list-bullet-style-type-1) "\00a0"; }
-    & li ul > li > .list-bullet::after { content: var(--list-bullet-style-type-2) "\00a0"; }
-    & li li ul > li > .list-bullet::after { content: var(--list-bullet-style-type-3) "\00a0"; }
-    & li li li ul > li > .list-bullet::after { content: var(--list-bullet-style-type-4) "\00a0"; }
-    & li li li li ul > li > .list-bullet::after { content: var(--list-bullet-style-type-5) "\00a0"; }
-    & li li li li li ul > li > .list-bullet::after { content: var(--list-bullet-style-type-6) "\00a0"; }
-    & li li li li li li ul > li > .list-bullet::after {
-        content: '\200B';
-        --list-bullet-radius: 50%;
-        background-color: var(--list-marker-color);
-        width: var(--list-bullet-size);
-        height: var(--list-bullet-size);
-    }
-}
-/* ============================================== */
-/* ========= Set style for live preview  ======== */
-/* ============================================== */
-/* --- [OL] Set counter for level n+1 to 0 every time we create a new item at level n --- */
-/* ---      Increment the counter of level n every time we create a new item at level n --- */
-.markdown-source-view.is-live-preview {
-    
-    &, & .cm-line:not(.HyperMD-list-line):has(+ .HyperMD-list-line) {
-        counter-reset: listdepth1 listdepth2 listdepth3 listdepth4 listdepth5 listdepth6;
-    }
-    & .HyperMD-list-line-1 {
-        & .list-number::after {
-            content: "";
-            counter-increment: listdepth1;
-        }
-        & { counter-reset: listdepth2; }
-    }
-    & .HyperMD-list-line-2 {
-        & .list-number::after {
-            content: "";
-            counter-increment: listdepth2;
-        }
-        & { counter-reset: listdepth3; }
-    }
-    & .HyperMD-list-line-3 {
-        & .list-number::after {
-            content: "";
-            counter-increment: listdepth3;
-        }
-        & { counter-reset: listdepth4; }
-    }
-    & .HyperMD-list-line-4 {
-        & .list-number::after {
-            content: "";
-            counter-increment: listdepth4;
-        }
-        & { counter-reset: listdepth5; }
-    }
-    & .HyperMD-list-line-5 {
-        & .list-number::after {
-            content: "";
-            counter-increment: listdepth5;
-        }
-        & { counter-reset: listdepth6; }
-    }
-    & .HyperMD-list-line-6 {
-        & .list-number::after {
-            content: "";
-            counter-increment: listdepth6;
-        }
-    }
-}
-/* [OL] */
-body.list-style-enable-active-line .markdown-source-view.is-live-preview .cm-line,
-body:not(.list-style-enable-active-line) .markdown-source-view.is-live-preview .cm-line:not(.cm-active) {
-    &.HyperMD-list-line-1,
-    &.HyperMD-list-line-2,
-    &.HyperMD-list-line-3,
-    &.HyperMD-list-line-4,
-    &.HyperMD-list-line-5,
-    &.HyperMD-list-line-6
-    {
-        /* --- Hide the default numbering --- */
-        & .list-number {
-            visibility: hidden;
-            font-size: 0;
-        }
-        /* --- Prepare the style of the new numbering on ::after pseudo-element --- */
-        & .list-number::after {
-            visibility: visible;
-            font-size: var(--font-text-size);
-        }
-    }
-    /* --- Set the content of the ::after pseudo-element
-           according to the correct list-style-type and counter --- */
-    &.HyperMD-list-line-1 .list-number::after { content: counter(listdepth1, var(--list-number-style-type-1)) ".\00a0"; }
-    &.HyperMD-list-line-2 .list-number::after { content: counter(listdepth2, var(--list-number-style-type-2)) ".\00a0"; }
-    &.HyperMD-list-line-3 .list-number::after { content: counter(listdepth3, var(--list-number-style-type-3)) ".\00a0"; }
-    &.HyperMD-list-line-4 .list-number::after { content: counter(listdepth4, var(--list-number-style-type-4)) ".\00a0"; }
-    &.HyperMD-list-line-5 .list-number::after { content: counter(listdepth5, var(--list-number-style-type-5)) ".\00a0"; }
-    &.HyperMD-list-line-6 .list-number::after { content: counter(listdepth6, var(--list-number-style-type-6)) ".\00a0"; }
-}
-/* [UL] Unique bullet */
-body.list-style-enable-unique-bullet {
-    /* It is ok changing the line */
-    &.list-style-enable-active-line .markdown-source-view.is-live-preview .cm-line,
-    &:not(.list-style-enable-active-line) .markdown-source-view.is-live-preview .cm-line:not(.cm-active) {
-        &.HyperMD-list-line {
-            /* --- Hide the default bullet --- */
-            & .list-bullet {
-                visibility: hidden;
-            }
-            /* --- Prepare the style of the new bullet on ::after pseudo-element --- */
-            & .list-bullet::after {
-                content: var(--list-bullet-style-type-unique) "\00a0";
-                visibility: visible;
-                --list-bullet-radius: 0;
-                background-color: unset;
-                width: unset;
-                height: unset;
-            }
-        }
-    }
-}
-/* [UL] Bullet per depth */
-body:not(.list-style-enable-unique-bullet) {
-    /* It is ok changing the line */
-    &.list-style-enable-active-line .markdown-source-view.is-live-preview .cm-line,
-    &:not(.list-style-enable-active-line) .markdown-source-view.is-live-preview .cm-line:not(.cm-active) {
-        &.HyperMD-list-line-1,
-        &.HyperMD-list-line-2,
-        &.HyperMD-list-line-3,
-        &.HyperMD-list-line-4,
-        &.HyperMD-list-line-5,
-        &.HyperMD-list-line-6
-        {
-            /* --- Hide the default bullet --- */
-            & .list-bullet {
-                visibility: hidden;
-            }
-            /* --- Prepare the style of the new bullet on ::after pseudo-element --- */
-            & .list-bullet::after {
-                visibility: visible;
-                --list-bullet-radius: 0;
-                background-color: unset;
-                width: unset;
-                height: unset;
-            }
-        }
-        /* --- Set the content of the ::after pseudo-element
-            according to the correct list-style-type --- */
-        &.HyperMD-list-line-1 .list-bullet::after { content: var(--list-bullet-style-type-1) "\00a0"; }
-        &.HyperMD-list-line-2 .list-bullet::after { content: var(--list-bullet-style-type-2) "\00a0"; }
-        &.HyperMD-list-line-3 .list-bullet::after { content: var(--list-bullet-style-type-3) "\00a0"; }
-        &.HyperMD-list-line-4 .list-bullet::after { content: var(--list-bullet-style-type-4) "\00a0"; }
-        &.HyperMD-list-line-5 .list-bullet::after { content: var(--list-bullet-style-type-5) "\00a0"; }
-        &.HyperMD-list-line-6 .list-bullet::after { content: var(--list-bullet-style-type-6) "\00a0"; }
-    }
-}
 /* ---------- bases ---------- */
 .maplibregl-ctrl-attrib.maplibregl-compact-show {
   visibility: hidden;
@@ -991,6 +775,12 @@ body:not(.list-style-enable-unique-bullet) {
 /* Less wasted space */
 .oneline .bases-cards-item {
     gap: var(--size-2-1);
+}
+.oneline .bases-cards-label {
+	font-size: 0.7em;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--text-muted);
 }
 /* pokemon box */
 :is(.workspace-leaf:has([aria-label*="Pokémon"]), .pokemonbox) .bases-view {
@@ -1956,7 +1746,93 @@ Author: ElsaTam (Kapirklaa in Discord)
   .callout[data-callout-metadata~=no-icon] > .callout-title > .callout-icon {
     display: none;
   }
-  
+/* polaroid */
+.theme-light {
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+.theme-dark {
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+body {
+  --polaroid-angle: 2deg;
+  --polaroid-img-size: 200px;
+}
+.callout[data-callout=polaroid] {
+  --callout-color: rgb(255, 255, 255);
+  --callout-blend-mode: normal;
+  --callout-border-width: 0;
+  --image-shadow-offset: 0;
+  --p-spacing: 0;
+  --callout-padding: var(--size-4-3);
+  --callout-title-padding: var(--size-4-3);
+  --callout-content-padding: 0;
+  --text-normal: black;
+  display: flex;
+  flex-direction: column-reverse;
+  width: fit-content;
+  background: var(--callout-color);
+  box-shadow: 5px 7px 4px var(--shadow-color);
+  margin-inline: auto;
+}
+.callout[data-callout=polaroid] .callout-title {
+  color: var(--text-normal);
+  background: none;
+  justify-content: center;
+}
+.callout[data-callout=polaroid] .callout-content {
+  position: relative;
+}
+.callout[data-callout=polaroid] .callout-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.callout[data-callout=polaroid] .callout-icon {
+  display: none;
+}
+.callout[data-callout=polaroid] .callout-fold {
+  display: none;
+}
+.callout[data-callout=polaroid] img {
+  width: var(--polaroid-img-size);
+  height: var(--polaroid-img-size);
+  object-fit: cover;
+}
+.callout[data-callout=polaroid]:is([data-callout-metadata~=right], [data-callout-metadata~=float-right]) {
+  margin-left: var(--size-4-4);
+  transform: rotate(calc(-1 * var(--polaroid-angle)));
+}
+.callout[data-callout=polaroid]:is([data-callout-metadata~=left], [data-callout-metadata~=float-left]) {
+  margin-right: var(--size-4-4);
+  transform: rotate(var(--polaroid-angle));
+}
+@media print {
+  .callout[data-callout=polaroid] {
+    border: 1px solid lightgray;
+  }
+}
+.markdown-source-view.mod-cm6 .callout[data-callout=polaroid] {
+  margin-inline: auto;
+}
+.markdown-source-view .callout[data-callout=polaroid]:is([data-callout-metadata~=right], [data-callout-metadata~=float-right]) {
+  margin-right: 0;
+}
+.markdown-source-view .callout[data-callout=polaroid]:is([data-callout-metadata~=left], [data-callout-metadata~=float-left]) {
+  margin-left: 0;
+}
+.markdown-preview-view .callout[data-callout=polaroid]:is([data-callout-metadata~=right], [data-callout-metadata~=float-right]) {
+  float: right;
+  clear: right;
+  margin: 12px 0 12px 12px;
+}
+.markdown-preview-view .callout[data-callout=polaroid]:is([data-callout-metadata~=left], [data-callout-metadata~=float-left]) {
+  float: left;
+  clear: left;
+  margin: 12px 12px 12px 0;
+}  
   /* conversation */
   .callout[data-callout=conversation-minimalist],
   .callout[data-callout=conversation],
@@ -2331,22 +2207,22 @@ li[data-task="b"] > p > input:checked {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath d='M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z' /%3E%3C/svg%3E");
 }
 /* Priority checkboxes, adapted from r-u-s-h-i-k-e-s-h*/
-.HyperMD-list-line:has(.cm-tag-p1) .task-list-label {
+.HyperMD-list-line:has(.cm-tag-A) .task-list-label {
   --checkbox-border-color: var(--color-red);
 }
-.task-list-item:has([href="#p1"]) {
+.task-list-item:has([href="A"]) {
   --checkbox-border-color: var(--color-red);
 }
-.HyperMD-list-line:has(.cm-tag-p2) .task-list-label {
+.HyperMD-list-line:has(.cm-tag-B) .task-list-label {
   --checkbox-border-color: var(--color-yellow);
 }
-.task-list-item:has([href="#p2"]) {
+.task-list-item:has([href="#B"]) {
   --checkbox-border-color: var(--color-yellow);
 }
-.HyperMD-list-line:has(.cm-tag-p3) .task-list-label {
+.HyperMD-list-line:has(.cm-tag-C) .task-list-label {
   --checkbox-border-color: var(--color-blue);
 }
-.task-list-item:has([href="#p3"]) {
+.task-list-item:has([href="#C"]) {
   --checkbox-border-color: var(--color-blue);
 }
 .HyperMD-list-line:has(.cm-tag-rsvp) .task-list-label {
@@ -2403,30 +2279,461 @@ li[data-task="b"] > p > input:checked {
   font-weight: bold
 }
 /* Priority tags */
-.kanban-plugin__item.has-tag-p1,
-.has-tag-p1 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+.kanban-plugin__item.has-tag-A,
+.has-tag-A :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
   background-color: rgba(var(--color-red-rgb), 0.1); /* Light red tint */
   border: 1px solid var(--color-red); /* Red border */
   border-radius: 4px;
   color: var(--color-red);
   font-weight: bold
 }
-.kanban-plugin__item.has-tag-p2,
-.has-tag-p2 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+.kanban-plugin__item.has-tag-B,
+.has-tag-B :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
   background-color: rgba(var(--color-yellow-rgb), 0.1); /* Light yellow tint */
 }
-.kanban-plugin__item.has-tag-p3,
-.has-tag-p3 :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
+.kanban-plugin__item.has-tag-C,
+.has-tag-C :is(.kanban-plugin__item-content-wrapper, .kanban-plugin__item-title-wrapper) {
   background-color: rgba(var(--color-blue-rgb), 0.1); /* Light blue tint */
 }
 /* Hide the tags */
-.kanban-plugin__item.has-tag-p1 a[href="#p1"].kanban-plugin__item-tag,
-.kanban-plugin__item.has-tag-p2 a[href="#p2"].kanban-plugin__item-tag,
-.kanban-plugin__item.has-tag-p3 a[href="#p3"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-A a[href="#A"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-B a[href="#B"].kanban-plugin__item-tag,
+.kanban-plugin__item.has-tag-C a[href="#C"].kanban-plugin__item-tag,
 .kanban-plugin__item.has-tag-rsvp a[href="#rsvp"].kanban-plugin__item-tag,
 .kanban-plugin__item.has-tag-show a[href="#show"].kanban-plugin__item-tag,
 .kanban-plugin__item.has-tag-productivity a[href="#productivity"].kanban-plugin__item-tag {
   display: none !important;
+}
+/* ---------- ordered lists ---------- */
+.markdown-preview-view ol {
+  list-style-type: decimal;
+}
+.markdown-preview-view ol ol {
+  list-style-type: lower-alpha;
+}
+.markdown-preview-view ol ol ol {
+  list-style-type: lower-roman;
+}
+.markdown-preview-view ol ol ol ol {
+  list-style-type: decimal;
+}
+.markdown-preview-view ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+.markdown-preview-view ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+.markdown-preview-view ol ol ol ol ol ol ol {
+  list-style-type: decimal;
+}
+.markdown-preview-view ol ol ol ol ol ol ol ol {
+  list-style-type: lower-alpha;
+}
+.markdown-preview-view ol ol ol ol ol ol ol ol ol {
+  list-style-type: lower-roman;
+}
+.markdown-source-view.is-live-preview,
+.markdown-source-view.is-live-preview .cm-line:not(.HyperMD-list-line):has(+ .HyperMD-list-line) {
+  counter-reset:
+    list-level-1
+    list-level-2
+    list-level-3
+    list-level-4
+    list-level-5
+    list-level-6
+    list-level-7
+    list-level-8
+    list-level-9;
+}
+/* Reset deeper counters when a higher level starts */
+.markdown-source-view.is-live-preview .HyperMD-list-line-1 {
+  counter-reset:
+    list-level-2
+    list-level-3
+    list-level-4
+    list-level-5
+    list-level-6
+    list-level-7
+    list-level-8
+    list-level-9;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-2 {
+  counter-reset:
+    list-level-3
+    list-level-4
+    list-level-5
+    list-level-6
+    list-level-7
+    list-level-8
+    list-level-9;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-3 {
+  counter-reset:
+    list-level-4
+    list-level-5
+    list-level-6
+    list-level-7
+    list-level-8
+    list-level-9;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-4 {
+  counter-reset:
+    list-level-5
+    list-level-6
+    list-level-7
+    list-level-8
+    list-level-9;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-5 {
+  counter-reset:
+    list-level-6
+    list-level-7
+    list-level-8
+    list-level-9;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-6 {
+  counter-reset:
+    list-level-7
+    list-level-8
+    list-level-9;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-7 {
+  counter-reset:
+    list-level-8
+    list-level-9;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-8 {
+  counter-reset:
+    list-level-9;
+}
+/* Increment counters */
+.markdown-source-view.is-live-preview .HyperMD-list-line-1 .list-number {
+  counter-increment: list-level-1;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-2 .list-number {
+  counter-increment: list-level-2;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-3 .list-number {
+  counter-increment: list-level-3;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-4 .list-number {
+  counter-increment: list-level-4;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-5 .list-number {
+  counter-increment: list-level-5;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-6 .list-number {
+  counter-increment: list-level-6;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-7 .list-number {
+  counter-increment: list-level-7;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-8 .list-number {
+  counter-increment: list-level-8;
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-9 .list-number {
+  counter-increment: list-level-9;
+}
+/* Hide Obsidian's default rendered numbers */
+.markdown-source-view.is-live-preview .HyperMD-list-line-1 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-2 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-3 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-4 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-5 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-6 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-7 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-8 .list-number,
+.markdown-source-view.is-live-preview .HyperMD-list-line-9 .list-number {
+  visibility: hidden;
+  font-size: 0;
+}
+/* Replace with looping custom numbering */
+.markdown-source-view.is-live-preview .HyperMD-list-line-1 .list-number::after {
+  content: counter(list-level-1, decimal) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-2 .list-number::after {
+  content: counter(list-level-2, lower-alpha) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-3 .list-number::after {
+  content: counter(list-level-3, lower-roman) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-4 .list-number::after {
+  content: counter(list-level-4, decimal) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-5 .list-number::after {
+  content: counter(list-level-5, lower-alpha) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-6 .list-number::after {
+  content: counter(list-level-6, lower-roman) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-7 .list-number::after {
+  content: counter(list-level-7, decimal) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-8 .list-number::after {
+  content: counter(list-level-8, lower-alpha) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line-9 .list-number::after {
+  content: counter(list-level-9, lower-roman) ".\00a0";
+  visibility: visible;
+  font-size: var(--font-text-size);
+}
+/* ---------- unordered lists ---------- */
+.markdown-preview-view ul .list-bullet::after {
+  content: "";
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  margin-right: 0.35em;
+  vertical-align: 0.08em;
+  background-color: var(--list-marker-color, var(--text-normal));
+  border: 1.5px solid var(--list-marker-color, var(--text-normal));
+  box-sizing: border-box;
+}
+/* Level 1 — disc */
+.markdown-preview-view ul > li > .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 2 — circle */
+.markdown-preview-view li ul > li > .list-bullet::after {
+  border-radius: 50%;
+  background-color: transparent;
+}
+/* Level 3 — square */
+.markdown-preview-view li li ul > li > .list-bullet::after {
+  border-radius: 0;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 4 — disc */
+.markdown-preview-view li li li ul > li > .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 5 — circle */
+.markdown-preview-view li li li li ul > li > .list-bullet::after {
+  border-radius: 50%;
+  background-color: transparent;
+}
+/* Level 6 — square */
+.markdown-preview-view li li li li li ul > li > .list-bullet::after {
+  border-radius: 0;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 7 — disc */
+.markdown-preview-view li li li li li li ul > li > .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 8 — circle */
+.markdown-preview-view li li li li li li li ul > li > .list-bullet::after {
+  border-radius: 50%;
+  background-color: transparent;
+}
+/* Level 9 — square */
+.markdown-preview-view li li li li li li li li ul > li > .list-bullet::after {
+  border-radius: 0;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* unordered lists in live preview */
+/* Live Preview only — unordered list bullets */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line:has(.cm-formatting-list-ul) .list-bullet {
+  visibility: hidden;
+}
+/* Base bullet shape/size */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line:has(.cm-formatting-list-ul) .list-bullet::after {
+  content: "";
+  visibility: visible;
+  display: inline-block;
+  width: 0.45em;
+  height: 0.45em;
+  margin-right: 0.35em;
+  vertical-align: 0.08em;
+  border: 1.5px solid var(--list-marker-color, var(--text-normal));
+  box-sizing: border-box;
+}
+/* Level 1 — disc */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-1:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 2 — circle */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-2:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: transparent;
+}
+/* Level 3 — disc */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-3:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 4 — circle */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-4:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: transparent;
+}
+/* Level 5 — disc */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-5:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 6 — circle */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-6:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: transparent;
+}
+/* Level 7 — disc */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-7:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* Level 8 — circle */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-8:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: transparent;
+}
+/* Level 9 — disc */
+.markdown-source-view.is-live-preview
+.HyperMD-list-line-9:has(.cm-formatting-list-ul) .list-bullet::after {
+  border-radius: 50%;
+  background-color: var(--list-marker-color, var(--text-normal));
+}
+/* ---------- list threading ---------- */
+.markdown-source-view .HyperMD-list-line {
+  --list-padding-inline-start-fix: 0px;
+  /* Standardized threading values */
+  --list-threading-active-width: 3px;
+  --list-threading-active-offset-extra: 2px;
+  /* Single thread color */
+  --list-threading-active-color: color-mix(
+    in srgb,
+    var(--color-base-70) 20%,
+    transparent
+  );
+}
+.markdown-source-view.is-live-preview .HyperMD-list-line {
+  --list-padding-inline-start-fix: var(--list-indent-editing);
+}
+/* level 1 thread offset */
+.HyperMD-list-line-1:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-1 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4, .HyperMD-list-line-3, .HyperMD-list-line-2).cm-active),
+.HyperMD-list-line-1:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-1 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-2.cm-active, ~ .HyperMD-list-line-2 ~ :is(.HyperMD-list-line-3, .HyperMD-list-line-4, .HyperMD-list-line-5, .HyperMD-list-line-6).cm-active),
+.HyperMD-list-line-2:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-2 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-3, .HyperMD-list-line-4, .HyperMD-list-line-5, .HyperMD-list-line-6).cm-active)) > .cm-hmd-list-indent {
+  &::before {
+    --list-threading-active-offset: calc(var(--list-threading-active-offset-extra) + var(--list-padding-inline-start-fix));
+  }
+}
+/* level 2 thread offset */
+.HyperMD-list-line-2:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-2 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4, .HyperMD-list-line-3).cm-active),
+.HyperMD-list-line-2:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-2 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-3.cm-active, ~ .HyperMD-list-line-3 ~ :is(.HyperMD-list-line-4, .HyperMD-list-line-5, .HyperMD-list-line-6).cm-active),
+.HyperMD-list-line-3:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-3 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-4, .HyperMD-list-line-5, .HyperMD-list-line-6).cm-active)) > .cm-hmd-list-indent {
+  &::before {
+    --list-threading-active-offset: calc(var(--list-threading-active-offset-extra) + var(--list-padding-inline-start-fix) + var(--list-indent));
+  }
+}
+/* level 3 thread offset */
+.HyperMD-list-line-3:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-3 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4).cm-active),
+.HyperMD-list-line-3:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-3 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-4.cm-active, ~ .HyperMD-list-line-4 ~ :is(.HyperMD-list-line-5, .HyperMD-list-line-6).cm-active),
+.HyperMD-list-line-4:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-4 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-5, .HyperMD-list-line-6).cm-active)) > .cm-hmd-list-indent {
+  &::before {
+    --list-threading-active-offset: calc(var(--list-threading-active-offset-extra) + var(--list-padding-inline-start-fix) + 2 * var(--list-indent));
+  }
+}
+/* level 4 thread offset */
+.HyperMD-list-line-4:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-4 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5).cm-active),
+.HyperMD-list-line-4:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-4 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-5.cm-active, ~ .HyperMD-list-line-5 ~ :is(.HyperMD-list-line-6).cm-active),
+.HyperMD-list-line-5:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-5 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-6).cm-active)) > .cm-hmd-list-indent {
+  &::before {
+    --list-threading-active-offset: calc(var(--list-threading-active-offset-extra) + var(--list-padding-inline-start-fix) + 3 * var(--list-indent));
+  }
+}
+/* level 5 thread offset */
+.HyperMD-list-line-5:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-5 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6).cm-active),
+.HyperMD-list-line-5:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-5 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-6.cm-active),
+.HyperMD-list-line-6:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-6 ~ .HyperMD-list-line.cm-active)):is(.cm-active) > .cm-hmd-list-indent {
+  &::before {
+    --list-threading-active-offset: calc(var(--list-threading-active-offset-extra) + var(--list-padding-inline-start-fix) + 4 * var(--list-indent));
+  }
+}
+/* tails */
+.HyperMD-list-line-1:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-1 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4, .HyperMD-list-line-3, .HyperMD-list-line-2).cm-active),
+.HyperMD-list-line-2:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-2 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4, .HyperMD-list-line-3).cm-active),
+.HyperMD-list-line-3:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-3 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4).cm-active),
+.HyperMD-list-line-4:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-4 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5).cm-active),
+.HyperMD-list-line-5:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-5 ~ .HyperMD-list-line.cm-active)):has(~ :is(.HyperMD-list-line-6).cm-active) {
+  &::before {
+    content: "";
+    position: absolute;
+    left: var(--list-threading-active-offset);
+    bottom: 0;
+    width: var(--list-threading-active-width);
+    background-color: var(--list-threading-active-color);
+    height: calc(100% - 0.75em);
+  }
+  .is-live-preview &:is(.HyperMD-task-line)::before {
+    max-height: calc(100% - 1.3em);
+  }
+}
+/* in-between lines */
+.HyperMD-list-line-1:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-1 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-2.cm-active, ~ .HyperMD-list-line-2 ~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4, .HyperMD-list-line-3).cm-active),
+.HyperMD-list-line-2:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-2 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-3.cm-active, ~ .HyperMD-list-line-3 ~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4).cm-active),
+.HyperMD-list-line-3:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-3 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-4.cm-active, ~ .HyperMD-list-line-4 ~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5).cm-active),
+.HyperMD-list-line-4:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-4 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-5.cm-active, ~ .HyperMD-list-line-5 ~ :is(.HyperMD-list-line-6).cm-active),
+.HyperMD-list-line-5:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-5 ~ .HyperMD-list-line.cm-active)) ~ .HyperMD-list-line:has(.cm-formatting-list-ul):has(~ .HyperMD-list-line-6.cm-active) {
+  &::before {
+    content: "";
+    position: absolute;
+    left: var(--list-threading-active-offset);
+    top: 0;
+    height: 100%;
+    width: var(--list-threading-active-width);
+    background-color: var(--list-threading-active-color);
+  }
+}
+/* elbows */
+.HyperMD-list-line-2:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-2 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4, .HyperMD-list-line-3).cm-active)),
+.HyperMD-list-line-3:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-3 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5, .HyperMD-list-line-4).cm-active)),
+.HyperMD-list-line-4:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-4 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-6, .HyperMD-list-line-5).cm-active)),
+.HyperMD-list-line-5:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-5 ~ .HyperMD-list-line.cm-active)):is(.cm-active, :has(~ :is(.HyperMD-list-line-6).cm-active)),
+.HyperMD-list-line-6:has(.cm-formatting-list-ul):not(:has(~ .HyperMD-list-line-6 ~ .HyperMD-list-line.cm-active)):is(.cm-active) {
+  & > .cm-hmd-list-indent::before {
+    content: "";
+    position: absolute;
+    left: var(--list-threading-active-offset);
+    width: calc(var(--list-indent) - var(--list-threading-active-width));
+    top: 0;
+    border-bottom-left-radius: var(--radius-m);
+    border-bottom: var(--list-threading-active-width) solid var(--list-threading-active-color);
+    border-left: var(--list-threading-active-width) solid var(--list-threading-active-color);
+    height: calc(0.775em);
+  }
+  .is-live-preview &:is(.HyperMD-task-line) > .cm-hmd-list-indent::before {
+    max-width: calc(var(--list-indent) - 0.35em - var(--list-threading-active-offset-extra));
+  }
 }
 /* treeview from ElsaTam's "Fancy a Story"*/
 @charset "UTF-8";
@@ -4786,7 +5093,7 @@ settings:
         id: hover-callout
         title: Hover to Expand Callout
         type: class-toggle
-        default: false
+        default: true
     -
         id: callout-style
         title: Callout Style
@@ -4806,280 +5113,6 @@ settings:
             -
                 label: Card
                 value: callout-floating
-    -
-        id: list-options
-        title: Lists
-        description: original by ElsaTam
-        type: heading
-        level: 3
-        collapsed: true
-    - 
-        id: general-settings
-        title: General
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: list-style-enable-active-line
-        title: Enable changes on active line
-        description: If enabled, the custom numbering/bullet will also be changed on the active line in live preview, which might make it harder to see and manipulate the underlying markdown.
-        type: class-toggle
-    -
-        id: list-style-enable-font-color
-        title: Use font color
-        description: "Doesn't work if you enable \"Use custom font\""
-        type: class-toggle
-        default: false
-    -
-        id: list-style-enable-color
-        title: Use custom color
-        type: class-toggle
-        default: false
-    - 
-        id: list-style-color
-        title: Numbering and bullets custom color
-        type: variable-themed-color
-        opacity: false
-        format: rgb-values
-        default-light: '#ababab'
-        default-dark: '#666666'
-    -
-        id: list-style-enable-bold
-        title: Bold numbering and bullets
-        type: class-toggle
-        default: false
-    -  
-        id: list-style-enable-glow
-        title: Glow numbering and bullets
-        type: class-toggle
-        default: false
-    - 
-        id: indent-settings
-        title: Indentation
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: list-style-indent-size
-        title: Indentation size (em)
-        type: variable-number
-        default: 2.25
-        format: em
-    -
-        id: list-style-indent-editing-size
-        title: Editing indent (em)
-        type: variable-number
-        default: 0.75
-        format: em
-    - 
-        id: ol-settings
-        title: Ordered lists
-        type: heading
-        level: 4
-        collapsed: true
-    - 
-        id: ol-settings-info-text
-        title: Style depth
-        description: "Choose the style of the numbering for each depth. Lists deeper than 6 nested lists will use the default obsidian marker.<br>You can find the description of the styles [here](https://www.w3schools.com/cssref/pr_list-style-type.php)."
-        type: info-text
-        markdown: true
-    - 
-        id: list-number-style-type-1
-        title: Style depth 1
-        type: variable-select
-        allowEmpty: false
-        default: decimal
-        options:
-            - decimal
-            - decimal-leading-zero
-            - lower-roman
-            - upper-roman
-            - lower-greek
-            - lower-latin
-            - upper-latin
-            - armenian
-            - georgian
-            - lower-alpha
-            - upper-alpha
-            - none
-    - 
-        id: list-number-style-type-2
-        title: Style depth 2
-        type: variable-select
-        allowEmpty: false
-        default: lower-alpha
-        options:
-            - decimal
-            - decimal-leading-zero
-            - lower-roman
-            - upper-roman
-            - lower-greek
-            - lower-latin
-            - upper-latin
-            - armenian
-            - georgian
-            - lower-alpha
-            - upper-alpha
-            - none
-    - 
-        id: list-number-style-type-3
-        title: Style depth 3
-        type: variable-select
-        allowEmpty: false
-        default: lower-roman
-        options:
-            - decimal
-            - decimal-leading-zero
-            - lower-roman
-            - upper-roman
-            - lower-greek
-            - lower-latin
-            - upper-latin
-            - armenian
-            - georgian
-            - lower-alpha
-            - upper-alpha
-            - none
-    - 
-        id: list-number-style-type-4
-        title: Style depth 4
-        type: variable-select
-        allowEmpty: false
-        default: decimal
-        options:
-            - decimal
-            - decimal-leading-zero
-            - lower-roman
-            - upper-roman
-            - lower-greek
-            - lower-latin
-            - upper-latin
-            - armenian
-            - georgian
-            - lower-alpha
-            - upper-alpha
-            - none
-    - 
-        id: list-number-style-type-5
-        title: Style depth 5
-        type: variable-select
-        allowEmpty: false
-        default: lower-alpha
-        options:
-            - decimal
-            - decimal-leading-zero
-            - lower-roman
-            - upper-roman
-            - lower-greek
-            - lower-latin
-            - upper-latin
-            - armenian
-            - georgian
-            - lower-alpha
-            - upper-alpha
-            - none
-    - 
-        id: list-number-style-type-6
-        title: Style depth 6
-        type: variable-select
-        allowEmpty: false
-        default: lower-roman
-        options:
-            - decimal
-            - decimal-leading-zero
-            - lower-roman
-            - upper-roman
-            - lower-greek
-            - lower-latin
-            - upper-latin
-            - armenian
-            - georgian
-            - lower-alpha
-            - upper-alpha
-            - none
-    - 
-        id: ul-settings
-        title: Unordered lists
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: list-style-enable-bullet-font
-        title: Use custom font for the bullets
-        type: class-toggle
-        default: false
-    - 
-        id: list-style-bullet-font
-        title: Custom bullet font
-        type: variable-text
-        default: Arial, sans-serif
-    - 
-        id: ul-settings-unique-bullet
-        title: One bullet to rule them all
-        description: "Use the same bullet for any level"
-        type: heading
-        level: 5
-        collapsed: true
-    -
-        id: list-style-enable-unique-bullet
-        title: Enable
-        type: class-toggle
-        default: false
-    - 
-        id: list-bullet-style-type-unique
-        title: Marker
-        type: variable-text
-        default: "-"
-        quotes: true
-    - 
-        id: ul-settings-depth-bullet
-        title: One bullet by depth
-        description: "Doesn't work if \"One bullet to rule them all\" is enabled."
-        type: heading
-        level: 4
-        collapsed: true
-    - 
-        id: ul-settings-info-text
-        title: Style depth
-        description: "Choose the style of the bullet for each depth. Lists deeper than 6 nested lists will use the default obsidian marker.<br>You can find a list of unicode character for geometric shapes [here](https://en.wikipedia.org/wiki/Geometric_Shapes_(Unicode_block))."
-        type: info-text
-        markdown: true
-    - 
-        id: list-bullet-style-type-1
-        title: Marker depth 1
-        type: variable-text
-        default: ●
-        quotes: true
-    - 
-        id: list-bullet-style-type-2
-        title: Marker depth 2
-        type: variable-text
-        default: ○
-        quotes: true
-    - 
-        id: list-bullet-style-type-3
-        title: Marker depth 3
-        type: variable-text
-        default: ■
-        quotes: true
-    - 
-        id: list-bullet-style-type-4
-        title: Marker depth 4
-        type: variable-text
-        default: ●
-        quotes: true
-    - 
-        id: list-bullet-style-type-5
-        title: Marker depth 5
-        type: variable-text
-        default: ○
-        quotes: true
-    - 
-        id: list-bullet-style-type-6
-        title: Marker depth 6
-        type: variable-text
-        default: ■
-        quotes: true
     -
     
         id: tag-options
@@ -5116,7 +5149,7 @@ settings:
         id: clean-embed
         title: Seamless Embedded Links
         type: class-toggle
-        default: false
+        default: true
     -
         id: link-style
         title: Link Style
@@ -5238,7 +5271,7 @@ settings:
         id: h1-center
         title: Center Header 1
         type: class-toggle
-        default: false
+        default: true
     -
         id: h1-bottom-border
         title: Header 1 Bottom Border
@@ -5275,7 +5308,7 @@ settings:
         id: h2-bottom-border
         title: Header 2 Bottom Border
         type: class-toggle
-        default: false
+        default: true
     -
         id: h3-options
         title: Header 3
@@ -5302,7 +5335,7 @@ settings:
         id: h3-center
         title: Center Header 3
         type: class-toggle
-        default: false
+        default: true
     -
         id: h3-bottom-border
         title: Header 3 Bottom Border
@@ -5471,7 +5504,7 @@ settings:
         id: hide-buttons
         title: Hide Buttons
         type: class-toggle
-        default: false
+        default: true
     -
         id: hide-tabs
         title: Hide Tabs
@@ -5486,13 +5519,13 @@ settings:
         id: hide-scrollbars
         title: Hide Scrollbars
         type: class-toggle
-        default: false
+        default: true
     -
         id: hide-vault
         title: Hide Vault Name
         description: This option completely hides the Vault name; it will not reappear on hover.
         type: class-toggle
-        default: false
+        default: true
     -
         id: ultra-focus
         title: Enable Ultra Focus (A.K.A. Full-Screen)
