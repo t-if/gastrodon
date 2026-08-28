@@ -5126,9 +5126,9 @@ settings:
             -
                 label: Outlined
                 value: callout-outlined
-             -
-                 label: Card
-                 value: callout-floating
+            -
+                label: Card
+                value: callout-floating
     -
         id: list-options
         title: Lists
