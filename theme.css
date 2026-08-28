@@ -1095,20 +1095,27 @@ border-bottom: 1.4px var(--line-style) var(--hr-color);
 }
 /* ----- callouts ----- */
 .callout, .callout-normal .callout {
+    /* Legacy fallback for custom callouts that still use an RGB triplet. */
     background-color: rgba(var(--callout-color), 0.17);
+    /* Obsidian 1.13+ expects --callout-color to be a complete CSS color. */
+    background-color: color-mix(in oklch, var(--callout-color) 17%, transparent);
     border: none;
     position: relative;
     z-index: 2;
 }
 .callout-bordered .callout {
-    border: 1.2px var(--line-style) rgb(var(--callout-color));
+    border: 1.2px var(--line-style);
+    border-color: rgb(var(--callout-color));
+    border-color: var(--callout-color);
 }
 .callout-outlined {
     --callout-title-padding: 5px;
 }
 .callout-outlined .callout, .callout-outlined .markdown-source-view.mod-cm6 .callout {
     background-color: transparent !important;
-    border: 1.5px var(--line-style) rgb(var(--callout-color));
+    border: 1.5px var(--line-style);
+    border-color: rgb(var(--callout-color));
+    border-color: var(--callout-color);
     overflow: visible;
     margin: 1.5em 0px 1.5em;
 }
@@ -1122,15 +1129,18 @@ border-bottom: 1.4px var(--line-style) var(--hr-color);
 .callout-floating .callout, .callout-floating .markdown-source-view.mod-cm6 .callout {
     margin: 13px 0px;
 	border-radius: var(--radius-s);
-    border: 1.2px var(--line-style) rgba(var(--callout-color), 0.7);
+    border: 1.2px var(--line-style);
+    border-color: rgba(var(--callout-color), 0.7);
+    border-color: color-mix(in oklch, var(--callout-color) 70%, transparent);
 	box-shadow: var(--shadow-s);
     background-color: transparent;
     padding: 0px;
 }
 .callout-floating .callout-title, .callout-floating .markdown-source-view.mod-cm6 .callout-title {
-background-color: rgba(var(--callout-color), 0.2);
-padding: 10px;
-min-width: 100%;
+    background-color: rgba(var(--callout-color), 0.2);
+    background-color: color-mix(in oklch, var(--callout-color) 20%, transparent);
+    padding: 10px;
+    min-width: 100%;
 }
 .callout-floating .callout-content, .callout-floating .markdown-source-view.mod-cm6 .callout-content {
     padding: 0px 10px; 
@@ -1141,7 +1151,7 @@ min-width: 100%;
     --callout-color: var(--callout-warning);
 }
 body {
-    --callout-bug: var(--color-pink-rgb);
+    --callout-bug: var(--color-pink);
 }
 /* callout autohide  
 from https://github.com/Scaryharry4*/
@@ -1644,43 +1654,43 @@ Author: ElsaTam (Kapirklaa in Discord)
   /* Colors */
   
   .callout[data-callout-metadata~=gray] {
-    --callout-color: var(--color-gray-rgb);
+    --callout-color: rgb(var(--color-gray-rgb));
   }
   
   .callout[data-callout-metadata~=brown] {
-    --callout-color: var(--color-brown-rgb);
+    --callout-color: rgb(var(--color-brown-rgb));
   }
   
   .callout[data-callout-metadata~=red] {
-    --callout-color: var(--color-red-rgb);
+    --callout-color: var(--color-red);
   }
   
   .callout[data-callout-metadata~=orange] {
-    --callout-color: var(--color-orange-rgb);
+    --callout-color: var(--color-orange);
   }
   
   .callout[data-callout-metadata~=yellow] {
-    --callout-color: var(--color-yellow-rgb);
+    --callout-color: var(--color-yellow);
   }
   
   .callout[data-callout-metadata~=green] {
-    --callout-color: var(--color-green-rgb);
+    --callout-color: var(--color-green);
   }
   
   .callout[data-callout-metadata~=cyan] {
-    --callout-color: var(--color-cyan-rgb);
+    --callout-color: var(--color-cyan);
   }
   
   .callout[data-callout-metadata~=blue] {
-    --callout-color: var(--color-blue-rgb);
+    --callout-color: var(--color-blue);
   }
   
   .callout[data-callout-metadata~=purple] {
-    --callout-color: var(--color-purple-rgb);
+    --callout-color: var(--color-purple);
   }
   
   .callout[data-callout-metadata~=pink] {
-    --callout-color: var(--color-pink-rgb);
+    --callout-color: var(--color-pink);
   }
   
   .callout[data-callout-metadata~=no-bg], .callout[data-callout-metadata~=no-bg] > .callout-content, .callout[data-callout-metadata~=no-bg] > .callout-title,
@@ -1832,7 +1842,7 @@ body {
   float: left;
   clear: left;
   margin: 12px 12px 12px 0;
-}  
+}
   /* conversation */
   .callout[data-callout=conversation-minimalist],
   .callout[data-callout=conversation],
@@ -2624,6 +2634,7 @@ li[data-task="b"] > p > input:checked {
   background-color: var(--list-marker-color, var(--text-normal));
 }
 /* ---------- list threading ---------- */
+body.bullet-threading {
 .markdown-source-view .HyperMD-list-line {
   --list-padding-inline-start-fix: 0px;
   /* Standardized threading values */
@@ -2734,6 +2745,7 @@ li[data-task="b"] > p > input:checked {
   .is-live-preview &:is(.HyperMD-task-line) > .cm-hmd-list-indent::before {
     max-width: calc(var(--list-indent) - 0.35em - var(--list-threading-active-offset-extra));
   }
+}
 }
 /* treeview from ElsaTam's "Fancy a Story"*/
 @charset "UTF-8";
@@ -3779,7 +3791,7 @@ body, .theme-default {
     --accent-s: 100% !important;
     --accent-l: 50% !important;
     --callout-title-color: var(--text-normal);
-    --callout-quote: 216, 216, 216;
+    --callout-quote: rgb(216, 216, 216);
     --callout-radius: 5px;
     --font-default: 'Inter', 'Aevnir Next', sans-serif;
     --color-red-rgb: 220, 83, 40;
@@ -3802,18 +3814,22 @@ body, .theme-default {
 /* --- callouts --- */
 .theme-anytype.theme-light .callout {
     background-color: rgba(var(--callout-color), 0.3);
+    background-color: color-mix(in oklch, var(--callout-color) 30%, transparent);
 }
 .theme-anytype.callout-outlined .callout {
     background-color: transparent !important;
     border-width: 2px;
     border-color: rgba(var(--callout-color), 0.75);
+    border-color: color-mix(in oklch, var(--callout-color) 75%, transparent);
 }
 .theme-anytype.callout-bordered .callout {
     background-color: rgba(var(--callout-color), 0.3);
+    background-color: color-mix(in oklch, var(--callout-color) 30%, transparent);
     border-width: 2px;
 }
 .theme-anytype.theme-dark .callout {
     background-color: rgba(var(--callout-color), 0.3);
+    background-color: color-mix(in oklch, var(--callout-color) 30%, transparent);
 }
 .theme-anytype .callout-icon .svg-icon {
     color: var(--text-normal);
@@ -5110,11 +5126,22 @@ settings:
             -
                 label: Outlined
                 value: callout-outlined
-            -
-                label: Card
-                value: callout-floating
+             -
+                 label: Card
+                 value: callout-floating
     -
-    
+        id: list-options
+        title: Lists
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: bullet-threading
+        title: Bullet Threading
+        description: Highlight the active branch of nested bullet lists in Live Preview.
+        type: class-toggle
+        default: true
+    -
         id: tag-options
         title: Tags
         type: heading
