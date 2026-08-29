@@ -9,7 +9,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 /* -- custom font -- */
 .custom-font-toggle {
-    --font-default: var(--custom-font), sans-serif !important;
+    --font-interface-theme: var(--custom-font), sans-serif;
+    --font-text-theme: var(--custom-font), sans-serif;
+    --font-monospace-theme: var(--custom-font), monospace;
 }
 /* ---------- main layout ----------*/
 /* --- get rid of dividers that break the theme --- */
@@ -3106,10 +3108,12 @@ body {
     --text-highlight-bg: hsl(var(--accent-h), var(--accent-s), var(--accent-l), 0.3);
     --color-base-05: var(--color-base-20);
 }
-/* ----- default (Macaroon) theme ----- */
-body, .theme-default {
-    --font-default: 'DM Mono', sans-serif;
+body:is(:not(.custom-font-toggle)) {
+    --font-interface-theme: 'DM Mono', sans-serif;
+    --font-text-theme: 'DM Mono', sans-serif;
+    --font-monospace-theme: 'Space Mono', monospace;
 }
+/* ----- default (Macaroon) theme ----- */
 .theme-light, .theme-default.theme-light {
     --accent-h: 323;
     --accent-s: 30%;
@@ -3194,7 +3198,6 @@ body, .theme-default {
     color: var(--interactive-accent) !important;
   }
   .theme-crystal {
-    --font-default:  'IBM Plex Sans', 'Yu Micho', 'Franklin Gothic', 'Lucida Sans', sans-serif;
     --nav-item-color-active: var(--color-accent);
   }
   .theme-crystal .nav-folder.mod-root > .nav-folder-title {
@@ -3202,7 +3205,6 @@ body, .theme-default {
     font-weight: 900;
     font-size: 1.25em;
   }
-  
   .theme-crystal.theme-light {
     color-scheme: light;
     --icon-color-focused: var(--interactive-accent);
@@ -3229,7 +3231,6 @@ body, .theme-default {
     --color-purple: #969cc1;
     --color-pink-rgb: 126, 88, 216;
     --color-pink: #b69ac2;
-    
     --color-base-00: #e8e8e8;
     --color-base-05: #e2e2e2;
     --color-base-10: #dadada;
@@ -3243,21 +3244,6 @@ body, .theme-default {
     --color-base-70: #717171;
     --color-base-100: #000000;
     --background-secondary: var(--color-base-60);
-    
-    /* 
-    --color-base-00: #e2e9ed;
-    --color-base-05: #c5d5de;
-    --color-base-10: #ccd9e1;
-    --color-base-20: #2c323b;
-    --color-base-25: #bac5d0;
-    --color-base-30: #5f728f41;
-    --color-base-35: #e05f5f;
-    --color-base-40: #9facbb;
-    --color-base-50: #5877a2;
-    --color-base-60: #7a5757;
-    --color-base-70: #617686;
-    --color-base-100: #222222;
-    */
   }
   .theme-crystal.theme-dark {
     color-scheme: dark;
@@ -3268,8 +3254,6 @@ body, .theme-default {
     --accent-s: 65%;
     --accent-l: 62%;
     --mono-rgb-100: 255, 255, 255;
-    --color-red-rgb: 228, 111, 125;
-    --color-red-rgb: 255, 0, 0;
     --color-red-rgb: 255, 0, 0;
     --color-red: #d96943;
     --color-green-rgb: 8, 185, 78;
@@ -3286,19 +3270,6 @@ body, .theme-default {
     --color-purple: #969cc1;
     --color-pink-rgb: 126, 88, 216;
     --color-pink: #b69ac2;
-    /*
-    --color-base-00: #32373e;
-    --color-base-10: #3c4249;
-    --color-base-20: #1d1f22;
-    --color-base-25: #4e545c;
-    --color-base-30: #575e6765;
-    --color-base-35: #697179;
-    --color-base-40: #7b848e;
-    --color-base-50: #8b949f;
-    --color-base-60: #919ba6;
-    --color-base-70: #757b82;
-    --color-base-100: #a1abb7;
-    */
     --color-base-00: #2d323a;
     --color-base-10: #3a3f42;
     --color-base-20: #26272e;
@@ -3320,7 +3291,6 @@ body, .theme-default {
     font-weight: 700;
   }
   .theme-ash-old {
-    --font-default: 'Hindi', 'Moulpali', 'Bahnschrift', sans-serif;
     --nav-item-color-active: var(--color-accent);
   }
   .theme-ash-old.theme-light {
@@ -3371,7 +3341,6 @@ body, .theme-default {
     --accent-h: 5 !important;
     --accent-s: 59% !important;
     --accent-l: 60% !important;
-    --color-red-rgb: 228, 111, 125;
     --color-red-rgb: 255, 0, 0;
     --color-red: #ff0000;
     --color-green-rgb: 8, 185, 78;
@@ -3401,9 +3370,6 @@ body, .theme-default {
     --color-base-100: #b5a4a4;
   }
   /* ----- spring theme ----- */
-  .theme-spring {
-    --font-default: 'Courgette', 'Handlee', cursive;
-  }
   .theme-spring.colored-bold-and-italic {
     --bold-color: rgb(135, 204, 135);
   }
@@ -3482,12 +3448,6 @@ body, .theme-default {
   }
   /* ----- nord theme ----- */
    .theme-nord.colorful-headings {
-   /* --h1-color: #5E81AC;
-    --h2-color: #7da0c3;
-    --h3-color: #85b4cf;
-    --h4-color: #80b5c3;
-    --h5-color: #81b8c2;
-    --h6-color: #8FBCBB;*/
     --h1-color: var(--color-red);
     --h2-color: var(--color-orange);
     --h3-color: var(--color-yellow);
@@ -3511,7 +3471,6 @@ body, .theme-default {
     --accent-h: 92 !important;
     --accent-s: 28% !important;
     --accent-l: 65% !important; 
-    --font-default: 'Bahnschrift', 'Aevnir Next', sans-serif;
   }
   .theme-nord.theme-light {
     color-scheme: light;
@@ -3569,24 +3528,18 @@ body, .theme-default {
     --color-pink-rgb: 180, 142, 173;
     --color-pink: #b48ead;
     --color-base-00: hsl(220, 16%, 22%); 
-    /* --color-base-00:  #3B4252; */
     --color-base-10: hsl(220, 16.8%, 25%);
      --color-base-20: hsl(222, 16%, 28%); 
-    /*--color-base-20:  #2E3440; */
     --color-base-25: #474e5f;
     --color-base-30: #434C5E;
     --color-base-35: #50596b;
     --color-base-40: #4C566A;
     --color-base-50: #5f697e;
-    --color-base-60: #7d8698;
     --color-base-60: #979fb1;
     --color-base-70: #b5bdcc;
     --color-base-100: #cad0de;
   }
   /* ----- classic obsidian theme ----- */
-  .theme-classic {
-    --font-default: 'Aevnir Next', sans-serif;
-  }
  .theme-classic.theme-light {
   color-scheme: light;
   --highlight-mix-blend-mode: darken;
@@ -3654,10 +3607,8 @@ body, .theme-default {
     --color-base-70: #bababa;
     --color-base-100: #dadada;
 }
-  
 /* ----- light & bright theme ----- */
 .theme-light-and-bright {
-  --font-default: 'Noto Sans', sans-serif;
   --h1-weight: 600;
   --h2-weight: 600;
   --h3-weight: 600;
@@ -3732,7 +3683,6 @@ body, .theme-default {
     --color-base-70: hsl(calc(0 + var(--accent-h)), 15%, 45%);
     --color-base-100: hsl(calc(0 + var(--accent-h)), 15%, 75%);
   }
-  
   /* ----- solarized theme ----- */
   .theme-solarized.colorful-headings {
     --h1-color: var(--color-cyan);
@@ -3751,7 +3701,6 @@ body, .theme-default {
     --h6-color: var(--color-purple);
   }
   .theme-solarized {
-    --font-default: 'Hind', sans-serif;
     --accent-h: 18 !important;
     --accent-s: 80% !important;
     --accent-l: 44% !important;
@@ -3806,9 +3755,6 @@ body, .theme-default {
     --color-base-100: #8a9a9c;
 }
 /* ----- gruvbox theme ----- */
-.theme-gruvbox {
-    --font-default: 'Hind', sans-serif;
-}
 .theme-gruvbox.colorful-headings {
     --h1-color: var(--color-red);
     --h2-color: var(--color-orange);
@@ -3952,7 +3898,6 @@ body, .theme-default {
     --callout-title-color: var(--text-normal);
     --callout-quote: rgb(216, 216, 216);
     --callout-radius: 5px;
-    --font-default: 'Inter', 'Aevnir Next', sans-serif;
     --color-red-rgb: 220, 83, 40;
     --color-red: #DC5328;
     --color-green-rgb: 139, 208, 49;
@@ -4107,10 +4052,6 @@ body, .theme-default {
     --bold-color: var(--color-blue);
     --italic-color: var(--color-purple);
 }
-/* ------ typography ------ */
-.theme-chinchilla {
---font-default: 'Avenir Next', 'Roboto', sans-serif;
-}
 /* ----- celestial theme ----- */
 /* --- vault title --- */
 .theme-celestial.theme-light.colorful-headings {
@@ -4148,10 +4089,8 @@ body, .theme-default {
     font-weight: bold;
     text-align: center;
 }
-
 .theme-celestial.theme-light {
     color-scheme: light;
-    --font-default: 'Yu Gothic', 'Inter', sans-serif;
     --highlight-mix-blend-mode: darken;
     --mono-rgb-0: 255, 255, 255;
     --mono-rgb-100: 0, 0, 0;
@@ -4190,7 +4129,6 @@ body, .theme-default {
   }
   .theme-celestial.theme-dark {
     color-scheme: dark;
-    --font-default: 'Merienda', cursive;
     --highlight-mix-blend-mode: lighten;
     --background-modifier-border: #3b3f56;
     --mono-rgb-0: 0, 0, 0;
