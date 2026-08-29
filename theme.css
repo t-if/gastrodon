@@ -136,10 +136,11 @@ body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left:is(:hover, :
 }
 body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
     opacity: 0;
-    transition: opacity 150ms ease;
+    transition: opacity 540ms ease;
 }
 body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left:is(:hover, :focus-within) :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
     opacity: 1;
+    transition: opacity 540ms ease;
 }
 /* --- floating titlebar --- */
 .view-header-title {
@@ -763,16 +764,86 @@ font-weight: 300;
     background-color: transparent;
   }
 }
+/* ---------- properties ---------- */
+/*
+Hover treatment adapted from The Useful Walrus:
+https://discord.com/channels/686053708261228577/702656734631821413/1144209029464342538
+*/
+.hover-properties .metadata-properties-title {
+  opacity: 0.2;
+  pointer-events: none;
+  transition: opacity 500ms ease, color 500ms ease;
+}
+.hover-properties .metadata-container:hover .metadata-properties-title,
+.hover-properties .metadata-container:focus-within .metadata-properties-title {
+  color: var(--text-accent);
+  opacity: 1;
+  pointer-events: auto;
+}
+.hover-properties .metadata-content {
+  height: 0;
+  margin-bottom: -1.8em;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 200ms cubic-bezier(0.25, 1, 0.5, 1),
+    margin-bottom 200ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hover-properties .metadata-container:hover .metadata-content,
+.hover-properties .metadata-container:focus-within .metadata-content {
+  height: auto;
+  margin-bottom: 0.5em;
+  opacity: 1;
+  overflow: visible;
+  pointer-events: auto;
+}
+.properties-title-icon .metadata-properties-title {
+  font-size: 0;
+  line-height: 1;
+}
+.properties-title-icon .metadata-properties-title::before {
+  background-color: currentColor;
+  content: "";
+  display: inline-block;
+  height: 16px;
+  vertical-align: middle;
+  width: 16px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 6h13'/%3E%3Cpath d='M8 12h13'/%3E%3Cpath d='M8 18h13'/%3E%3Cpath d='M3 6h.01'/%3E%3Cpath d='M3 12h.01'/%3E%3Cpath d='M3 18h.01'/%3E%3C/svg%3E");
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 6h13'/%3E%3Cpath d='M8 12h13'/%3E%3Cpath d='M8 18h13'/%3E%3Cpath d='M3 6h.01'/%3E%3Cpath d='M3 12h.01'/%3E%3Cpath d='M3 18h.01'/%3E%3C/svg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+@media (hover: none) {
+  .hover-properties .metadata-properties-title {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .hover-properties .metadata-content {
+    height: auto;
+    margin-bottom: 0.5em;
+    opacity: 1;
+    overflow: visible;
+    pointer-events: auto;
+  }
+}
 /* ---------- bases ---------- */
+body {
+  --bases-table-header-icon-display: none;
+  --bases-table-header-weight: 700;
+}
 .maplibregl-ctrl-attrib.maplibregl-compact-show {
   visibility: hidden;
 }
-.bases-embed .bases-header {
+.fade-bases-header .bases-embed .bases-header {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   pointer-events: none;
 }
-.bases-embed:hover .bases-header {
+.fade-bases-header .bases-embed:hover .bases-header {
   opacity: 1;
   pointer-events: auto;
 }
@@ -5907,6 +5978,49 @@ settings:
         title: Header 6 Bottom Border
         type: class-toggle
         default: false
+    -
+        id: bases-options
+        title: Bases
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: bases-table-header-icon-display
+        title: Table Header Icons
+        description: Show or hide property-type icons in Bases table headers.
+        type: variable-select
+        default: none
+        options:
+            -
+                label: Show
+                value: flex
+            -
+                label: Hide
+                value: none
+    -
+        id: fade-bases-header
+        title: Fade Embedded Bases Header
+        description: Hide the header of an embedded Base until the embed is hovered.
+        type: class-toggle
+        default: true
+    -
+        id: properties-options
+        title: Properties
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: hover-properties
+        title: Hover to Reveal Properties
+        description: Keep in-note properties collapsed and faded until the Properties area is hovered or focused. Properties remain visible on touch devices.
+        type: class-toggle
+        default: true
+    -
+        id: properties-title-icon
+        title: Replace Properties Title with Icon
+        description: Replace the visible Properties label with a compact Lucide list icon while preserving the original label for assistive technology.
+        type: class-toggle
+        default: true
     -
         id: text-options
         title: Text
