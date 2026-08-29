@@ -301,7 +301,7 @@ Gastrodon supports the standard `- [ ]` and `- [x]` states plus:
 | `u`  | Up          | `d`  | Down       |
 | `R`  | Rule        |        |            |
 
-Add `#p1`, `#p2`, or `#p3` to a task for high, medium, or low priority styling.
+Add `#A`, `#B`, or `#C` to a task for high, medium, or low priority styling.
 
 ## Optional plugin styling
 
@@ -323,8 +323,8 @@ Gastrodon is a remix of [Chime](https://github.com/Bluemoondragon07/chime-theme)
 - Dataview cards and many checkbox states from [Minimal](https://github.com/kepano/obsidian-minimal) by kepano.
 - Priority checkboxes and theorem-callout work adapted from [r-u-s-h-i-k-e-s-h&#39;s snippet collection](https://github.com/r-u-s-h-i-k-e-s-h/Obsidian-CSS-Snippets).
 - Rainbow folders originally by [Lithou](https://forum.obsidian.md/t/adding-color-to-obsidian-a-rainbow-of-possibility/12805/11).
-- Image alignment adapted from [gautamneeraj&#39;s Obsidian Forum snippet](https://forum.obsidian.md/t/align-image/78050).
+- Image alignment adapted from [gautamneera’s Obsidian Forum snippet](https://forum.obsidian.md/t/align-image/78050).
 - Outline threading and dark-mode media dimming adapted from [Maple by subframe7536](https://github.com/subframe7536/obsidian-theme-maple).
-- Hover-expanding ribbon behavior adapted from [Adrenaline by Spekulucius]().
+- Hover-expanding ribbon behavior adapted from [Adrenaline by Spekulucius](https://github.com/Spekulucius/obsidian-adrenaline).
 
 See the comments in `theme-beta.css` for source-specific attribution and licensing notes.
