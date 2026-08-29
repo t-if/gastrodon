@@ -108,6 +108,37 @@ body{
 .workspace-split.mod-left-split > .workspace-leaf-resize-handle {
   border-right-style: var(--line-style);
 }
+/* Keep the side-dock card edge and its resize handle on the same boundary. */
+body:not(.is-mobile) .workspace-split.mod-left-split .workspace-leaf {
+    margin-right: 0;
+}
+body:not(.is-mobile) .workspace-split.mod-right-split .workspace-leaf {
+    margin-left: 0;
+}
+/* --- optional hover-expanding left ribbon --- */
+body {
+    --gastrodon-ribbon-collapsed-width: 12px;
+    --gastrodon-ribbon-expanded-width: var(--ribbon-width, 44px);
+}
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left {
+    flex-basis: var(--gastrodon-ribbon-collapsed-width);
+    width: var(--gastrodon-ribbon-collapsed-width);
+    min-width: var(--gastrodon-ribbon-collapsed-width);
+    overflow: hidden;
+    transition: flex-basis 180ms ease, width 180ms ease, min-width 180ms ease;
+}
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left:is(:hover, :focus-within) {
+    flex-basis: var(--gastrodon-ribbon-expanded-width);
+    width: var(--gastrodon-ribbon-expanded-width);
+    min-width: var(--gastrodon-ribbon-expanded-width);
+}
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
+    opacity: 0;
+    transition: opacity 150ms ease;
+}
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left:is(:hover, :focus-within) :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
+    opacity: 1;
+}
 /* --- floating titlebar --- */
 .view-header-title {
     font-size: 14px;
@@ -204,6 +235,29 @@ img[alt*="right"] {
     margin-left: 1rem;
     margin-bottom: 2px;
     margin-top: 2px;
+}
+/* --- dark-mode media dimming, adapted from Maple --- */
+body.theme-dark.dim-images-dark :is(
+    .markdown-rendered img:not(.emoji),
+    .markdown-source-view.mod-cm6 img:not(.emoji),
+    .workspace-leaf-content[data-type="image"] img
+) {
+    filter: brightness(0.7);
+    transition: filter 180ms ease;
+}
+body.theme-dark.dim-images-dark :is(
+    .markdown-rendered img:not(.emoji),
+    .markdown-source-view.mod-cm6 img:not(.emoji),
+    .workspace-leaf-content[data-type="image"] img
+):hover {
+    filter: brightness(0.85);
+}
+body.theme-dark.dim-pdfs-dark .pdfViewer {
+    opacity: 0.7;
+    transition: opacity 180ms ease;
+}
+body.theme-dark.dim-pdfs-dark .pdfViewer:hover {
+    opacity: 0.85;
 }
 /* tooltips */
 body {
@@ -1094,6 +1148,9 @@ padding-bottom: 2px;
 border-bottom: 1.4px var(--line-style) var(--hr-color);
 }
 /* ----- callouts ----- */
+.no-fold .callout-fold {
+    display: none;
+}
 .callout, .callout-normal .callout {
     /* Legacy fallback for custom callouts that still use an RGB triplet. */
     background-color: rgba(var(--callout-color), 0.17);
@@ -2746,6 +2803,108 @@ body.bullet-threading {
     max-width: calc(var(--list-indent) - 0.35em - var(--list-threading-active-offset-extra));
   }
 }
+}
+/* ---------- outline panel threading ---------- */
+/* Adapted from Maple's Logseq-inspired outline treatment. */
+body {
+  --gastrodon-outline-thread-width: 2px;
+  --gastrodon-outline-thread-color: color-mix(in srgb, var(--text-muted) 35%, transparent);
+  --gastrodon-outline-thread-active-color: color-mix(in srgb, var(--color-accent) 65%, transparent);
+  --gastrodon-outline-item-height: calc(var(--nav-item-size) * 1.8);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-inner {
+  overflow: hidden;
+  height: var(--gastrodon-outline-item-height);
+  line-height: var(--gastrodon-outline-item-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item,
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-self {
+  position: relative;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-self {
+  margin-top: -1px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-self .tree-item-inner {
+  padding-left: var(--size-4-1);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-self .tree-item-inner::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(var(--size-4-1) * 1.2);
+  height: calc(var(--size-4-1) * 1.2);
+  border: var(--size-2-1) solid var(--gastrodon-outline-thread-color);
+  border-radius: 50%;
+  transform: translate(calc(-1 * var(--size-4-5) - var(--size-4-1) * 0.6 + 1px), -50%);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active .tree-item-inner::before {
+  border-color: var(--gastrodon-outline-thread-active-color);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-self .tree-item-icon ~ .tree-item-inner::before {
+  content: none;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--gastrodon-outline-item-height) / -2);
+  left: -14px;
+  width: var(--gastrodon-outline-thread-width);
+  height: calc(100% - var(--gastrodon-outline-item-height) + var(--size-4-8));
+  background-color: transparent;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-icon {
+  cursor: pointer;
+  transform: none;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-icon::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  z-index: 10;
+  width: var(--size-4-2);
+  height: var(--size-4-2);
+  border-radius: 50%;
+  background-color: var(--gastrodon-outline-thread-color);
+  transform: translateY(-50%);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-icon svg path {
+  display: none;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item-self.is-active .tree-item-icon::before,
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item:hover > .tree-item-self .tree-item-icon::before {
+  background-color: var(--gastrodon-outline-thread-active-color);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item:hover > .tree-item-children > .tree-item::after {
+  background-color: var(--gastrodon-outline-thread-active-color);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item:hover > .tree-item-self:hover + .tree-item-children .tree-item::after,
+:is(
+  body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item:hover > .tree-item-children > .tree-item:hover,
+  body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item:hover > .tree-item-children > .tree-item:hover ~ .tree-item
+)::after {
+  background-color: transparent;
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] .tree-item:hover > .tree-item-children > .tree-item:hover::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--gastrodon-outline-item-height) / -2);
+  left: -14px;
+  bottom: calc(100% - (var(--gastrodon-outline-item-height) + var(--size-4-2)) / 2 - 1px);
+  z-index: 9;
+  width: var(--size-4-6);
+  border-bottom-left-radius: var(--radius-m);
+  border-bottom: var(--gastrodon-outline-thread-width) solid var(--gastrodon-outline-thread-active-color);
+  border-left: var(--gastrodon-outline-thread-width) solid var(--gastrodon-outline-thread-active-color);
+}
+body.outline-threading .workspace-leaf-content[data-type="outline"] :is(.tree-item-children, .tree-item-self) {
+  margin-left: 0 !important;
+  padding-left: 28px !important;
+  border-left: none;
 }
 /* treeview from ElsaTam's "Fancy a Story"*/
 @charset "UTF-8";
@@ -4459,6 +4618,341 @@ body:not(.is-mobile).CTA-BTN-enable .workspace-leaf-content[data-type="file-expl
 --rainbow-folder-color: inherit;
 color: rgb(var(--rainbow-folder-color));
 }
+/* ---------- banners ---------- */
+/*
+ * Simplified from Obsidian Banner Snippet by HandaArchitect.
+ * Copyright (c) 2024 HandaArchitect; used under the MIT License.
+ * https://github.com/HandaArchitect/obsidian-banner-snippet
+ */
+body {
+    --gastrodon-banner-height: 200px;
+    --gastrodon-banner-icon-size: 40px;
+    --gastrodon-banner-gradient: linear-gradient(to top, transparent, rgba(0, 0, 0, 0.3) 10%, black 40%);
+}
+
+/* Reserve space above the note only when a banner embed is present. */
+.workspace-leaf.mod-active .banner.is-live-preview .cm-sizer:has(div[alt="banner"] img[alt="banner"]),
+.view-content > .markdown-reading-view > .markdown-preview-view:has(> .markdown-preview-sizer > div > p > span[alt="banner"] > img[alt="banner"]) > .markdown-preview-sizer > .markdown-preview-pusher,
+.view-content .markdown-source-view .markdown-preview-view:has(div > p > span[alt="banner"] > img[alt="banner"]) .markdown-preview-sizer > .markdown-preview-pusher,
+.view-content .markdown-reading-view .markdown-preview-view .markdown-preview-view:has(div > p > span[alt="banner"] > img[alt="banner"]) .markdown-preview-sizer > .markdown-preview-pusher {
+    padding-top: calc(var(--gastrodon-banner-height) + var(--gastrodon-banner-icon-size) / 1.5);
+}
+
+.banner.is-live-preview .image-embed:has(img[alt="banner"]),
+.banner.markdown-preview-view span[alt="banner"] {
+    display: contents;
+}
+
+.banner.is-live-preview .image-embed img[alt="banner"],
+.banner.markdown-preview-view img[alt="banner"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100% !important;
+    height: var(--gastrodon-banner-height);
+    object-fit: cover;
+    object-position: 50% 50%;
+    box-shadow: none;
+}
+
+.banner.banner-fade.markdown-preview-view img[alt="banner"]:first-child,
+.banner.banner-fade.is-live-preview img[alt="banner"]:first-child {
+    -webkit-mask-image: var(--gastrodon-banner-gradient) !important;
+    mask-image: var(--gastrodon-banner-gradient) !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .banner.is-live-preview .image-embed img[alt="banner"],
+    .banner.markdown-preview-view img[alt="banner"] {
+        height: calc(var(--gastrodon-banner-height) * 0.8);
+    }
+
+    .workspace-leaf.mod-active .banner.is-live-preview .cm-sizer:has(div[alt="banner"] img[alt="banner"]),
+    .view-content > .markdown-reading-view > .markdown-preview-view:has(> .markdown-preview-sizer > div > p > span[alt="banner"] > img[alt="banner"]) > .markdown-preview-sizer > .markdown-preview-pusher,
+    .view-content .markdown-source-view .markdown-preview-view:has(div > p > span[alt="banner"] > img[alt="banner"]) .markdown-preview-sizer > .markdown-preview-pusher,
+    .view-content .markdown-reading-view .markdown-preview-view .markdown-preview-view:has(div > p > span[alt="banner"] > img[alt="banner"]) .markdown-preview-sizer > .markdown-preview-pusher {
+        padding-top: calc(var(--gastrodon-banner-height) * 0.7 + var(--gastrodon-banner-icon-size) / 1.5);
+    }
+}
+
+/* ---------- tagged list grids ---------- */
+/* Essential #mcl/list-grid and #mcl/list-card behavior adapted from MCL Multi Column by efemkay. */
+body {
+    --gastrodon-mcl-grid-min-width: 250px;
+    --gastrodon-mcl-card-header-border-width: 1px;
+    --gastrodon-mcl-card-background: var(--background-secondary);
+    --gastrodon-mcl-card-gap: 0.2em;
+    --gastrodon-mcl-card-border-width: 1px;
+    --gastrodon-mcl-card-border-color: var(--background-modifier-border);
+}
+
+/* The tags are layout instructions, so keep them out of Reading view. */
+.markdown-rendered a:is([href*="#mcl/list-grid"], [href*="#mcl/list-card"]) {
+    display: none;
+}
+
+/* List grid: keep ordinary list structure and distribute top-level items. */
+ul:has(> li > [data-heading] > [href*="#mcl/list-grid"]),
+ul:has(> li > [href*="#mcl/list-grid"]) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--gastrodon-mcl-grid-min-width), 1fr));
+}
+
+ul:has(> li > [data-heading] > [href*="#mcl/list-grid"]) > li:not(:last-of-type),
+ul:has(> li > [href*="#mcl/list-grid"]) > li:not(:last-of-type) {
+    padding-right: 1.6em;
+}
+
+/* List card: operate on the rendered block containing the tagged list. */
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) ul:first-child {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--gastrodon-mcl-grid-min-width), 1fr));
+    margin-block-start: 0.5em;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul {
+    padding-left: 0;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) ul ul:not(ul ul ul) {
+    padding-left: 0.1em;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) ul ul:not(ul ul ul) > li {
+    margin-inline-start: 0;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li {
+    position: relative;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li:hover > .collapse-indicator,
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li > ul > li:hover > .collapse-indicator {
+    opacity: 1;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li > .collapse-indicator,
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li > ul > li > .collapse-indicator {
+    position: absolute;
+    right: 0.7em;
+    padding-right: 0;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) ul::before {
+    display: none;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li:not(.is-collapsed) > [data-heading] {
+    margin-bottom: 0.2em;
+    border-bottom: var(--gastrodon-mcl-card-header-border-width) solid var(--gastrodon-mcl-card-border-color);
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li::before,
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li > ul > li::before,
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li > .list-bullet::after,
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) > ul > li > ul > li > .list-bullet::after {
+    visibility: hidden;
+}
+
+.markdown-rendered.show-indentation-guide :is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) li > :is(ul, ol)::before {
+    border-right: 0;
+    border-left: 0;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) li {
+    list-style: none;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) li li li {
+    list-style: circle;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) ul:not(ul ul) > li {
+    margin-inline: var(--gastrodon-mcl-card-gap);
+    margin-bottom: calc(var(--gastrodon-mcl-card-gap) * 2);
+    padding: 0.3em 0.5em;
+    background-color: var(--gastrodon-mcl-card-background);
+    outline: var(--gastrodon-mcl-card-border-width) solid var(--gastrodon-mcl-card-border-color);
+    border-radius: 0.5em;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) ul:not(ul ul) > li img {
+    width: 100%;
+}
+
+:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"])) ul img {
+    margin: 0;
+    float: none;
+}
+
+
+/* ---------- floating callouts ---------- */
+/* Essential float-left/float-right behavior adapted from MCL Multi Column by efemkay. */
+body {
+    --gastrodon-float-small-width: 300px;
+    --gastrodon-float-medium-width: 400px;
+    --gastrodon-float-large-width: 600px;
+    --gastrodon-float-left-margin: 0 12px 0 0;
+    --gastrodon-float-right-margin: 0 0 0 12px;
+    --gastrodon-float-top-margin: 0em;
+}
+
+@media (min-width: 500px) {
+    .markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-left"]),
+    .markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-right"]) {
+        display: inline;
+        z-index: 30;
+    }
+
+    .markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-left"]) > div > .callout {
+        float: left;
+        z-index: 30;
+    }
+
+    .markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-right"]) > div > .callout {
+        float: right;
+        z-index: 30;
+    }
+
+    .markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > :is([data-callout-metadata*="float-left"], [data-callout-metadata*="float-right"])) > .edit-block-button {
+        display: none;
+    }
+
+    .markdown-reading-view div[data-callout-metadata*="left"].callout {
+        float: left;
+    }
+
+    .markdown-reading-view div[data-callout-metadata*="right"].callout {
+        float: right;
+    }
+
+    .markdown-source-view.mod-cm6 .callout:is([data-callout-metadata*="left"], [data-callout-metadata*="right"]) {
+        margin-top: calc(1em * var(--line-height-normal) + var(--gastrodon-float-top-margin));
+    }
+
+    .markdown-source-view.mod-cm6 .callout[data-callout-metadata*="left"],
+    .markdown-reading-view .callout[data-callout-metadata*="left"] {
+        margin-inline: var(--gastrodon-float-left-margin);
+    }
+
+    .markdown-source-view.mod-cm6 .callout[data-callout-metadata*="right"],
+    .markdown-reading-view .callout[data-callout-metadata*="right"] {
+        margin-inline: var(--gastrodon-float-right-margin);
+    }
+
+    .callout:is([data-callout-metadata*="left"], [data-callout-metadata*="right"]) .callout-content > :is(p:first-child, ul:first-child, ol:first-child) {
+        margin-top: 0;
+    }
+
+    [data-callout-metadata*="float-right"].cm-embed-block.cm-callout {
+        width: auto !important;
+    }
+}
+
+[data-callout-metadata*="-small"].callout {
+    width: var(--gastrodon-float-small-width);
+}
+
+[data-callout-metadata*="-medium"].callout {
+    width: var(--gastrodon-float-medium-width);
+}
+
+[data-callout-metadata*="-large"].callout {
+    width: var(--gastrodon-float-large-width);
+}
+
+.embedded-backlinks {
+    clear: both;
+}
+
+
+/* ---------- MCL callout layouts ---------- */
+/* Essential [!multi-column] and [!blank] behavior adapted from MCL Multi Column by efemkay. */
+body {
+    --gastrodon-multi-column-min-width: 200px;
+    --gastrodon-multi-column-gap: 1em;
+    --gastrodon-multi-column-margin: 0;
+}
+
+/* Multi-column containers accept nested callouts, quote blocks, lists, and paragraphs. */
+div[data-callout="multi-column"].callout {
+    --callout-blend-mode: normal;
+    --columns: unset;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gastrodon-multi-column-gap);
+    clear: both;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: unset;
+    box-shadow: unset;
+}
+
+div[data-callout="multi-column"].callout > .callout-title {
+    display: none;
+}
+
+div[data-callout="multi-column"].callout > .callout-content {
+    display: contents;
+    margin-top: unset;
+}
+
+div[data-callout="multi-column"].callout > .callout-content > :is(div, ul, blockquote, p) {
+    flex: 1 1 var(--gastrodon-multi-column-min-width);
+    min-width: 0;
+    margin: 0;
+}
+
+div[data-callout="multi-column"].callout .callout:not([data-callout="multi-column"]) {
+    display: flex;
+    flex-direction: column;
+}
+
+div[data-callout="multi-column"].callout:not(.is-collapsed) .callout {
+    margin-inline: var(--gastrodon-multi-column-margin);
+    margin-block: var(--gastrodon-multi-column-margin);
+}
+
+div[data-callout="multi-column"].callout .callout .callout-content {
+    flex-grow: 1;
+}
+
+/* Blank containers keep their content while removing every visible callout surface. */
+div[data-callout*="blank"].callout {
+    --callout-blend-mode: normal;
+    padding-block: 0;
+    padding-inline: 5px;
+    border: 0;
+    background: unset;
+    box-shadow: unset;
+}
+
+div[data-callout*="blank"].callout > .callout-title {
+    display: none;
+}
+
+div[data-callout*="blank"].callout > .callout-content {
+    display: contents;
+}
+
+div[data-callout*="blank"].callout .callout-content > p:only-child {
+    margin-block: 0;
+}
+
+div[data-callout*="blank"].callout .callout-content::before {
+    display: none;
+}
+
+/* Hover-to-expand makes blank containers fade, but never hides their frameless content. */
+.hover-callout div[data-callout*="blank"].callout:not(.is-collapsible) > .callout-content {
+    max-height: none;
+    overflow: visible;
+    flex-grow: 1;
+}
+
+
 /* ---------- dataview cards css class ---------- */
 /* ----- adapted from Kepano's Minimal cards ----- */
 :root {
@@ -5138,7 +5632,19 @@ settings:
     -
         id: bullet-threading
         title: Bullet Threading
-        description: Highlight the active branch of nested bullet lists in Live Preview.
+        description: Highlight nested bullet-list branches in Live Preview.
+        type: class-toggle
+        default: true
+    -
+        id: outline-options
+        title: Outline Panel
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: outline-threading
+        title: Outline Threading
+        description: Add threaded dots and hover-guided branch lines to the Outline panel.
         type: class-toggle
         default: true
     -
@@ -5521,6 +6027,24 @@ settings:
             - 'Ubuntu Mono'
             - 'DM Mono'
     -
+        id: media-options
+        title: Dark Mode Media
+        type: heading
+        level: 2
+        collapsed: true
+    -
+        id: dim-images-dark
+        title: Dim Images in Dark Mode
+        description: Reduce image brightness, then brighten images slightly on hover.
+        type: class-toggle
+        default: false
+    -
+        id: dim-pdfs-dark
+        title: Dim PDFs in Dark Mode
+        description: Reduce PDF brightness, then brighten PDFs slightly on hover.
+        type: class-toggle
+        default: false
+    -
         id: focus-mode-heading
         title: Focus Mode
         type: heading
@@ -5530,6 +6054,12 @@ settings:
     -
         id: hide-buttons
         title: Hide Buttons
+        type: class-toggle
+        default: false
+    -
+        id: hover-expand-ribbon
+        title: Hover to Expand Left Ribbon
+        description: Collapse the ribbon to a clean edge and reveal its full-size, fading buttons on hover.
         type: class-toggle
         default: false
     -
