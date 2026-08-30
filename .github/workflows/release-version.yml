@@ -45,6 +45,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./theme.css
+          asset_path: ./theme-beta.css
           asset_name: theme.css
           asset_content_type: text/css
