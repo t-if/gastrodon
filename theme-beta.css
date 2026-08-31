@@ -33,13 +33,6 @@
 
 /* END GASTRODON EMBEDDED FONTS */
 
-/* -- custom font -- */
-.custom-font-toggle {
-    --font-interface-theme: var(--custom-font), sans-serif;
-    --font-text-theme: var(--custom-font), sans-serif;
-    --font-monospace-theme: var(--custom-font), monospace;
-}
-
 /* ---------- main layout ---------- */
 
 /* --- get rid of dividers that break the theme --- */
@@ -3752,7 +3745,7 @@ body {
     --color-base-05: var(--color-base-20);
 }
 
-body:is(:not(.custom-font-toggle)) {
+body {
     --font-interface-theme: 'DM Mono', sans-serif;
     --font-text-theme: 'DM Mono', sans-serif;
     --font-monospace-theme: 'Space Mono', monospace;
@@ -6621,45 +6614,6 @@ settings:
         description: Show highlights as underlined text.
         type: class-toggle
         default: false
-    -
-        id: custom-font-toggle
-        title: Enable custom font
-        type: class-toggle
-        default: false
-    -
-        id: custom-font
-        title: Custom font
-        type: variable-select
-        description: This will override theme fonts, but it will not override any font defined in Settings/Appearance.
-        default: 'DM Mono'
-        options:
-            - Hindi
-            - Roboto
-            - 'Merriweather Sans'
-            - 'Merriweather'
-            - 'Nunito Sans'
-            - 'IBM Plex Sans'
-            - Forum
-            - 'EB Garamond'
-            - 'Koh Santepheap'
-            - Alice
-            - Comfortaa
-            - Nunito
-            - Montserrat
-            - Figtree
-            - Poppins
-            - Rubik
-            - Tilt Warp
-            - Merienda
-            - Handlee
-            - Arima
-            - Courgette
-            - 'Inknut Antiqua'
-            - 'Averia Gruesa Libre'
-            - 'Anonymous Pro'
-            - 'Space Mono'
-            - 'Ubuntu Mono'
-            - 'DM Mono'
     -
         id: media-options
         title: Dark Mode Media
