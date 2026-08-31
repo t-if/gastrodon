@@ -155,6 +155,16 @@ body{
     border-right: var(--divider-width) var(--line-style) var(--divider-color);
 }
 
+/* Give ribbon actions the same quiet resting state as other sidebar controls. */
+body:not(.is-mobile):not(.hide-buttons):not(.hover-expand-ribbon) .workspace-ribbon.mod-left :is(.side-dock-ribbon-action, .sidebar-toggle-button.mod-left) {
+    opacity: 0.45;
+    transition: opacity 0.15s ease-in-out, background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+body:not(.is-mobile):not(.hide-buttons):not(.hover-expand-ribbon) .workspace-ribbon.mod-left :is(.side-dock-ribbon-action, .sidebar-toggle-button.mod-left):is(:hover, :focus-visible) {
+    opacity: 1;
+}
+
 .workspace-split.mod-vertical > * > .workspace-leaf-resize-handle,
 .workspace-split.mod-left-split > .workspace-leaf-resize-handle {
   border-right-style: var(--line-style);
