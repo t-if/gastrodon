@@ -144,8 +144,8 @@ body{
     box-shadow: none;
 }
 
-/* - Fix Left Sidebar 'Expand' Button - */
-.workspace-ribbon::before {
+/* - Keep the left ribbon's title-bar cap from covering the first tab - */
+.workspace-ribbon.mod-left::before {
     background-color: transparent;
     border-bottom: none;
 }
@@ -175,28 +175,52 @@ body {
     --gastrodon-ribbon-expanded-width: var(--ribbon-width, 44px);
 }
 
-body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left {
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left {
     flex-basis: var(--gastrodon-ribbon-collapsed-width);
-    width: var(--gastrodon-ribbon-collapsed-width);
-    min-width: var(--gastrodon-ribbon-collapsed-width);
     overflow: hidden;
-    transition: flex-basis 180ms ease, width 180ms ease, min-width 180ms ease;
+    transition: flex-basis 180ms ease;
 }
 
-body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left:is(:hover, :focus-within) {
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left::before {
+    width: var(--gastrodon-ribbon-collapsed-width);
+    transition: width 180ms ease;
+}
+
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left:is(:hover, :focus-within) {
     flex-basis: var(--gastrodon-ribbon-expanded-width);
-    width: var(--gastrodon-ribbon-expanded-width);
-    min-width: var(--gastrodon-ribbon-expanded-width);
 }
 
-body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left:is(:hover, :focus-within)::before {
+    width: var(--gastrodon-ribbon-expanded-width);
+}
+
+body.hover-expand-ribbon:not(.is-mobile):has(.sidebar-toggle-button:not(.mod-right):is(:hover, :focus-visible)) .workspace-ribbon.side-dock-ribbon.mod-left {
+    flex-basis: var(--gastrodon-ribbon-expanded-width);
+}
+
+body.hover-expand-ribbon:not(.is-mobile):has(.sidebar-toggle-button:not(.mod-right):is(:hover, :focus-visible)) .workspace-ribbon.side-dock-ribbon.mod-left::before {
+    width: var(--gastrodon-ribbon-expanded-width);
+}
+
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
     opacity: 0;
     transition: opacity 540ms ease;
 }
 
-body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.mod-left:is(:hover, :focus-within) :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
+body.hover-expand-ribbon:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left:is(:hover, :focus-within) :is(.side-dock-actions, .side-dock-settings, .sidebar-toggle-button.mod-left) {
     opacity: 1;
     transition: opacity 540ms ease;
+}
+
+/* Obsidian may place the left sidebar toggle in the tab header instead of inside the ribbon. */
+body.hover-expand-ribbon:not(.is-mobile) .sidebar-toggle-button:not(.mod-right) {
+    opacity: 0;
+    transition: opacity 540ms ease;
+}
+
+body.hover-expand-ribbon:not(.is-mobile):has(.workspace-ribbon.side-dock-ribbon.mod-left:is(:hover, :focus-within)) .sidebar-toggle-button:not(.mod-right),
+body.hover-expand-ribbon:not(.is-mobile) .sidebar-toggle-button:not(.mod-right):is(:hover, :focus-visible) {
+    opacity: 1;
 }
 
 /* --- floating titlebar --- */
@@ -272,14 +296,23 @@ body:not(.is-phone) .modal-bg {
 }
 
 /* explorer icons */
-.nav-buttons-container {
+.nav-header .nav-buttons-container {
     opacity: 0.3;
     transition: opacity 0.15s ease-in-out;
 }
 
-.nav-buttons-container:hover {
+.nav-header .nav-buttons-container:is(:hover, :focus-within) {
     opacity: 1;
     transition-delay: 0ms;
+}
+
+.nav-header .nav-buttons-container .clickable-icon {
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.nav-header .nav-buttons-container .clickable-icon:is(:hover, :focus-visible) {
+    background-color: var(--background-modifier-hover);
+    color: var(--icon-color-hover);
 }
 
 /* status bar */
@@ -5686,7 +5719,7 @@ body.hide-vault:not(.is-mobile) .workspace-split.mod-left-split .workspace-sided
 }
 
 /* ------ focus mode ------ */
-.nav-buttons-container, .view-actions, .workspace-tab-header-inner, .side-dock-settings, .side-dock-actions {
+.view-actions, .workspace-tab-header-inner, .side-dock-settings, .side-dock-actions {
     opacity: 1;
 }
 
