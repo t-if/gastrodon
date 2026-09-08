@@ -1544,7 +1544,7 @@ border-bottom: 1.4px var(--line-style) var(--hr-color);
 }
 
 /* ----- callouts ----- */
-.no-fold .callout-fold {
+.hover-callout .callout-fold, .no-fold .callout-fold {
     display: none;
 }
 
