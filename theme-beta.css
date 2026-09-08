@@ -1396,11 +1396,6 @@ body {
     content:'';
 }
 
-/* hide dataview item count - css class */
-body:has(*.no-count) .dataview.small-text {
-    display: none;
-}
-
 /* hide page backlinks - css class */
 .no-backlinks .embedded-backlinks {
     display: none;
@@ -1548,7 +1543,7 @@ border-bottom: 1.4px var(--line-style) var(--hr-color);
     display: none;
 }
 
-.callout, .callout-normal .callout {
+.callout {
     /* Legacy fallback for custom callouts that still use an RGB triplet. */
 
     /* Obsidian 1.13+ expects --callout-color to be a complete CSS color. */
@@ -1558,55 +1553,10 @@ border-bottom: 1.4px var(--line-style) var(--hr-color);
     z-index: 2;
 }
 
-.callout-bordered .callout {
-    border: 1.2px var(--line-style);
-    border-color: var(--callout-color);
-}
-
-.callout-outlined {
-    --callout-title-padding: 5px;
-}
-
-.callout-outlined .callout, .callout-outlined .markdown-source-view.mod-cm6 .callout {
-    background-color: transparent;
-    border: 1.5px var(--line-style);
-    border-color: var(--callout-color);
-    overflow: visible;
-    margin: 1.5em 0 1.5em;
-}
-
-.callout-outlined .callout-title {
-    background-color: var(--background-primary);
-    margin-top: -22.5px;
-    margin-left: -0.75em;
-    padding: 0 0.5em;
-    width: fit-content;
-}
-
-.callout-floating .callout, .callout-floating .markdown-source-view.mod-cm6 .callout {
-    margin: 13px 0;
-	border-radius: var(--radius-s);
-    border: 1.2px var(--line-style);
-    border-color: color-mix(in oklch, var(--callout-color) 70%, transparent);
-	box-shadow: var(--shadow-s);
-    background-color: transparent;
-    padding: 0;
-}
-
-.callout-floating .callout-title, .callout-floating .markdown-source-view.mod-cm6 .callout-title {
-    background-color: color-mix(in oklch, var(--callout-color) 20%, transparent);
-    padding: 10px;
-    min-width: 100%;
-}
-
-.callout-floating .callout-content, .callout-floating .markdown-source-view.mod-cm6 .callout-content {
-    padding: 0 10px;
-    }
-
 /* custom callout colors */
 .callout[data-callout="danger"],
 .callout[data-callout="error"] {
-    --callout-color: var(--callout-warning);
+    --callout-color: var(--color-yellow);
 }
 
 body {
@@ -1784,10 +1734,9 @@ Author: ElsaTam (Kapirklaa in Discord)
     display: none;
   }
 
-  /* Gastrodon theorem */
-  .callout[data-callout="theorem"] {
+  /* Fancy callout with any Lucide icon. */
+  .callout[data-callout-metadata~="custom-icon"] {
       --callout-color: var(--color-purple);
-      --callout-icon: lucide-sigma;
       --callout-border-width: 0;
 
       background: linear-gradient(135deg,
@@ -1799,17 +1748,21 @@ Author: ElsaTam (Kapirklaa in Discord)
       overflow: hidden;
     }
 
-    .callout[data-callout="theorem"] > .callout-title {
+    .callout[data-callout-metadata~="custom-icon"] {
+      --callout-icon: attr(data-callout);
+    }
+
+    .callout[data-callout-metadata~="custom-icon"] > .callout-title {
       color: var(--callout-color);
       padding-bottom: var(--size-4-2);
     }
 
-    .callout[data-callout="theorem"] .callout-title-inner {
+    .callout[data-callout-metadata~="custom-icon"] .callout-title-inner {
       font-weight: var(--font-semibold);
       letter-spacing: 0.02em;
     }
 
-    .callout[data-callout="theorem"] .callout-content {
+    .callout[data-callout-metadata~="custom-icon"] .callout-content {
       border-top: 1px dashed color-mix(in oklch, var(--callout-color) 30%, transparent);
       padding-top: var(--size-4-2);
     }
@@ -4496,17 +4449,6 @@ body {
     background-color: color-mix(in oklch, var(--callout-color) 30%, transparent);
 }
 
-.theme-anytype.callout-outlined .callout {
-    background-color: transparent;
-    border-width: 2px;
-    border-color: color-mix(in oklch, var(--callout-color) 75%, transparent);
-}
-
-.theme-anytype.callout-bordered .callout {
-    background-color: color-mix(in oklch, var(--callout-color) 30%, transparent);
-    border-width: 2px;
-}
-
 .theme-anytype.theme-dark .callout {
     background-color: color-mix(in oklch, var(--callout-color) 30%, transparent);
 }
@@ -6225,25 +6167,6 @@ settings:
         title: Hover to Expand Callout
         type: class-toggle
         default: false
-    -
-        id: callout-style
-        title: Callout Style
-        type: class-select
-        allowEmpty: false
-        default: callout-normal
-        options:
-            -
-                label: Default
-                value: callout-normal
-            -
-                label: Bordered
-                value: callout-bordered
-            -
-                label: Outlined
-                value: callout-outlined
-            -
-                label: Card
-                value: callout-floating
     -
         id: list-options
         title: Lists

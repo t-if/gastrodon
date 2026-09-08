@@ -72,12 +72,16 @@ Put the tag inside the list. It is hidden in Reading view.
 
 > [!note|float-right-small] Small floating note
 > Text wraps around it.
+
+> [!lucide-scale|custom-icon purple] Custom icon
+> Omit the color metadata to use the purple default.
 ```
 
 | Group | Types or metadata |
 | --- | --- |
 | Legal | `facts`, `posture`, `issue`, `rule`, `analysis`, `conclusion`, `concurrence`, `dissent` |
-| Other types | `email`, `conversation`, `conversation-outline`, `conversation-minimalist`, `timeline`, `theorem`, `polaroid` |
+| Other types | `email`, `conversation`, `conversation-outline`, `conversation-minimalist`, `timeline`, `custom-icon`, `polaroid` |
+| Custom icon | `[!lucide-scale\|custom-icon]`; add a color after `custom-icon` when needed |
 | Layout types | `blank`, `multi-column` |
 | Colors | `gray`, `brown`, `red`, `orange`, `yellow`, `green`, `cyan`, `blue`, `purple`, `pink` |
 | Cleanup | `no-bg`, `no-background`, `no-icon`, `no-title`, `blank`, `wide`, `black-and-white`, `b-w` |
