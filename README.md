@@ -17,7 +17,7 @@ BRAT uses `theme-beta.css`. `theme.css` has the same features with my personal d
 - Updated for current Obsidian layouts, callouts, and plugins.
 - Adds inactive-pane dimming, hover-expanding ribbon, dark-mode media dimming, list and outline threading, seamless embeds, and banners.
 - Builds in list grids/cards, tree lists, floating and multi-column callouts, alternate checkboxes, and priority tags.
-- Adds styling for Bases, Commander, Dataview, Calendar, and Kanban.
+- Adds styling for Bases, Commander, Calendar, and Kanban.
 - Removes Chime's legacy layouts, background images, `wiki-page`, `novel`, Novelist, Notion, Page Gallery, and other obsolete plugin rules.
 
 Everything else is labeled under **Settings → Style Settings → Gastrodon**.
@@ -34,7 +34,6 @@ Add these under the note's `cssclasses` property.
 | Cleanup | `no-backlinks`, `no-count`, `no-fold`, `clean-embed` |
 | Banners | `banner`, `banner-fade` |
 | Bases | `no-head`, `case-card`, `center-card`, `oneline`, `pokemonbox`, `musicshelf` |
-| Dataview | `cards`, `cards-cols-1`–`cards-cols-8`, `table-100`, `trim-cols` |
 | Text | `colorful-headings`, `colorful-headings-alt`, `underlined-highlight` |
 | Headings | `h1-center`–`h6-center`, `h1-bottom-border`–`h6-bottom-border` |
 
