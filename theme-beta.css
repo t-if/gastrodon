@@ -5744,31 +5744,31 @@ settings:
                 label: West Sea
                 value: theme-default
             -
-                label: Distortion
+                label: East Sea
+                value: theme-chinchilla
+            -
+                label: Sendoff
                 value: theme-crystal
             -
                 label: Sunyshore
                 value: theme-celestial
             -
-                label: East Sea
-                value: theme-chinchilla
-            -
                 label: Verity
                 value: theme-spring
             -
-                label: Nord
-                value: theme-nord
-            -
-                label: Solarized
+                label: Amity
                 value: theme-solarized
             -
-                label: Gruvbox
+                label: Coronet
+                value: theme-nord
+            -
+                label: Underground
                 value: theme-gruvbox
             -
-                label: Obsidian
+                label: Ironworks
                 value: theme-classic
             -
-                label: Light & Bright
+                label: Windworks
                 value: theme-light-and-bright
     -
         id: ui-options
