@@ -732,23 +732,12 @@ body{
 .markdown-rendered blockquote, .blockquote-normal .markdown-rendered blockquote {
     padding: 10px 15px 10px 15px;
     z-index: 2;
-    font-style: italic;
     position: relative;
     border-left-width: 5px;
 }
 
 .markdown-rendered blockquote p, .blockquote-normal .markdown-rendered blockquote p {
 display: block;
-}
-
-.blockquote-mark .markdown-rendered blockquote::before {
-    font-style: normal;
-    content: "❛❛";
-    display:inline;
-    font-size: 2.25em;
-    line-height: 0.1em;
-    vertical-align: -0.4em;
-    margin-right: 15px;
 }
 
 .blockquote-block .markdown-rendered blockquote {
