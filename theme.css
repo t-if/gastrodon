@@ -4376,12 +4376,26 @@ body {
 
 /* --- vault title --- */
 .theme-celestial.theme-light.colorful-headings {
-    --h1-color: #8ac9de;
-    --h2-color: #94d1e6;
-    --h3-color: #abd0dc;
-    --h4-color: #b2c7da;
-    --h5-color: #b2bccf;
-    --h6-color: #b4b5dd;
+    --h1-color: var(--color-yellow);
+    --h2-color: #315d88;
+    --h3-color: var(--color-blue);
+    --h4-color: var(--color-cyan);
+    --h5-color: var(--color-purple);
+    --h6-color: var(--color-orange);
+}
+
+.theme-celestial.theme-light.colorful-headings-alt {
+    --h1-color: var(--color-yellow);
+    --h2-color: var(--color-blue);
+    --h3-color: var(--color-cyan);
+    --h4-color: var(--color-purple);
+    --h5-color: var(--color-orange);
+    --h6-color: var(--color-red);
+}
+
+.theme-celestial.theme-light.colored-bold-and-italic {
+    --bold-color: var(--color-blue);
+    --italic-color: var(--color-purple);
 }
 
 .theme-celestial.theme-dark.colorful-headings-alt {
@@ -4418,30 +4432,33 @@ body {
 .theme-celestial.theme-light {
     color-scheme: light;
 
+    /* Shinx daylight: cool slate surfaces and ink, with gold kept to accents.
+       Deep ochre carries the dark mode's gold hue onto a light background. */
     --highlight-mix-blend-mode: darken;
-    --accent-h: 42;
-    --accent-s: 100%;
-    --accent-l: 50%;
-    --color-red: rgb(255 145 114);
-    --color-green: #aac753;
-    --color-orange: #f79946;
-    --color-yellow: #fbc130;
-    --color-cyan: #6fd293;
-    --color-blue: #56d6c9;
-    --color-purple: #6aa0d9;
-    --color-pink: #9471e7;
-    --color-base-00: #fff9eb;
-    --color-base-05: #fff2dd;
-    --color-base-10: #ffefd6;
-    --color-base-20: #ffefd6;
-    --color-base-25: #fbe0ba;
-    --color-base-30: #fbe0ba;
-    --color-base-35: #f2d17d;
-    --color-base-40: #ecbf5f;
-    --color-base-50: #f0b36e;
-    --color-base-60: #d99e5a;
-    --color-base-70: #af7d43;
-    --color-base-100: rgb(155 109 87);
+    --accent-h: 43;
+    --accent-s: 64%;
+    --accent-l: 32%;
+    --text-highlight-bg: rgb(217 184 79 / 25%);
+    --color-red: #a74b55;
+    --color-green: #4f733e;
+    --color-orange: #945c29;
+    --color-yellow: #826218;
+    --color-cyan: #2f7174;
+    --color-blue: #376b9e;
+    --color-purple: #715f99;
+    --color-pink: #935374;
+    --color-base-00: #f4f6f8;
+    --color-base-05: #edf1f5;
+    --color-base-10: #e8eef4;
+    --color-base-20: #e4ebf2;
+    --color-base-25: #d4dee8;
+    --color-base-30: #c4d0de;
+    --color-base-35: #a8b8cb;
+    --color-base-40: #889ab1;
+    --color-base-50: #5d6b80;
+    --color-base-60: #58677e;
+    --color-base-70: #4b5b72;
+    --color-base-100: #293447;
     --theme-decoration: '☀️';
   }
 

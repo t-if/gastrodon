@@ -3775,6 +3775,11 @@ body {
   }
 
   /* ----- Distortion theme ----- */
+  .theme-crystal.colored-bold-and-italic {
+    --bold-color: var(--color-purple);
+    --italic-color: var(--color-pink);
+  }
+
   .theme-crystal.theme-light .vertical-tab-nav-item {
     color: var(--text-muted);
   }
@@ -4069,6 +4074,8 @@ body {
 
 /* ----- light & bright theme ----- */
 .theme-light-and-bright {
+  /* Preserve the chosen accent's hue; keep surfaces and text at stable values. */
+  --windworks-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
   --h1-weight: 600;
   --h2-weight: 600;
   --h3-weight: 600;
@@ -4077,36 +4084,58 @@ body {
   --h6-weight: 600;
 }
 
+.theme-light-and-bright.colorful-headings {
+  --h1-color: var(--text-accent);
+  --h2-color: color-mix(in oklch, var(--text-accent) 80%, var(--text-normal));
+  --h3-color: color-mix(in oklch, var(--text-accent) 65%, var(--text-normal));
+  --h4-color: color-mix(in oklch, var(--text-accent) 50%, var(--text-normal));
+  --h5-color: var(--text-muted);
+  --h6-color: var(--text-muted);
+}
+
+.theme-light-and-bright.colored-bold-and-italic {
+  --bold-color: var(--text-accent);
+  --italic-color: color-mix(in oklch, var(--text-accent) 65%, var(--text-normal));
+}
+
 .theme-light-and-bright.theme-light {
     color-scheme: light;
 
     --highlight-mix-blend-mode: darken;
-    --color-red: #e46f7d;
-    --color-green: #a5d18c;
-    --color-orange: #fbb36c;
-    --color-yellow: #ffde73;
-    --color-cyan: #6fd2c2;
-    --color-blue: #56aed6;
-    --color-purple: #b584c7;
-    --color-pink: #ff94c8;
-    --color-base-00: hsl(calc(0 + var(--accent-h)) 100% 99.5%);
-    --color-base-05: hsl(calc(0 + var(--accent-h)) 40% 96.5%);
-    --color-base-10: hsl(calc(0 + var(--accent-h)) 30% 95.9%);
-    --color-base-20: hsl(calc(0 + var(--accent-h)) calc(var(--accent-s) - 5%) calc(95% - calc(var(--accent-l)/100)));
-    --color-base-25: hsl(calc(0 + var(--accent-h)) 80% 42%);
-    --color-base-30: hsl(calc(0 + var(--accent-h)) calc(var(--accent-s) - 55%) 89%);
-    --color-base-35: hsl(calc(0 + var(--accent-h)) 70% 88%);
-    --color-base-40: hsl(calc(0 + var(--accent-h)) 65% 86%);
-    --color-base-50: hsl(calc(0 + var(--accent-h)) 18% 63%);
-    --color-base-60: hsl(calc(0 + var(--accent-h)) 55% 72%);
-    --color-base-70: hsl(calc(0 + var(--accent-h)) 5% 55%);
-    --color-base-100: hsl(calc(0 + var(--accent-h)) 5% 30%);
+    --color-accent: oklch(from var(--windworks-accent) 51% min(c, 0.14) h);
+    --color-accent-1: var(--color-accent);
+    --color-accent-2: oklch(from var(--windworks-accent) 46% min(c, 0.14) h);
+    --text-on-accent: #fff;
+    --color-red: #ae4659;
+    --color-green: #57783f;
+    --color-orange: #9b612f;
+    --color-yellow: #806b27;
+    --color-cyan: #327a70;
+    --color-blue: #367298;
+    --color-purple: #806095;
+    --color-pink: #a24d7b;
+    --color-base-00: oklch(from var(--windworks-accent) 98.5% min(c, 0.006) h);
+    --color-base-05: oklch(from var(--windworks-accent) 96.5% min(c, 0.01) h);
+    --color-base-10: oklch(from var(--windworks-accent) 94.5% min(c, 0.014) h);
+    --color-base-20: oklch(from var(--windworks-accent) 92.5% min(c, 0.018) h);
+    --color-base-25: oklch(from var(--windworks-accent) 90% min(c, 0.02) h);
+    --color-base-30: oklch(from var(--windworks-accent) 86% min(c, 0.025) h);
+    --color-base-35: oklch(from var(--windworks-accent) 79% min(c, 0.03) h);
+    --color-base-40: oklch(from var(--windworks-accent) 69% min(c, 0.035) h);
+    --color-base-50: oklch(from var(--windworks-accent) 54% min(c, 0.03) h);
+    --color-base-60: oklch(from var(--windworks-accent) 47% min(c, 0.025) h);
+    --color-base-70: oklch(from var(--windworks-accent) 40% min(c, 0.02) h);
+    --color-base-100: oklch(from var(--windworks-accent) 28% min(c, 0.015) h);
   }
 
   .theme-light-and-bright.theme-dark {
     color-scheme: dark;
 
     --highlight-mix-blend-mode: lighten;
+    --color-accent: oklch(from var(--windworks-accent) 77% min(c, 0.13) h);
+    --color-accent-1: oklch(from var(--windworks-accent) 82% min(c, 0.12) h);
+    --color-accent-2: oklch(from var(--windworks-accent) 86% min(c, 0.11) h);
+    --text-on-accent: var(--color-base-20);
     --color-red: #e46f7d;
     --color-green: #a5d18c;
     --color-orange: #fbb36c;
@@ -4115,17 +4144,18 @@ body {
     --color-blue: #56aed6;
     --color-purple: #b584c7;
     --color-pink: #ff94c8;
-    --color-base-00:hsl(calc(0 + var(--accent-h)) 11% 15.5%);
-    --color-base-10: hsl(calc(0 + var(--accent-h)) 11.5% 18.5%);
-    --color-base-20: hsl(calc(0 + var(--accent-h)) 10% 12%);
-    --color-base-25: hsl(calc(0 + var(--accent-h)) 11.5% 10%);
-    --color-base-30: hsl(calc(0 + var(--accent-h)) 12% 23%);
-    --color-base-35: hsl(calc(0 + var(--accent-h)) 14% 11%);
-    --color-base-40: hsl(calc(0 + var(--accent-h)) 16% 12%);
-    --color-base-50: hsl(calc(0 + var(--accent-h)) 18% 55%);
-    --color-base-60: hsl(calc(0 + var(--accent-h)) 20% 13%);
-    --color-base-70: hsl(calc(0 + var(--accent-h)) 15% 45%);
-    --color-base-100: hsl(calc(0 + var(--accent-h)) 15% 75%);
+    --color-base-00: oklch(from var(--windworks-accent) 23% min(c, 0.016) h);
+    --color-base-05: oklch(from var(--windworks-accent) 25% min(c, 0.018) h);
+    --color-base-10: oklch(from var(--windworks-accent) 27% min(c, 0.02) h);
+    --color-base-20: oklch(from var(--windworks-accent) 19% min(c, 0.012) h);
+    --color-base-25: oklch(from var(--windworks-accent) 30.5% min(c, 0.02) h);
+    --color-base-30: oklch(from var(--windworks-accent) 35% min(c, 0.022) h);
+    --color-base-35: oklch(from var(--windworks-accent) 40.5% min(c, 0.025) h);
+    --color-base-40: oklch(from var(--windworks-accent) 48% min(c, 0.028) h);
+    --color-base-50: oklch(from var(--windworks-accent) 64% min(c, 0.025) h);
+    --color-base-60: oklch(from var(--windworks-accent) 71% min(c, 0.022) h);
+    --color-base-70: oklch(from var(--windworks-accent) 78% min(c, 0.018) h);
+    --color-base-100: oklch(from var(--windworks-accent) 91% min(c, 0.012) h);
   }
 
   /* ----- solarized theme ----- */
@@ -4376,12 +4406,26 @@ body {
 
 /* --- vault title --- */
 .theme-celestial.theme-light.colorful-headings {
-    --h1-color: #8ac9de;
-    --h2-color: #94d1e6;
-    --h3-color: #abd0dc;
-    --h4-color: #b2c7da;
-    --h5-color: #b2bccf;
-    --h6-color: #b4b5dd;
+    --h1-color: var(--color-yellow);
+    --h2-color: #315d88;
+    --h3-color: var(--color-blue);
+    --h4-color: var(--color-cyan);
+    --h5-color: var(--color-purple);
+    --h6-color: var(--color-orange);
+}
+
+.theme-celestial.theme-light.colorful-headings-alt {
+    --h1-color: var(--color-yellow);
+    --h2-color: var(--color-blue);
+    --h3-color: var(--color-cyan);
+    --h4-color: var(--color-purple);
+    --h5-color: var(--color-orange);
+    --h6-color: var(--color-red);
+}
+
+.theme-celestial.theme-light.colored-bold-and-italic {
+    --bold-color: var(--color-blue);
+    --italic-color: var(--color-purple);
 }
 
 .theme-celestial.theme-dark.colorful-headings-alt {
@@ -4418,30 +4462,33 @@ body {
 .theme-celestial.theme-light {
     color-scheme: light;
 
+    /* Shinx daylight: cool slate surfaces and ink, with gold kept to accents.
+       Deep ochre carries the dark mode's gold hue onto a light background. */
     --highlight-mix-blend-mode: darken;
-    --accent-h: 42;
-    --accent-s: 100%;
-    --accent-l: 50%;
-    --color-red: rgb(255 145 114);
-    --color-green: #aac753;
-    --color-orange: #f79946;
-    --color-yellow: #fbc130;
-    --color-cyan: #6fd293;
-    --color-blue: #56d6c9;
-    --color-purple: #6aa0d9;
-    --color-pink: #9471e7;
-    --color-base-00: #fff9eb;
-    --color-base-05: #fff2dd;
-    --color-base-10: #ffefd6;
-    --color-base-20: #ffefd6;
-    --color-base-25: #fbe0ba;
-    --color-base-30: #fbe0ba;
-    --color-base-35: #f2d17d;
-    --color-base-40: #ecbf5f;
-    --color-base-50: #f0b36e;
-    --color-base-60: #d99e5a;
-    --color-base-70: #af7d43;
-    --color-base-100: rgb(155 109 87);
+    --accent-h: 43;
+    --accent-s: 64%;
+    --accent-l: 32%;
+    --text-highlight-bg: rgb(217 184 79 / 25%);
+    --color-red: #a74b55;
+    --color-green: #4f733e;
+    --color-orange: #945c29;
+    --color-yellow: #826218;
+    --color-cyan: #2f7174;
+    --color-blue: #376b9e;
+    --color-purple: #715f99;
+    --color-pink: #935374;
+    --color-base-00: #f4f6f8;
+    --color-base-05: #edf1f5;
+    --color-base-10: #e8eef4;
+    --color-base-20: #e4ebf2;
+    --color-base-25: #d4dee8;
+    --color-base-30: #c4d0de;
+    --color-base-35: #a8b8cb;
+    --color-base-40: #889ab1;
+    --color-base-50: #5d6b80;
+    --color-base-60: #58677e;
+    --color-base-70: #4b5b72;
+    --color-base-100: #293447;
     --theme-decoration: '☀️';
   }
 
