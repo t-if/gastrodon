@@ -14,8 +14,9 @@ A practical remix of [Chime](https://github.com/Bluemoondragon07/chime-theme) fo
 - Everything else is labeled under `Obsidian Settings → Style Settings → Gastrodon`.
 
 ## Styling Guide
+- Preview a static note page [here](https://share.note.sx/qyoj8yvi). 
+- Preview the available color schemes [here](/palettes).
 
-Preview the available color schemes [here](/palettes).
 ### Page Classes
 
 Add these under the note's `cssclasses` property.
