@@ -4475,7 +4475,7 @@ body {
     --theme-decoration: '☾';
   }
 
-.theme-celestial.theme-dark blockquote {
+.theme-celestial blockquote {
     border-radius: 50px;
     padding: 1em 1.5em 1em 1.5em;
 }
