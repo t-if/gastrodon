@@ -1,24 +1,4 @@
-/* Gastrodon — remix of Chime by Ha'ani Whitlock.
-
-   Search for SECTION NN to jump to a group:
-   01  Fonts and bundled assets
-   02  Workspace, navigation and focus modes
-   03  Typography and heading options
-   04  Markdown, tables, rules, tags, links and embeds
-   05  Images, diagrams, banners and margin notes
-   06  Properties and Bases layouts
-   07  Callouts, conversations, timelines and columns
-   08  Tasks, Kanban cards and list layouts
-   09  Outline panel
-   10  Palettes and palette-specific accents
-   11  Calendar and Commander integrations
-   12  Style Settings
-
-   Each palette's tokens, headings, emphasis and decoration live in SECTION 10.
-   Keep shared rules synchronized; preserve each file's defaults in SECTION 12.
-   The Bases header icon CSS fallback also differs intentionally between files.
-   Source attribution and embedded font license comments remain with their code.
-*/
+/* Gastrodon — remix of Chime by Ha'ani Whitlock.*/
 
 /* ==========================================================================
    SECTION 01 — Fonts and bundled assets
