@@ -5837,6 +5837,12 @@ name: Gastrodon
 id: gastrodon-theme
 settings:
     -
+        id: theme-appearance
+        title: Appearance
+        type: heading
+        level: 1
+        collapsed: false
+    -
         id: theme-settings
         title: Theme
         type: class-select
@@ -5874,10 +5880,339 @@ settings:
                 label: Windworks
                 value: theme-light-and-bright
     -
-        id: ui-options
-        title: Layout
+        id: theme-decoration
+        type: variable-text
+        title: Theme Decoration
+        description: Defaults to the selected color scheme’s decoration. Enter an emoji or text to customize it for horizontal rules and decorative elements; reset to use the color scheme’s icon.
+        default: ""
+        quotes: true
+    -
+        id: editor-heading
+        title: Editor
+        type: heading
+        level: 1
+        collapsed: true
+    -
+        id: file-line-width
+        title: Readable Line Length
+        description: Change the width of the note when Readable Line Length is turned on.
+        type: variable-text
+        default: '850px'
+    -
+        id: colored-bold-and-italic
+        title: Colorful bold and italic text
+        type: class-toggle
+        default: false
+    -
+        id: hr-enable
+        type: class-toggle
+        title: Enable Horizontal Rule Style
+        default: true
+    -
+        id: blockquote-style
+        title: Blockquote style
+        type: class-select
+        allowEmpty: false
+        default: blockquote-block
+        options:
+            -
+                label: Chime
+                value: blockquote-normal
+            -
+                label: Simple Block
+                value: blockquote-block
+            -
+                label: Obsidian
+                value: blockquote-quote
+            -
+                label: Minimalist
+                value: blockquote-minimal
+            -
+                label: Card
+                value: blockquote-floating
+            -
+                label: Sleek
+                value: blockquote-sleek
+            -
+                label: Basic
+                value: blockquote-basic
+    -
+        id: blockquote-mark
+        title: Quote Marking
+        type: class-toggle
+        default: false
+    -
+        id: hover-callout
+        title: Hover to Expand Callout
+        type: class-toggle
+        default: true
+    -
+        id: bullet-threading
+        title: Bullet Threading
+        description: Highlight nested bullet-list branches in Live Preview.
+        type: class-toggle
+        default: true
+    -
+        id: tag-style
+        title: Tag Style
+        type: class-select
+        allowEmpty: false
+        default: tag-minimal
+        options:
+            -
+                label: Default
+                value: tag-default
+            -
+                label: Block
+                value: tag-block
+            -
+                label: Minimalistic
+                value: tag-minimal
+            -
+                label: Button
+                value: tag-button
+    -
+        id: clean-embed
+        title: Seamless Embedded Links
+        type: class-toggle
+        default: true
+    -
+        id: underlined-highlight
+        title: Underlined Highlights
+        description: Show highlights as underlined text.
+        type: class-toggle
+        default: false
+    -
+        id: code-normal
+        title: Inline Code Color
+        type: variable-select
+        default: var(--text-muted)
+        options:
+            -
+                label: Muted
+                value: var(--text-muted)
+            -
+                label: Normal
+                value: var(--text-normal)
+            -
+                label: Red
+                value: var(--color-red)
+            -
+                label: Accent
+                value: var(--text-accent)
+    -
+        id: code-background
+        title: Code background
+        type: variable-select
+        default: var(--background-primary-alt)
+        options:
+            -
+                label: Default
+                value: var(--background-primary-alt)
+            -
+                label: Background Primary
+                value: var(--background-primary)
+            -
+                label: Background Secondary
+                value: var(--background-secondary)
+            -
+                label: Background Secondary Alt
+                value: var(--background-secondary-alt)
+            -
+                label: Transparent
+                value: transparent
+            -
+                label: Accent
+                value: color-mix(in srgb, var(--color-accent) 10%, transparent)
+    -
+        id: headings-settings
+        title: Headings
         type: heading
         level: 2
+        collapsed: true
+    -
+        id: heading-colors
+        title: Heading Colors
+        type: class-select
+        allowEmpty: false
+        default: colorful-headings
+        options:
+            -
+                label: Default
+                value: heading-default
+            -
+                label: Colorful Headings
+                value: colorful-headings
+            -
+                label: Alternate Colorful Headings
+                value: colorful-headings-alt
+    -
+        id: smaller-headings
+        title: Smaller Headings
+        description: Make headings smaller and less distracting.
+        type: class-toggle
+        default: true
+    -
+        id: h1-weight
+        title: Header 1 Weight
+        type: variable-number
+        default: 550
+    -
+        id: h1-variant
+        title: Header 1 Font Variant
+        type: variable-select
+        default: normal
+        options:
+            - normal
+            - petite-caps
+            - small-caps
+            - all-small-caps
+            - unicase
+    -
+        id: h1-center
+        title: Center Header 1
+        type: class-toggle
+        default: true
+    -
+        id: h1-bottom-border
+        title: Header 1 Bottom Border
+        type: class-toggle
+        default: false
+    -
+        id: h2-weight
+        title: Header 2 Weight
+        type: variable-number
+        default: 500
+    -
+        id: h2-variant
+        title: Header 2 Font Variant
+        type: variable-select
+        default: normal
+        options:
+            - normal
+            - petite-caps
+            - small-caps
+            - all-small-caps
+            - unicase
+    -
+        id: h2-center
+        title: Center Header 2
+        type: class-toggle
+        default: false
+    -
+        id: h2-bottom-border
+        title: Header 2 Bottom Border
+        type: class-toggle
+        default: true
+    -
+        id: h3-weight
+        title: Header 3 Weight
+        type: variable-number
+        default: 550
+    -
+        id: h3-variant
+        title: Header 3 Font Variant
+        type: variable-select
+        default: normal
+        options:
+            - normal
+            - petite-caps
+            - small-caps
+            - all-small-caps
+            - unicase
+    -
+        id: h3-center
+        title: Center Header 3
+        type: class-toggle
+        default: true
+    -
+        id: h3-bottom-border
+        title: Header 3 Bottom Border
+        type: class-toggle
+        default: false
+    -
+        id: h4-weight
+        title: Header 4 Weight
+        type: variable-number
+        default: 550
+    -
+        id: h4-variant
+        title: Header 4 Font Variant
+        type: variable-select
+        default: normal
+        options:
+            - normal
+            - petite-caps
+            - small-caps
+            - all-small-caps
+            - unicase
+    -
+        id: h4-center
+        title: Center Header 4
+        type: class-toggle
+        default: false
+    -
+        id: h4-bottom-border
+        title: Header 4 Bottom Border
+        type: class-toggle
+        default: false
+    -
+        id: h5-weight
+        title: Header 5 Weight
+        type: variable-number
+        default: 550
+    -
+        id: h5-variant
+        title: Header 5 Font Variant
+        type: variable-select
+        default: normal
+        options:
+            - normal
+            - petite-caps
+            - small-caps
+            - all-small-caps
+            - unicase
+    -
+        id: h5-center
+        title: Center Header 5
+        type: class-toggle
+        default: false
+    -
+        id: h5-bottom-border
+        title: Header 5 Bottom Border
+        type: class-toggle
+        default: false
+    -
+        id: h6-weight
+        title: Header 6 Weight
+        type: variable-number
+        default: 550
+    -
+        id: h6-variant
+        title: Header 6 Font Variant
+        type: variable-select
+        default: normal
+        options:
+            - normal
+            - petite-caps
+            - small-caps
+            - all-small-caps
+            - unicase
+    -
+        id: h6-center
+        title: Center Header 6
+        type: class-toggle
+        default: false
+    -
+        id: h6-bottom-border
+        title: Header 6 Bottom Border
+        type: class-toggle
+        default: false
+    -
+        id: ui-options
+        title: Interface
+        type: heading
+        level: 1
         collapsed: true
     -
         id: hide-dividers
@@ -5940,12 +6275,6 @@ settings:
         step: 1
         format: px
     -
-        id: folders-heading
-        title: Folders
-        type: heading
-        level: 3
-        collapsed: true
-    -
         id: file-icon-remove
         title: Remove File Icons
         type: class-toggle
@@ -5968,12 +6297,6 @@ settings:
                 label: Rainbow Folder Backgrounds
                 value: folder-rainbow-backgrounds
     -
-        id: tabs-heading
-        title: Tabs
-        type: heading
-        level: 3
-        collapsed: true
-    -
         id: tab-text-color-focused-active-current
         title: Active Tab Color
         description: Change the text color of the active tab.
@@ -5993,419 +6316,29 @@ settings:
                 label: Normal
                 value: var(--text-normal)
     -
-        id: editor-heading
-        title: Editor
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: file-line-width
-        title: Readable Line Length
-        description: Change the width of the note when Readable Line Length is turned on.
-        type: variable-text
-        default: '850px'
-    -
-        id: title-horizontal-rule
-        title: Horizontal Rule
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: hr-enable
-        type: class-toggle
-        title: Enable Horizontal Rule Style
-        default: true
-    -
-        id: theme-decoration
-        type: variable-text
-        title: Theme Decoration
-        description: Defaults to the selected color scheme’s decoration. Enter an emoji or text to customize it for horizontal rules and decorative elements; reset to use the color scheme’s icon.
-        default: ""
-        quotes: true
-    -
-        id: blockquote-options
-        title: Blockquotes
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: blockquote-style
-        title: Blockquote style
-        type: class-select
-        allowEmpty: false
-        default: blockquote-block
-        options:
-            -
-                label: Chime
-                value: blockquote-normal
-            -
-                label: Simple Block
-                value: blockquote-block
-            -
-                label: Obsidian
-                value: blockquote-quote
-            -
-                label: Minimalist
-                value: blockquote-minimal
-            -
-                label: Card
-                value: blockquote-floating
-            -
-                label: Sleek
-                value: blockquote-sleek
-            -
-                label: Basic
-                value: blockquote-basic
-    -
-        id: blockquote-mark
-        title: Quote Marking
-        type: class-toggle
-        default: false
-    -
-        id: callout-options
-        title: Callouts
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: hover-callout
-        title: Hover to Expand Callout
-        type: class-toggle
-        default: true
-    -
-        id: list-options
-        title: Lists
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: bullet-threading
-        title: Bullet Threading
-        description: Highlight nested bullet-list branches in Live Preview.
-        type: class-toggle
-        default: true
-    -
-        id: outline-options
-        title: Outline Panel
-        type: heading
-        level: 3
-        collapsed: true
-    -
         id: outline-threading
         title: Outline Threading
         description: Add threaded dots and hover-guided branch lines to the Outline panel.
         type: class-toggle
         default: true
     -
-        id: tag-options
-        title: Tags
+        id: properties-options
+        title: Properties, Bases & Media
         type: heading
-        level: 3
+        level: 1
         collapsed: true
     -
-        id: tag-style
-        title: Tag Style
-        type: class-select
-        allowEmpty: false
-        default: tag-minimal
-        options:
-            -
-                label: Default
-                value: tag-default
-            -
-                label: Block
-                value: tag-block
-            -
-                label: Minimalistic
-                value: tag-minimal
-            -
-                label: Button
-                value: tag-button
-    -
-        id: link-options
-        title: Links
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: clean-embed
-        title: Seamless Embedded Links
+        id: hover-properties
+        title: Hover to Reveal Properties
+        description: Keep in-note properties collapsed and faded until the Properties area is hovered or focused. Properties remain visible on touch devices.
         type: class-toggle
         default: true
     -
-        id: code-heading
-        title: Code
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: code-normal
-        title: Inline Code Color
-        type: variable-select
-        default: var(--text-muted)
-        options:
-            -
-                label: Muted
-                value: var(--text-muted)
-            -
-                label: Normal
-                value: var(--text-normal)
-            -
-                label: Red
-                value: var(--color-red)
-            -
-                label: Accent
-                value: var(--text-accent)
-    -
-        id: code-background
-        title: Code background
-        type: variable-select
-        default: var(--background-primary-alt)
-        options:
-            -
-                label: Default
-                value: var(--background-primary-alt)
-            -
-                label: Background Primary
-                value: var(--background-primary)
-            -
-                label: Background Secondary
-                value: var(--background-secondary)
-            -
-                label: Background Secondary Alt
-                value: var(--background-secondary-alt)
-            -
-                label: Transparent
-                value: transparent
-            -
-                label: Accent
-                value: color-mix(in srgb, var(--color-accent) 10%, transparent)
-    -
-        id: headings-settings
-        title: Headings
-        type: heading
-        level: 3
-        collapsed: true
-    -
-        id: heading-colors
-        title: Heading Colors
-        type: class-select
-        allowEmpty: false
-        default: colorful-headings
-        options:
-            -
-                label: Default
-                value: heading-default
-            -
-                label: Colorful Headings
-                value: colorful-headings
-            -
-                label: Alternate Colorful Headings
-                value: colorful-headings-alt
-    -
-        id: smaller-headings
-        title: Smaller Headings
-        description: Make headings smaller and less distracting.
+        id: properties-title-icon
+        title: Replace Properties Title with Icon
+        description: Replace the visible Properties label with a compact Lucide info icon while preserving the original label for assistive technology.
         type: class-toggle
         default: true
-    -
-        id: h1-options
-        title: Header 1
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: h1-weight
-        title: Header 1 Weight
-        type: variable-number
-        default: 550
-    -
-        id: h1-variant
-        title: Header 1 Font Variant
-        type: variable-select
-        default: normal
-        options:
-            - normal
-            - petite-caps
-            - small-caps
-            - all-small-caps
-            - unicase
-    -
-        id: h1-center
-        title: Center Header 1
-        type: class-toggle
-        default: true
-    -
-        id: h1-bottom-border
-        title: Header 1 Bottom Border
-        type: class-toggle
-        default: false
-    -
-        id: h2-options
-        title: Header 2
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: h2-weight
-        title: Header 2 Weight
-        type: variable-number
-        default: 500
-    -
-        id: h2-variant
-        title: Header 2 Font Variant
-        type: variable-select
-        default: normal
-        options:
-            - normal
-            - petite-caps
-            - small-caps
-            - all-small-caps
-            - unicase
-    -
-        id: h2-center
-        title: Center Header 2
-        type: class-toggle
-        default: false
-    -
-        id: h2-bottom-border
-        title: Header 2 Bottom Border
-        type: class-toggle
-        default: true
-    -
-        id: h3-options
-        title: Header 3
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: h3-weight
-        title: Header 3 Weight
-        type: variable-number
-        default: 550
-    -
-        id: h3-variant
-        title: Header 3 Font Variant
-        type: variable-select
-        default: normal
-        options:
-            - normal
-            - petite-caps
-            - small-caps
-            - all-small-caps
-            - unicase
-    -
-        id: h3-center
-        title: Center Header 3
-        type: class-toggle
-        default: true
-    -
-        id: h3-bottom-border
-        title: Header 3 Bottom Border
-        type: class-toggle
-        default: false
-    -
-        id: h4-options
-        title: Header 4
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: h4-weight
-        title: Header 4 Weight
-        type: variable-number
-        default: 550
-    -
-        id: h4-variant
-        title: Header 4 Font Variant
-        type: variable-select
-        default: normal
-        options:
-            - normal
-            - petite-caps
-            - small-caps
-            - all-small-caps
-            - unicase
-    -
-        id: h4-center
-        title: Center Header 4
-        type: class-toggle
-        default: false
-    -
-        id: h4-bottom-border
-        title: Header 4 Bottom Border
-        type: class-toggle
-        default: false
-    -
-        id: h5-options
-        title: Header 5
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: h5-weight
-        title: Header 5 Weight
-        type: variable-number
-        default: 550
-    -
-        id: h5-variant
-        title: Header 5 Font Variant
-        type: variable-select
-        default: normal
-        options:
-            - normal
-            - petite-caps
-            - small-caps
-            - all-small-caps
-            - unicase
-    -
-        id: h5-center
-        title: Center Header 5
-        type: class-toggle
-        default: false
-    -
-        id: h5-bottom-border
-        title: Header 5 Bottom Border
-        type: class-toggle
-        default: false
-    -
-        id: h6-options
-        title: Header 6
-        type: heading
-        level: 4
-        collapsed: true
-    -
-        id: h6-weight
-        title: Header 6 Weight
-        type: variable-number
-        default: 550
-    -
-        id: h6-variant
-        title: Header 6 Font Variant
-        type: variable-select
-        default: normal
-        options:
-            - normal
-            - petite-caps
-            - small-caps
-            - all-small-caps
-            - unicase
-    -
-        id: h6-center
-        title: Center Header 6
-        type: class-toggle
-        default: false
-    -
-        id: h6-bottom-border
-        title: Header 6 Bottom Border
-        type: class-toggle
-        default: false
-    -
-        id: bases-options
-        title: Bases
-        type: heading
-        level: 2
-        collapsed: true
     -
         id: bases-table-header-icon-display
         title: Table Header Icons
@@ -6426,47 +6359,6 @@ settings:
         type: class-toggle
         default: true
     -
-        id: properties-options
-        title: Properties
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: hover-properties
-        title: Hover to Reveal Properties
-        description: Keep in-note properties collapsed and faded until the Properties area is hovered or focused. Properties remain visible on touch devices.
-        type: class-toggle
-        default: true
-    -
-        id: properties-title-icon
-        title: Replace Properties Title with Icon
-        description: Replace the visible Properties label with a compact Lucide info icon while preserving the original label for assistive technology.
-        type: class-toggle
-        default: true
-    -
-        id: text-options
-        title: Text
-        type: heading
-        level: 2
-        collapsed: true
-    -
-        id: colored-bold-and-italic
-        title: Colorful bold and italic text
-        type: class-toggle
-        default: false
-    -
-        id: underlined-highlight
-        title: Underlined Highlights
-        description: Show highlights as underlined text.
-        type: class-toggle
-        default: false
-    -
-        id: media-options
-        title: Dark Mode Media
-        type: heading
-        level: 2
-        collapsed: true
-    -
         id: dim-images-dark
         title: Dim Images in Dark Mode
         description: Reduce image brightness, then brighten images slightly on hover.
@@ -6480,11 +6372,16 @@ settings:
         default: true
     -
         id: focus-mode-heading
-        title: Focus Mode
+        title: Focus & Hidden
         type: heading
-        description: Hide certain UI elements until you hover over them with your mouse.
-        level: 2
+        level: 1
         collapsed: true
+    -
+        id: ultra-focus
+        title: Enable Ultra Focus (A.K.A. Full-Screen)
+        description: Everything except your note is completely invisible until you hover over it. Your note takes up most of the screen.
+        type: class-toggle
+        default: false
     -
         id: hide-buttons
         title: Hide Buttons
@@ -6517,10 +6414,4 @@ settings:
         description: This option completely hides the Vault name; it will not reappear on hover.
         type: class-toggle
         default: true
-    -
-        id: ultra-focus
-        title: Enable Ultra Focus (A.K.A. Full-Screen)
-        description: Everything except your note is completely invisible until you hover over it. Your note takes up most of the screen.
-        type: class-toggle
-        default: false
 */
