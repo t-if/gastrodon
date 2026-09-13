@@ -364,18 +364,39 @@ body.hide-buttons:not(.is-mobile) .nav-header .nav-buttons-container:is(:hover, 
 
 /* status bar */
 
+/* A floating panel that follows workspace roundness and border visibility. */
+body:not(.is-mobile) {
+  --status-bar-radius: var(--border-radius-average, 12px);
+  --status-bar-border-width: var(--border-width);
+  --status-bar-border-color: var(--background-modifier-border);
+  --status-bar-background: var(--background-secondary);
+}
+
+body:not(.is-mobile) .status-bar {
+  right: 8px;
+  bottom: 8px;
+  border-style: var(--line-style);
+  max-width: calc(100% - 16px);
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px 6px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+}
+
 .status-bar-item {
   opacity: 0.5;
   transition: opacity 0.15s ease-in-out;
 }
 
-.status-bar-item:hover {
+.status-bar-item:is(:hover, :focus-within) {
   opacity: 1;
   transition-delay: 0ms;
 }
 
-.status-bar {
-  box-shadow: 0 0 2px 0 rgb(0 0 0 / 15%);
+@media (prefers-reduced-motion: reduce) {
+  .status-bar-item {
+    transition: none;
+  }
 }
 
 /* tooltips */
