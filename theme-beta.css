@@ -2196,20 +2196,33 @@ body {
    SECTION 07 — Callouts, conversations, timelines and columns
    ========================================================================== */
 
-/* ----- callouts ----- */
+/* ----- callout defaults ----- */
 
 .hover-callout .callout-fold, .no-fold .callout-fold {
   display: none;
 }
 
 .callout {
-  /* Legacy fallback for custom callouts that still use an RGB triplet. */
+  --callout-border-width: 0;
 
-  /* Obsidian 1.13+ expects --callout-color to be a complete CSS color. */
-  background-color: color-mix(in oklch, var(--callout-color) 17%, transparent);
+  background: linear-gradient(135deg,
+    color-mix(in oklch, var(--callout-color) 15%, transparent),
+    color-mix(in oklch, var(--callout-color) 5%, transparent));
   border: none;
+  border-radius: var(--radius-m);
   position: relative;
   z-index: 2;
+  box-shadow: 0 3px 12px color-mix(in oklch, var(--callout-color) 12%, transparent);
+  overflow: hidden;
+}
+
+.callout-title {
+  color: var(--callout-color);
+}
+
+.callout-title-inner {
+  font-weight: var(--font-semibold);
+  letter-spacing: 0.02em;
 }
 
 /* custom callout colors */
@@ -2375,6 +2388,7 @@ Author: ElsaTam (Kapirklaa in Discord) */
   --callout-color: var(--callout-email-color);
   --p-spacing: 0;
 
+  box-shadow: none;
   margin: 0;
   background: none;
   border: none;
@@ -2418,34 +2432,10 @@ Author: ElsaTam (Kapirklaa in Discord) */
 
 .callout[data-callout-metadata~="custom-icon"] {
   --callout-color: var(--color-purple);
-  --callout-border-width: 0;
-
-  background: linear-gradient(135deg,
-        color-mix(in oklch, var(--callout-color) 14%, transparent),
-        color-mix(in oklch, var(--callout-color) 5%, transparent));
-  border: 1px solid color-mix(in oklch, var(--callout-color) 40%, transparent);
-  border-radius: var(--radius-m);
-  box-shadow: 0 3px 12px color-mix(in oklch, var(--callout-color) 12%, transparent);
-  overflow: hidden;
 }
 
 .callout[data-callout-metadata~="custom-icon"] {
   --callout-icon: attr(data-callout);
-}
-
-.callout[data-callout-metadata~="custom-icon"] > .callout-title {
-  color: var(--callout-color);
-  padding-bottom: var(--size-4-2);
-}
-
-.callout[data-callout-metadata~="custom-icon"] .callout-title-inner {
-  font-weight: var(--font-semibold);
-  letter-spacing: 0.02em;
-}
-
-.callout[data-callout-metadata~="custom-icon"] .callout-content {
-  border-top: 1px dashed color-mix(in oklch, var(--callout-color) 30%, transparent);
-  padding-top: var(--size-4-2);
 }
 
 /* GPLv3 license
@@ -2455,6 +2445,9 @@ Author: ElsaTam (Kapirklaa in Discord) */
 /* Variables */
 
 .callout[data-callout="timeline"] {
+  box-shadow: none;
+  background: none;
+
   /* main callout */
   --callout-icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.5361595" r="7.7601452" style="stroke-width:1.5"/><polyline points="12 6 12 12 16 14" transform="matrix(0.77601453,0,0,0.77601453,2.6878256,0.22398547)"/><circle cx="12.092106" cy="20.717064" r="1" /><circle cx="19.092106" cy="20.717064" r="1"/><circle cx="5.0921063" cy="20.717064" r="1"/><path style="stroke-width:1.5;" d="M 5.0921062,20.717063 H 19.092106"/></svg>';
   --callout-blend-mode: normal;
@@ -2899,6 +2892,7 @@ Author: ElsaTam (Kapirklaa in Discord) */
 .callout[data-callout-metadata~="no-background"] > .callout-content,
 .callout[data-callout-metadata~="no-background"] > .callout-title {
   background: none;
+  box-shadow: none;
 }
 
 .callout[data-callout-metadata~="black-and-white"] img,
@@ -3081,6 +3075,7 @@ body {
   --line-color-odd: color-mix(in srgb, var(--conversation-color) 75%, var(--color-purple));
   --line-color-even: color-mix(in srgb, var(--conversation-color) 75%, var(--color-cyan));
 
+  box-shadow: none;
   background: none;
 }
 
