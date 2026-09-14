@@ -2368,62 +2368,79 @@ Author: ElsaTam (Kapirklaa in Discord) */
 
 .callout[data-callout="email"] {
   --callout-icon: lucide-send-horizontal;
+  --callout-padding: 20px clamp(16px, 3vw, 28px);
   --callout-blend-mode: normal;
-  --callout-border-width: 1px;
   --callout-email-color: var(--text-normal);
   --callout-color: var(--callout-email-color);
 }
 
 .callout[data-callout="email"] > .callout-title {
   gap: 10px;
+  margin-bottom: 1.1em;
 }
 
-.callout[data-callout="email"] .callout {
-  --callout-radius: 0;
-  --callout-border-width: 2px;
-  --callout-border-opacity: 0.3;
-  --callout-padding: var(--size-4-1) 0;
+/* Direct nested callouts are header rows; deeper content keeps its own layout. */
+.callout[data-callout="email"] > .callout-content > .callout {
+  --callout-padding: 2px 0;
   --callout-title-padding: 0;
-  --callout-content-padding: 0 var(--size-4-1);
+  --callout-content-padding: 0;
   --callout-color: var(--callout-email-color);
-  --p-spacing: 0;
 
-  box-shadow: none;
+  display: grid;
+  grid-template-columns: minmax(0, 8.5ch) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.75em;
   margin: 0;
-  background: none;
+  padding: 2px 0;
   border: none;
-  display: flex;
-  gap: var(--size-4-3);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  overflow: visible;
 }
 
-.callout[data-callout="email"] .callout > .callout-title {
-  flex-basis: 15ex;
+.callout[data-callout="email"] > .callout-content > .callout > .callout-title {
+  min-width: 0;
+  padding: 0;
+  color: var(--text-muted);
   line-height: var(--line-height-normal);
-  align-items: center;
-  justify-content: end;
   background: none;
 }
 
-.callout[data-callout="email"] .callout > .callout-title .callout-title-inner {
-  text-wrap: nowrap;
+.callout[data-callout="email"] > .callout-content > .callout > .callout-title .callout-title-inner {
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
-.callout[data-callout="email"] .callout > .callout-title .callout-icon {
-  display: none;
-}
-
-.callout[data-callout="email"] .callout > .callout-content {
-  flex-grow: 1;
-  border: var(--callout-border-width) solid color-mix(in oklch, var(--callout-color) calc(var(--callout-border-opacity) * 100%), transparent);
-  background-color: var(--workleaves-background);
+.callout[data-callout="email"] > .callout-content > .callout > .callout-content {
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: none;
   color: var(--text-normal);
+  overflow-wrap: anywhere;
 }
 
-.callout[data-callout="email"] .callout[data-callout-metadata~="sep"] {
-  padding-bottom: var(--size-4-6);
-  border-bottom: var(--callout-border-width) solid color-mix(in oklch, var(--callout-color) calc(var(--callout-border-opacity) * 100%), transparent);
+.callout[data-callout="email"] > .callout-content > .callout > .callout-content > :is(p, ul, ol) {
+  margin-block: 0;
 }
 
+/* sep remains attached to the final header row, with space on both sides. */
+.callout[data-callout="email"] > .callout-content > .callout[data-callout-metadata~="sep"] {
+  padding-bottom: 0.85em;
+  margin-bottom: 0.85em;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-normal) 15%, transparent);
+}
+
+.callout[data-callout="email"] > .callout-content > p {
+  margin-block: 0.85em;
+}
+
+.callout[data-callout="email"] > .callout-content > p:last-child {
+  margin-bottom: 0;
+}
+
+.callout[data-callout="email"] > .callout-content > .callout > .callout-title .callout-icon,
 .callout[data-callout="email"] .callout-fold {
   display: none;
 }
