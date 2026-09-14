@@ -1490,129 +1490,7 @@ body {
   padding-bottom: 0;
 }
 
-/* special considerations for printing (PDF export) */
-
-@media print {
-  /* remove frontmatter box if "Show frontmatter" was enabled */
-  pre.frontmatter {
-    display: none;
-  }
-}
-
-@media print {
-  .markdown-rendered a.internal-link {
-    color: #000;
-    text-decoration: none;
-  }
-
-  .markdown-rendered .callout {
-    color: #000;
-    background: #fff;
-    border: 1px solid #000;
-    border-left: 4px solid #000;
-    border-radius: 1px;
-    padding: 10px 12px;
-    margin: 1em 0;
-    break-inside: avoid;
-  }
-
-  .markdown-rendered .callout[data-callout] {
-    --callout-color: #000;
-    --callout-border: #000;
-    --callout-title-color: #000;
-    --callout-bg: #fff;
-  }
-
-  .markdown-rendered .callout-title {
-    color: #000;
-    border-bottom: 1px solid #000;
-    background: #fff;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    display: flex;
-    align-items: center;
-  }
-
-  .markdown-rendered .callout-icon,
-  .markdown-rendered .callout-fold {
-    display: none;
-  }
-
-  .markdown-rendered .callout-title-inner,
-  .markdown-rendered .callout-content {
-    color: #000;
-    background: #fff;
-  }
-
-  .markdown-rendered .callout {
-    background: #fff;
-    border-color: #000;
-    margin: 0.75em 0 0 0;
-    border-width: 1px;
-  }
-
-  .markdown-rendered hr {
-    display: none;
-  }
-
-  .markdown-rendered .tag {
-    display: none;
-  }
-
-  .markdown-rendered ul {
-    list-style-type: circle;
-  }
-
-  .markdown-rendered ul ul,
-  .markdown-rendered ol ol {
-    border-left: 1px solid #666;
-  }
-
-  .markdown-rendered h1 {
-    color: #000;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom: 1px solid #000;
-    padding-bottom: 2px;
-    margin-top: 1.5em;
-  }
-
-  .markdown-rendered h2 {
-    color: #000;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding-bottom: 2px;
-    margin-top: 1.25em;
-    border-bottom: none;
-  }
-
-  .markdown-rendered h3 {
-    color: #000;
-    font-weight: bold;
-    margin-top: 1em;
-    text-align: left;
-  }
-
-  .markdown-rendered h4 {
-    color: #000;
-    margin-top: 0.75em;
-  }
-
-  .markdown-rendered h5 {
-    color: #000;
-    margin-top: 0.5em;
-  }
-
-  .markdown-rendered h6 {
-    color: #000;
-    margin-top: 0.25em;
-  }
-
-  .markdown-rendered blockquote {
-    background-color: transparent;
-  }
-}
+/* Print rules are grouped at the end of this file. */
 
 /* ==========================================================================
    SECTION 05 — Images, diagrams, banners and margin notes
@@ -1835,25 +1713,6 @@ body {
       border-right: none;
       padding-inline: 15px 0;
     }
-  }
-}
-
-@media print {
-  .print .aside-left,
-  .print .aside-right {
-    break-inside: avoid;
-  }
-
-  .print .aside-left {
-    float: left;
-    clear: left;
-    margin-right: var(--float-inline-margin);
-  }
-
-  .print .aside-right {
-    float: right;
-    clear: right;
-    margin-left: var(--float-inline-margin);
   }
 }
 
@@ -3048,12 +2907,6 @@ body {
 .callout[data-callout="polaroid"]:is([data-callout-metadata~="left"], [data-callout-metadata~="float-left"]) {
   margin-right: var(--size-4-4);
   transform: rotate(var(--polaroid-angle));
-}
-
-@media print {
-  .callout[data-callout="polaroid"] {
-    border: 1px solid #d3d3d3;
-  }
 }
 
 .markdown-source-view.mod-cm6 .callout[data-callout="polaroid"] {
@@ -6443,3 +6296,248 @@ settings:
         type: class-toggle
         default: false
 */
+
+/* Print / PDF export: higher specificity, no effect on screen styles. */
+@media print {
+  /* remove frontmatter box if "Show frontmatter" was enabled */
+  pre.frontmatter {
+    display: none;
+  }
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered a.internal-link {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout {
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    border-left: 4px solid #000;
+    border-radius: 1px;
+    padding: 10px 12px;
+    margin: 1em 0;
+    break-inside: avoid;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout[data-callout] {
+    --callout-color: #000;
+    --callout-border: #000;
+    --callout-title-color: #000;
+    --callout-bg: #fff;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout-title {
+    color: #000;
+    border-bottom: 1px solid #000;
+    background: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout-icon,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout-fold {
+    display: none;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout-title-inner,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout-content {
+    color: #000;
+    background: #fff;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .callout {
+    background: #fff;
+    border-color: #000;
+    margin: 0.75em 0 0 0;
+    border-width: 1px;
+  }
+
+  /* Simple ink-only separators; omit the screen theme's gradient and icon. */
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered hr {
+    display: block;
+    height: 0;
+    margin-block: 16pt;
+    padding: 0;
+    border: 0;
+    border-top: 0.5pt solid #000;
+    background: none;
+    box-shadow: none;
+    break-after: avoid;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered hr::before,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered hr::after {
+    content: none;
+    display: none;
+  }
+
+  /* The footnote section owns one divider, regardless of renderer HR markup. */
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .footnotes {
+    margin-top: 24pt;
+    padding-top: 10pt;
+    border-top: 0.5pt solid #000;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .footnotes > ol {
+    margin-top: 0;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(.footnotes hr, hr.footnotes-sep) {
+    display: none;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .tag {
+    display: none;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered ul {
+    list-style-type: circle;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered ul ul,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered ol ol {
+    border-left: 1px solid #666;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered h1 {
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-top: 1.5em;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered h2 {
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 2px;
+    margin-top: 1.25em;
+    border-bottom: none;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered h3 {
+    color: #000;
+    font-weight: bold;
+    margin-top: 1em;
+    text-align: left;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered h4 {
+    color: #000;
+    margin-top: 0.75em;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered h5 {
+    color: #000;
+    margin-top: 0.5em;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered h6 {
+    color: #000;
+    margin-top: 0.25em;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered blockquote {
+    background-color: transparent;
+  }
+
+  /* Color-only corrections: preserve the original print layout. Repeated classes deliberately outrank screen selectors without changing markup. */
+  /* stylelint-disable declaration-no-important -- Inline plugin colors/opacity and Mermaid ID-scoped text still require overrides. */
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered *,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered *::before,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered *::after,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered *::marker {
+    color: #000 !important;
+    -webkit-text-fill-color: #000;
+    text-decoration-color: #000;
+    text-shadow: none;
+    opacity: 1 !important;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(blockquote, blockquote *, table, th, td,
+    .callout, .callout-title, .callout-content, pre, code),
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered ul:has(a[href*="#mcl/list-card"]),
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered ul:has(a[href*="#mcl/list-card"]) li,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered ul:has([data-heading*="#mcl/list-card"]),
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered ul:has([data-heading*="#mcl/list-card"]) li {
+    background: #fff;
+    border-color: #000;
+    outline-color: #000;
+    box-shadow: none;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(th, td) * {
+    background: transparent;
+  }
+
+  /* Suppress colored list guides without changing numbering or card layouts. */
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(ul, ol),
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(li, ul, ol)::before,
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .list-bullet::after {
+    border-color: #666;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .list-bullet::after {
+    background-color: #000;
+  }
+
+  /* Replace Obsidian's dark-mode inversion with an actual grayscale diagram. */
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .mermaid > svg {
+    filter: grayscale(1);
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .mermaid text {
+    fill: #000 !important;
+  }
+
+  /* A complete print grid replaces the screen table's accent header rule. */
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered table {
+    border-collapse: collapse;
+    border: 1px solid #000;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(th, td) {
+    border: 1px solid #000;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(thead, tbody, tfoot, tr) {
+    border-color: #000;
+  }
+
+  /* Card content is already grouped by its frame; omit nested-list guide lines. */
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(ul:has(a[href*="#mcl/list-card"]),
+    ul:has([data-heading*="#mcl/list-card"])) :is(ul, ol) {
+    border: none;
+  }
+
+  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(ul:has(a[href*="#mcl/list-card"]),
+    ul:has([data-heading*="#mcl/list-card"])) :is(ul, ol)::before {
+    display: none;
+  }
+  /* stylelint-enable declaration-no-important */
+  .print.print.print.print .aside-left,
+  .print.print.print.print .aside-right {
+    break-inside: avoid;
+  }
+
+  .print.print.print.print .aside-left {
+    float: left;
+    clear: left;
+    margin-right: var(--float-inline-margin);
+  }
+
+  .print.print.print.print .aside-right {
+    float: right;
+    clear: right;
+    margin-left: var(--float-inline-margin);
+  }
+  .callout[data-callout="polaroid"] {
+    border: 1px solid #d3d3d3;
+  }
+}
