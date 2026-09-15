@@ -6361,21 +6361,6 @@ settings:
     display: none;
   }
 
-  /* The footnote section owns one divider, regardless of renderer HR markup. */
-  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .footnotes {
-    margin-top: 24pt;
-    padding-top: 10pt;
-    border-top: 0.5pt solid #000;
-  }
-
-  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .footnotes > ol {
-    margin-top: 0;
-  }
-
-  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered :is(.footnotes hr, hr.footnotes-sep) {
-    display: none;
-  }
-
   .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .tag {
     display: none;
   }
