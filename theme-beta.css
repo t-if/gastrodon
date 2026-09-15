@@ -2308,7 +2308,7 @@ Author: ElsaTam (Kapirklaa in Discord) */
   display: none;
 }
 
-/* Fancy callout with any Lucide icon. */
+/* Custom icons, inspired by a snippet shared by rushi ◭ on Discord */
 
 .callout[data-callout-metadata~="custom-icon"] {
   --callout-color: var(--color-purple);
@@ -2715,7 +2715,7 @@ Author: ElsaTam (Kapirklaa in Discord) */
 
 /* Colors */
 
-.callout[data-callout-metadata~="gray"] {
+.callout[data-callout-metadata~="gray"], .callout[data-callout-metadata~="grey"] {
   --callout-color: rgb(var(--color-gray-rgb));
 }
 
@@ -2821,18 +2821,6 @@ Author: ElsaTam (Kapirklaa in Discord) */
   justify-content: center;
 }
 
-.markdown-preview-view .callout:is([data-callout-metadata~="right"], [data-callout-metadata~="float-right"]) {
-  float: right;
-  clear: right;
-  margin: var(--size-4-3) 0 var(--size-4-3) var(--size-4-3);
-}
-
-.markdown-preview-view .callout:is([data-callout-metadata~="left"], [data-callout-metadata~="float-left"]) {
-  float: left;
-  clear: left;
-  margin: var(--size-4-3) var(--size-4-3) var(--size-4-3) 0;
-}
-
 /* No icon */
 
 .callout[data-callout-metadata~="no-icon"] > .callout-title > .callout-icon {
@@ -2926,14 +2914,10 @@ body {
 }
 
 .markdown-preview-view .callout[data-callout="polaroid"]:is([data-callout-metadata~="right"], [data-callout-metadata~="float-right"]) {
-  float: right;
-  clear: right;
   margin: 12px 0 12px 12px;
 }
 
 .markdown-preview-view .callout[data-callout="polaroid"]:is([data-callout-metadata~="left"], [data-callout-metadata~="float-left"]) {
-  float: left;
-  clear: left;
   margin: 12px 12px 12px 0;
 }
 
@@ -3062,7 +3046,9 @@ body {
 
 /* ---------- floating callouts ---------- */
 
-/* Essential float-left/float-right behavior adapted from MCL Multi Column by efemkay. */
+/* Shared float behavior: Reading-view aliases from ElsaTam, plus MCL sizing
+   and Live Preview support from efemkay. Polaroid keeps only its visual adjustments.
+   The wide-screen reading fallback excludes aliases already positioned above. */
 
 body {
   --gastrodon-float-small-width: 300px;
@@ -3094,11 +3080,11 @@ body {
     display: none;
   }
 
-  .markdown-reading-view div[data-callout-metadata*="left"].callout {
+  .markdown-reading-view div[data-callout-metadata*="left"].callout:not(.markdown-preview-view [data-callout-metadata~="left"], .markdown-preview-view [data-callout-metadata~="float-left"]) {
     float: left;
   }
 
-  .markdown-reading-view div[data-callout-metadata*="right"].callout {
+  .markdown-reading-view div[data-callout-metadata*="right"].callout:not(.markdown-preview-view [data-callout-metadata~="right"], .markdown-preview-view [data-callout-metadata~="float-right"]) {
     float: right;
   }
 
