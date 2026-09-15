@@ -366,21 +366,25 @@ body.hide-buttons:not(.is-mobile) .nav-header .nav-buttons-container:is(:hover, 
 
 /* A floating panel that follows workspace roundness and border visibility. */
 body:not(.is-mobile) {
-  --status-bar-radius: var(--border-radius-average, 12px);
+  --status-bar-radius: min(var(--border-radius-average, 12px), 8px);
   --status-bar-border-width: var(--border-width);
   --status-bar-border-color: var(--background-modifier-border);
   --status-bar-background: var(--background-secondary);
 }
 
 body:not(.is-mobile) .status-bar {
-  right: 8px;
-  bottom: 8px;
+  right: 4px;
+  bottom: 4px;
   border-style: var(--line-style);
-  max-width: calc(100% - 16px);
+  max-width: calc(100% - 8px);
   flex-wrap: wrap;
   gap: 2px;
-  padding: 3px 6px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+  padding: 1px 6px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 8%);
+}
+
+body:not(.is-mobile) .status-bar-item {
+  padding-block: 2px;
 }
 
 .status-bar-item {
