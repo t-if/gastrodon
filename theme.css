@@ -2312,9 +2312,6 @@ Author: ElsaTam (Kapirklaa in Discord) */
 
 .callout[data-callout-metadata~="custom-icon"] {
   --callout-color: var(--color-purple);
-}
-
-.callout[data-callout-metadata~="custom-icon"] {
   --callout-icon: attr(data-callout);
 }
 
