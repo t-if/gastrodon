@@ -1971,6 +1971,8 @@ body {
 /* file name */
 
 .mailbox-cards
+.bases-cards-property[data-property="formula.mailbox-bold"],
+.mailbox-cards
 .bases-cards-property[data-property="file.name"],
 .mailbox-cards
 .bases-cards-property[data-property="file.basename"] {
