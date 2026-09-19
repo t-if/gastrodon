@@ -1901,7 +1901,8 @@ body {
 }
 
 /* mailbox cards */
-
+.no-fade .bases-cards-items,
+.no-fade .bases-cards-item,
 .mailbox-cards .bases-cards-items,
 .mailbox-cards .bases-cards-item {
   opacity: 1;
