@@ -738,8 +738,16 @@ body:not(.file-icon-remove) .workspace-leaf-content[data-type="file-explorer"] .
   mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M2.667 14.667H12a1.333 1.333 0 0 0 1.333-1.334V5L9.667 1.333H4a1.333 1.333 0 0 0-1.333 1.334v2'/%3e%3cpath d='M9.333 1.333v4h4M4.667 6.667 2.667 8H1.333v2.667h1.334l2 1.333V6.667Zm2.666.666c.427.534.667 1.247.667 2 0 .754-.24 1.467-.667 2'/%3e%3c/g%3e%3c/svg%3e");
 }
 
-body:not(.file-icon-remove) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".svg"], [data-path$=".bmp"], [data-path$=".jpeg"], [data-path$=".jpg"], [data-path$=".png"], [data-path$=".gif"])::before {
+body:not(.file-icon-remove) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title:is([data-path$=".svg"], [data-path$=".bmp"], [data-path$=".webp"], [data-path$=".jpeg"], [data-path$=".jpg"], [data-path$=".png"], [data-path$=".gif"])::before {
   mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.333'%3e%3cpath d='M12.667 2H3.333C2.597 2 2 2.597 2 3.333v9.334C2 13.403 2.597 14 3.333 14h9.334c.736 0 1.333-.597 1.333-1.333V3.333C14 2.597 13.403 2 12.667 2Z'/%3e%3cpath d='M6 7.333a1.333 1.333 0 1 0 0-2.666 1.333 1.333 0 0 0 0 2.666ZM14 10l-2.057-2.057a1.333 1.333 0 0 0-1.886 0L4 14'/%3e%3c/g%3e%3c/svg%3e");
+}
+
+body:not(.file-icon-remove) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".base"]::before {
+  mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3e%3cellipse cx='12' cy='5' rx='9' ry='3'/%3e%3cpath d='M3 5v14a9 3 0 0 0 18 0V5'/%3e%3cpath d='M3 12a9 3 0 0 0 18 0'/%3e%3c/g%3e%3c/svg%3e");
+}
+
+body:not(.file-icon-remove) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".mp3"]::before {
+  mask-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3e%3cg stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3e%3cpath d='M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z'/%3e%3cpath d='M16 9a5 5 0 0 1 0 6'/%3e%3cpath d='M19.364 18.364a9 9 0 0 0 0-12.728'/%3e%3c/g%3e%3c/svg%3e");
 }
 
 body:not(.file-icon-remove) .workspace-leaf-content[data-type="file-explorer"] .nav-file-title[data-path$=".pdf"]::before {
@@ -1892,6 +1900,150 @@ body {
   color: var(--text-muted);
 }
 
+/* mailbox cards */
+
+.mailbox-cards .bases-cards-items,
+.mailbox-cards .bases-cards-item {
+  opacity: 1;
+}
+
+.mailbox-cards .bases-view {
+  --mail-pink: var(--color-pink);
+  --mail-cyan: var(--color-cyan);
+  --mail-border: color-mix(
+    in srgb,
+    var(--color-accent) 25%,
+    var(--background-modifier-border)
+  );
+  --bases-cards-background: color-mix(
+    in srgb,
+    var(--background-primary) 96%,
+    var(--color-accent) 4%
+  );
+  --bases-cards-border: 1px solid var(--mail-border);
+
+  --bases-cards-shadow:
+    0 1px 3px rgb(0 0 0 / 0.035),
+    0 4px 12px rgb(0 0 0 / 0.025);
+  --bases-cards-shadow-hover:
+    0 2px 5px rgb(0 0 0 / 0.045),
+    0 7px 16px rgb(0 0 0 / 0.04);
+}
+
+.mailbox-cards .bases-cards-item {
+  overflow: hidden;
+  gap: var(--size-2-1);
+
+  border: var(--bases-cards-border);
+  border-radius: var(--radius-m);
+
+  background-color: var(--bases-cards-background);
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--mail-pink) 55%, transparent) 0 7px,
+      transparent 7px 11px,
+      color-mix(in srgb, var(--mail-cyan) 45%, transparent) 11px 18px,
+      transparent 18px 22px
+    );
+  background-size: 100% 4px;
+  background-position: top;
+  background-repeat: no-repeat;
+  box-shadow: var(--bases-cards-shadow);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mailbox-cards .bases-cards-item:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--color-accent) 50%,
+    var(--background-modifier-border-hover)
+  );
+  box-shadow: var(--bases-cards-shadow-hover);
+  transform: translateY(-1px);
+}
+
+/* file name */
+
+.mailbox-cards
+.bases-cards-property[data-property="file.name"],
+.mailbox-cards
+.bases-cards-property[data-property="file.basename"] {
+  font-weight: var(--font-semibold);
+}
+
+/* card title */
+
+.mailbox-cards .bases-cards-property.mod-title {
+  padding-top: var(--size-2-1);
+  padding-bottom: var(--size-4-2);
+  padding-right: var(--size-4-2);
+  font-weight: var(--font-semibold);
+  letter-spacing: 0.01em;
+  text-align: right;
+}
+
+/* property rows */
+
+.mailbox-cards
+.bases-cards-property:not(.mod-title) {
+  display: grid;
+  grid-template-columns: 1.25em minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--input-padding);
+  padding-right: var(--size-4-2);
+}
+.mailbox-cards .bases-cards-label {
+  visibility: hidden;
+}
+.mailbox-cards
+.bases-cards-property:not(.mod-title)
+.bases-cards-line {
+  min-width: 0;
+  padding-inline: 0;
+}
+
+/* type icon = postage stamp */
+
+.mailbox-cards
+.bases-cards-property[data-property="formula.icon"]
+.bases-cards-line {
+  justify-self: end;
+  inline-size: 26px;
+  block-size: 26px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px dashed color-mix(
+    in srgb,
+    var(--color-accent) 40%,
+    var(--background-modifier-border)
+  );
+  border-radius: var(--radius-s);
+  background: color-mix(
+    in srgb,
+    var(--color-accent) 10%,
+    var(--background-primary)
+  );
+}
+
+/* relative date footer */
+
+.mailbox-cards
+.bases-cards-property[data-property="formula.mailbox-cards"], .mailbox-cards
+.bases-cards-property[data-property="file.mailbox-cards"] {
+  margin-top: 2px;
+  padding-top: 2px;
+  border-top: 1px dashed color-mix(
+    in srgb,
+    var(--background-modifier-border) 75%,
+    transparent
+  );
+}
+
 /* pokemon box */
 
 :is(.workspace-leaf:has([aria-label*="Pokémon"]), .pokemonbox) .bases-view {
@@ -2709,7 +2861,9 @@ Author: ElsaTam (Kapirklaa in Discord) */
   font-weight: var(--font-bold);
 }
 
-/* Colors */
+/* GPLv3 license
+  Callout Colors
+  Author: ElsaTam (Kapirklaa in Discord) */
 
 .callout[data-callout-metadata~="gray"], .callout[data-callout-metadata~="grey"] {
   --callout-color: rgb(var(--color-gray-rgb));
@@ -3039,8 +3193,6 @@ body {
   margin-block: var(--size-4-3);
   padding: 0;
 }
-
-/* ---------- floating callouts ---------- */
 
 /* Shared float behavior: Reading-view aliases from ElsaTam, plus MCL sizing
    and Live Preview support from efemkay. Polaroid keeps only its visual adjustments.
@@ -6357,10 +6509,6 @@ settings:
   .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered hr::before,
   .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered hr::after {
     content: none;
-    display: none;
-  }
-
-  .markdown-rendered.markdown-rendered.markdown-rendered.markdown-rendered .tag {
     display: none;
   }
 

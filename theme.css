@@ -5961,11 +5961,6 @@ settings:
                 label: Basic
                 value: blockquote-basic
     -
-        id: blockquote-mark
-        title: Quote Marking
-        type: class-toggle
-        default: false
-    -
         id: hover-callout
         title: Hover to Expand Callout
         type: class-toggle
