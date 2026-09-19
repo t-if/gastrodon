@@ -1892,6 +1892,151 @@ body {
   color: var(--text-muted);
 }
 
+/* mailbox cards */
+
+.mailbox-cards .bases-cards-items,
+.mailbox-cards .bases-cards-item {
+  opacity: 1;
+}
+
+.mailbox-cards .bases-view {
+  --mail-pink: var(--color-pink);
+  --mail-cyan: var(--color-cyan);
+
+  --mail-border: color-mix(
+    in srgb,
+    var(--color-accent) 25%,
+    var(--background-modifier-border)
+  );
+
+  --bases-cards-background: color-mix(
+    in srgb,
+    var(--background-primary) 96%,
+    var(--color-accent) 4%
+  );
+
+  --bases-cards-border: 1px solid var(--mail-border);
+
+  --bases-cards-shadow:
+    0 1px 3px rgb(0 0 0 / 0.035),
+    0 4px 12px rgb(0 0 0 / 0.025);
+
+  --bases-cards-shadow-hover:
+    0 2px 5px rgb(0 0 0 / 0.045),
+    0 7px 16px rgb(0 0 0 / 0.04);
+}
+
+.mailbox-cards .bases-cards-item {
+  overflow: hidden;
+  gap: var(--size-2-1);
+  border: var(--bases-cards-border);
+  border-radius: var(--radius-m);
+  background-color: var(--bases-cards-background);
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--mail-pink) 55%, transparent) 0 7px,
+      transparent 7px 11px,
+      color-mix(in srgb, var(--mail-cyan) 45%, transparent) 11px 18px,
+      transparent 18px 22px
+    );
+  background-size: 100% 4px;
+  background-position: top;
+  background-repeat: no-repeat;
+  box-shadow: var(--bases-cards-shadow);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mailbox-cards .bases-cards-item:hover {
+  border-color: color-mix(
+    in srgb,
+    var(--color-accent) 50%,
+    var(--background-modifier-border-hover)
+  );
+  box-shadow: var(--bases-cards-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.mailbox-cards
+.bases-cards-property[data-property="file.name"], .mailbox-cards
+.bases-cards-property[data-property="file.basename"] {
+  font-weight: var(--font-semibold);
+}
+
+.mailbox-cards .bases-cards-property.mod-title {
+  padding-top: var(--size-2-1);
+  padding-bottom: var(--size-4-2);
+  padding-right: var(--size-4-2);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: right;
+}
+
+.mailbox-cards
+.bases-cards-property:not(.mod-title) {
+  display: grid;
+  grid-template-columns: 1.25em minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--input-padding);
+  padding-right: var(--size-4-2);
+}
+
+.mailbox-cards .bases-cards-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 0.7em;
+  line-height: 1;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.mailbox-cards
+.bases-cards-property:not(.mod-title)
+.bases-cards-line {
+  min-width: 0;
+  padding-inline: 0;
+}
+
+/* type icon = postage stamp */
+
+.mailbox-cards
+.bases-cards-property[data-property="formula.icon"]
+.bases-cards-line {
+  justify-self: end;
+  inline-size: 26px;
+  block-size: 26px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px dashed color-mix(
+    in srgb,
+    var(--color-accent) 40%,
+    var(--background-modifier-border)
+  );
+  border-radius: var(--radius-s);
+  background: color-mix(
+    in srgb,
+    var(--color-accent) 10%,
+    var(--background-primary)
+  );
+}
+
+.mailbox-cards
+.bases-cards-property[data-property="formula.Untitled"] {
+  margin-top: 2px;
+  padding-top: 2px;
+  border-top: 1px dashed color-mix(
+    in srgb,
+    var(--background-modifier-border) 75%,
+    transparent
+  );
+}
+
 /* pokemon box */
 
 :is(.workspace-leaf:has([aria-label*="Pokémon"]), .pokemonbox) .bases-view {
